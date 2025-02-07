@@ -8,6 +8,7 @@ import complianceImg from "../assets/conformite.png";
 import hiringImg from "../assets/hiringImg.png";
 import insightsImg from "../assets/insightsImg.png";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Add this import
 
 const testimonials = [
   {
@@ -29,6 +30,7 @@ const testimonials = [
 
 const Home = () => {
   const [index, setIndex] = useState(0);
+  const navigate = useNavigate(); // Initialize navigate
 
   const nextTestimonial = () => {
     setIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
@@ -36,6 +38,10 @@ const Home = () => {
 
   const prevTestimonial = () => {
     setIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
+  };
+
+  const handleCommencerClick = () => {
+    navigate("./signup1");
   };
 
   return (
@@ -49,7 +55,7 @@ const Home = () => {
               <span className="tag">#GérerAvecFacilité</span>
               <h1>Donnez du pouvoir à votre personnel grâce à une gestion transparente</h1>
               <p>Notre plateforme simplifie la gestion des travailleurs intérimaires...</p>
-              <Button className="start-btn">Commencer</Button>
+              <Button className="start-btn" onClick={handleCommencerClick}>Commencer</Button>
               <Button className="demo-btn">Demo</Button>
             </Col>
             <Col md={6} className="image-section">
@@ -95,7 +101,7 @@ const Home = () => {
       </div>
 
       <div className="separator">
-      <h2 className="title-heading">Témoignages de nos clients</h2>
+        <h2 className="title-heading">Témoignages de nos clients</h2>
       </div>
 
       <div className="testimonials-container">
