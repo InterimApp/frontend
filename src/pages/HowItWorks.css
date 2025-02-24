@@ -1,0 +1,71 @@
+/* General Styles */
+.how-it-works-container {
+    padding: 40px;
+    background-color: #f8f8f8;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header Section */
+  .how-it-works-header {
+    margin-bottom: 40px;
+  }
+  
+  .how-it-works-header h1 {
+    font-size: 2.5rem;
+    color: #359bbd;
+    font-weight: bold;
+  }
+  
+  .how-it-works-header p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Steps Section */
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .step {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .step h3 {
+    font-size: 1.8rem;
+    color: #ff914d;
+    font-weight: bold;
+  }
+  
+  .step p {
+    font-size: 1.1rem;
+    color: #777;
+  }
+  
+  .step:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Footer Section */
+  .how-it-works-footer {
+    margin-top: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .how-it-works-footer a {
+    color: #ff914d;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .how-it-works-footer a:hover {
+    text-decoration: underline;
+  }
+  

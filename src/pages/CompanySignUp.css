@@ -1,20 +1,21 @@
-.signup-page {
+
+.company-signup-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #ffffff;
+    min-height: 700px;
     padding: 20px;
   }
   
-  .signup-container {
+  .company-signup-container {
     background: #f2f2f2;
-    padding: 50px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 500px;
-    margin-top: 100px; 
+    margin-top: 150px;
+
   }
   
   h2 {
@@ -92,7 +93,7 @@
     width: 100%;
   }
   
-  .submit-btn {
+  .company-submit-btn {
     width: 100%;
     padding: 15px;
     margin-top: 50px;
@@ -100,7 +101,7 @@
     font-weight: bold;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: linear-gradient(to right, #ff4b2b, #ff5e41);
     color: white;
     cursor: pointer;
     transition: 0.3s;
@@ -110,25 +111,41 @@
     opacity: 0.8;
   }
   
-  .image-container {
-    margin-left: 50px;
-  }
-  
-  .image-container img {
-    width: 550px;
-    max-width: 100%;
+  .image-section {
+    margin-top: 80px;    
+    max-width: 70%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
   }
 
-  .form-container {
-    max-height: 60vh; /* Decrease height to show less before scrolling */
-    overflow-y: auto;
+  .company-form-container {
+    max-height: 550vh; 
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
-    margin-top: 2px; /* Increase top margin */
-    margin-bottom: 20px; /* Reduce bottom margin */
+    margin-top: 2px; 
   }
   
-  .signup-page {
-    padding-bottom: 10px; /* More space at the bottom */
+  .company-signup-page {
+    padding-bottom: 40px; 
   }
+
+  .back-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #359bbd, #ff914d);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .back-btn:hover {
+    background-color: #e0e0e0;
+  }
+  

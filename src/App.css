@@ -1,38 +1,35 @@
-.App {
-  text-align: center;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent both horizontal and vertical scrolling */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-container {
+  width: 100%;
+  height: 100%; /* Ensures the container fills the full screen */
+  max-width: 1280px; /* Fixed max width to avoid diagonal stretching */
+  margin: 0 auto;
+  overflow: hidden; /* Ensures no overflow beyond the defined size */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.main-content {
+  height: 100%; /* Ensure it takes up the full available height */
+  overflow-y: auto; /* Allows content inside to scroll vertically */
+  overflow-x: hidden; /* Prevents horizontal scrolling inside content */
+  padding-bottom: 60px; /* Space for the footer */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+footer {
+  position: fixed; /* Keeps the footer at the bottom of the screen */
+  bottom: 0;
+  width: 100%;
+  background-color: #fff; /* Optional: set the footer background color */
 }
 
-.App-link {
-  color: #61dafb;
+img {
+  max-width: 100%; /* Ensures images don't stretch out of bounds */
+  height: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

@@ -1,11 +1,12 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Dropdown } from "react-bootstrap"; // Import Dropdown
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 import logo from "../assets/manpower-logo.png";
 import linkedin from "../assets/linkedin.jpeg";
 import facebook from "../assets/facebook.jpeg";
 import instagram from "../assets/instagram.jpeg";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -15,25 +16,49 @@ const NavBar = () => {
           <img src={logo} alt="ManPower Logo" className="img-fluid" />
         </Col>
         <Col className="d-flex justify-content-end social-icons">
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+          <p style={{ marginTop: "12px" }}>Suivez-nous </p>
+          <a
+            href="https://www.facebook.com/people/ManpowerGroup-Tunisie/100057696534788/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={facebook} alt="Facebook" className="social-icon" />
           </a>
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/manpowergrouptunisie"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={instagram} alt="Instagram" className="social-icon" />
           </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/company/manpowergroup-tunisie/?viewAsMember=true"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src={linkedin} alt="LinkedIn" className="social-icon" />
           </a>
         </Col>
       </Row>
 
-      {/* Navigation Bar */}
-      <Row className="navigation d-flex justify-content-center px-4 py-3">
-        <Col xs="auto"><a href="#" className="active">Accueil</a></Col>
-        <Col xs="auto"><a href="#">À propos</a></Col>
-        <Col xs="auto"><a href="#">Comment ça marche</a></Col>
-        <Col xs="auto"><a href="#">Contact</a></Col>
-      </Row>
+      <nav className="navigation">
+        <Link to="/#home">Home</Link>
+        <Dropdown>
+          <Dropdown.Toggle variant="link" id="dropdown-basic">
+            About
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item as={Link} to="/#pourquoi-choisir">Pourquoi choisir ManPower</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#temoignages">Témoignages de nos clients</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#nos-statistiques">Nos statistiques</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#mission-vision">Mission & Vision</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <Link to="/signup1">Sign Up</Link>
+        <Link to="/hiw">How it works</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
     </>
   );
 };

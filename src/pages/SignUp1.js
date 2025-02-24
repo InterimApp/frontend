@@ -1,12 +1,16 @@
-import React from "react";
+
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp1.css";
-import NavBar from "./NavBar";
 import analysis from "../assets/analysis.jpeg";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
-const SignUp = () => {
+const SignUp1 = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleTravailleurClick = () => {
     navigate("/WorkerSignUp"); 
@@ -15,24 +19,26 @@ const SignUp = () => {
   const handleCompanyClick = () => {
     navigate("/CompanySignUp"); 
   };
-  
+
+  const handleSignClick = () => {
+    navigate("/Signin"); 
+  };
 
   return (
     <div className="signup-page">
-      <div className="signup-container">
-      <NavBar />
+      <div id="signup1"  className="signup-container">
         <h2>S'enregistrer</h2>
         <Button className="travailleur-btn" onClick={handleTravailleurClick}>Travailleur</Button>
         <Button className="Company-btn" onClick={handleCompanyClick}>Companie</Button>
         <p>
-          Vous avez déja un compte? <span className="signin-link" onClick={() => navigate("/signin")}>Se connecter</span>
+          Vous avez déja un compte? <span className="signin-link" onClick={handleSignClick}>Se connecter</span>
         </p>
       </div>
-      <div className="image-container">
+      <div className="image-section">
         <img src={analysis} alt="Analysis" />
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignUp1;

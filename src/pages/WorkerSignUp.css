@@ -1,20 +1,20 @@
-.signup-page {
+
+.worker-signup-page {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     background-color: #ffffff;
     padding: 20px;
+    min-height: 700px;
   }
   
-  .signup-container {
+  .worker-signup-container {
     background: #f2f2f2;
-    padding: 50px;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 500px;
-    margin-top: 100px; 
+    margin-top: 150px;
   }
   
   h2 {
@@ -63,6 +63,7 @@
   
   .input-icon {
     position: relative;
+    
   }
   
   .input-icon input {
@@ -89,7 +90,7 @@
   }
   
   .cv, .location {
-    width: 48%;
+    width: 45%;
   }
   
   .submit-btn {
@@ -100,7 +101,7 @@
     font-weight: bold;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    color: linear-gradient(to left,#ff914d, #ff3c3c79 );
     color: white;
     cursor: pointer;
     transition: 0.3s;
@@ -110,25 +111,53 @@
     opacity: 0.8;
   }
   
-  .image-container {
-    margin-left: 50px;
-  }
-  
-  .image-container img {
-    width: 550px;
-    max-width: 100%;
+  .image-section {
+    margin-top: 80px;    
+    max-width: 50%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
   }
 
-  .form-container {
-    max-height: 60vh; /* Decrease height to show less before scrolling */
-    overflow-y: auto;
+  .worker-form-container {
+    max-height: 550vh; /* Decrease height to show less before scrolling */
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
     margin-top: 2px; /* Increase top margin */
-    margin-bottom: 20px; /* Reduce bottom margin */
   }
   
-  .signup-page {
-    padding-bottom: 10px; /* More space at the bottom */
+  .worker-signup-page {
+    padding-bottom: 40px; /* More space at the bottom */
   }
+
+  .back-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #359bbd, #ff914d);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .back-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .submit-btn, .back-btn {
+    width: 48%; 
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row; 
+  gap: 30px;
+  align-items: center; /* Center buttons */
+  width: 100%;
+}
+
