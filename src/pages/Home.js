@@ -50,6 +50,9 @@ const Home = () => {
     navigate("./signup1");
   };
 
+  const handleDemoClick = () => {
+    navigate("./hiw");
+  };
 
   return (
     <div id="home" className="home-container">
@@ -71,7 +74,7 @@ const Home = () => {
                 solutions les plus expertes pour nos clients.
               </p>
               <Button className="start-btn" onClick={handleCommencerClick}>Commencer</Button>
-              <Button className="demo-btn">Demo</Button>
+              <Button className="demo-btn" onClick={handleDemoClick}>Demo</Button>
             </Col>
             <Col md={6} className="image-section">
               <img src={analysis} alt="Analysis" className="img-fluid" />

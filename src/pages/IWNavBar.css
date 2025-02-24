@@ -1,0 +1,56 @@
+.top-bar {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+  }
+  
+  .logo img {
+    max-height: 50px;
+  }
+  
+  .profile-section {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Navigation Bar Styling */
+  .navigation {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #343a40;
+    padding: 10px 0;
+  }
+  
+  .navigation a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .navigation a:hover {
+    background-color: #495057;
+    border-radius: 5px;
+  }
+  
+  /* Notification Icon Styling */
+  .notification-link {
+    display: flex;
+    align-items: center;
+  }
+  
+  .notification-icon {
+    background-image: url("../assets/notification-icon.png"); /* Use your own notification icon */
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+    margin-right: 8px;
+  }
+  

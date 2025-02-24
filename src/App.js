@@ -3,12 +3,14 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from "react-route
 import Home from "./pages/Home";
 import SignUp1 from "./pages/SignUp1";
 import WorkerSignUp from "./pages/WorkerSignUp";
-import CompanySignUp from "./pages/CompanySignUp";
 import Signin from "./pages/Signin";
 import NavBar from "./pages/NavBar";
 import Footer from "./pages/footer";
 import HowItWorks from "./pages/HowItWorks";
 import Contact from "./pages/Contact";
+import IWSignin from "./pages/IWSignIn";
+import CandidateSignIn from "./pages/CandidateSignIn";
+import ClientCompSignin from './pages/ClientCompSignIn';
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -55,18 +57,21 @@ const App = () => {
         style={{
           maxWidth: '1280px', 
           margin: '0 auto', 
-          height: 'auto', // Allow content to flow naturally and scroll
-          overflow: 'hidden', // Prevent horizontal overflow
+          height: 'auto', 
+          overflow: 'hidden', 
         }}
       >
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup1" element={<SignUp1 />} />
           <Route path="/WorkerSignUp" element={<WorkerSignUp />} />
-          <Route path="/CompanySignUp" element={<CompanySignUp />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/hiw" element={<HowItWorks />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/IWSignin" element={<IWSignin />} />
+          <Route path="/CandidateSignIn" element={<CandidateSignIn />} />
+          <Route path="/ClientCompSignin" element={<ClientCompSignin />} />
+
         </Routes>
       </div>
       <Footer />

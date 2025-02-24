@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Contact.css";
 import Director1 from "../assets/MrMohamedMejri.png";
 import Director2 from "../assets/Director2.png";
@@ -60,6 +60,11 @@ const agencies = [
 ];
 
 const Contact = () => {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div className="contact-container">
       <h1>Nos Agences</h1>

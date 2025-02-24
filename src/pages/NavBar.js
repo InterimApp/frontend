@@ -56,7 +56,7 @@ const NavBar = () => {
           </Dropdown.Menu>
         </Dropdown>
         <Link to="/signup1">Sign Up</Link>
-        <Link to="/hiw">How it works</Link>
+        <Link to="/hiw">Comment ca marche</Link>
         <Link to="/contact">Contact</Link>
       </nav>
     </>

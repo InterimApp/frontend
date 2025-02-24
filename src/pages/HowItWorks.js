@@ -1,7 +1,12 @@
-import React from 'react';
-import './HowItWorks.css'; // Importation du fichier CSS
+import React, { useEffect } from "react";
+import './HowItWorks.css'; 
 
 export default function HowItWorks() {
+
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   return (
     <div className="how-it-works-container">
       <div className="how-it-works-header">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importation de useNavigate
+import { useNavigate } from "react-router-dom"; 
 import "./WorkerSignUp.css";
 import {
   FaEnvelope,
@@ -13,7 +13,7 @@ import analysis from "../assets/analysis.jpeg";
 const WorkerSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const navigate = useNavigate(); // Initialisation de useNavigate
+  const navigate = useNavigate(); 
 
   const handleBackClick = () => {
     navigate("/signup1");
@@ -133,7 +133,7 @@ const WorkerSignUp = () => {
                 Retour
               </button>
 
-              <button className="submit-btn">S'inscrire</button>
+              <button className="worker-submit-btn">S'inscrire</button>
             </div>
           </form>
         </div>

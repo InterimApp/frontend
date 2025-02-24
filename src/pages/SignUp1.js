@@ -15,10 +15,6 @@ const SignUp1 = () => {
     navigate("/WorkerSignUp"); 
   };
 
-  const handleCompanyClick = () => {
-    navigate("/CompanySignUp"); 
-  };
-
   const handleSignClick = () => {
     navigate("/Signin"); 
   };
@@ -28,7 +24,6 @@ const SignUp1 = () => {
       <div id="signup1"  className="signup-container">
         <h2>S'enregistrer</h2>
         <Button className="travailleur-btn" onClick={handleTravailleurClick}>Travailleur</Button>
-        <Button className="Company-btn" onClick={handleCompanyClick}>Companie</Button>
         <p>
           Vous avez déja un compte? <span className="signin-link" onClick={handleSignClick}>Se connecter</span>
         </p>
