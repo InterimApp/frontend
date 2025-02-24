@@ -58,6 +58,7 @@ const NavBar = () => {
         <Link to="/signup1">Sign Up</Link>
         <Link to="/hiw">How it works</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/profile">Profile</Link>
       </nav>
     </>
   );

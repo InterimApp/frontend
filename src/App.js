@@ -9,12 +9,13 @@ import NavBar from "./pages/NavBar";
 import Footer from "./pages/footer";
 import HowItWorks from "./pages/HowItWorks";
 import Contact from "./pages/Contact";
-
+import Profile from './pages/Profile';
 const ScrollToHash = () => {
   const location = useLocation();
   
   useEffect(() => {
     if (location.hash) {
+
       const element = document.getElementById(location.hash.substring(1)); 
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
@@ -67,6 +68,8 @@ const App = () => {
           <Route path="/signin" element={<Signin />} />
           <Route path="/hiw" element={<HowItWorks />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
+
         </Routes>
       </div>
       <Footer />
