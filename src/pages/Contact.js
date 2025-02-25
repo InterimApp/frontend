@@ -5,6 +5,8 @@ import Director2 from "../assets/Director2.png";
 import Director3 from "../assets/Director3.png";
 import Director4 from "../assets/Director4.png"; 
 import Director5 from "../assets/Director5.png"; 
+import NavBar from "./NavBar"; 
+
 
 const agencies = [
   {
@@ -67,6 +69,8 @@ const Contact = () => {
   
   return (
     <div className="contact-container">
+            <NavBar /> 
+
       <h1>Nos Agences</h1>
       <div className="agency-list">
         {agencies.map((agency, index) => (

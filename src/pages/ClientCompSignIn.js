@@ -3,6 +3,7 @@ import "./ClientCompSignIn.css";
 import { FaBuilding, FaFileInvoice } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar"; 
 
 const ClientCompSignin = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const ClientCompSignin = () => {
   };
 
   const handleSignClick = () => {
-    navigate("/signup1"); // Navigate to the sign-up page
+    navigate("/signup1"); 
   };
 
   return (

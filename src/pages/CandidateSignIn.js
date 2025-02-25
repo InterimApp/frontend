@@ -3,6 +3,7 @@ import "./CandidateSignIn.css";
 import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar"; 
 
 const CandidateSignin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,11 +14,12 @@ const CandidateSignin = () => {
   };
 
   const handleSignClick = () => {
-    navigate("/signup1"); // Navigate to the sign-up page
+    navigate("/signup1"); 
   };
 
   return (
     <div className="candidate-signin-page">
+      <NavBar />
       <div className="candidate-signin-container">
         <div className="candidate-form-container">
           <h2>

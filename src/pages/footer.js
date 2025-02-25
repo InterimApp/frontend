@@ -50,9 +50,11 @@ const Footer = () => {
         {/* Bottom Section */}
         <Row className="footer-bottom">
           <Col className="footer-policy">
-            <a href="#">Mentions légales</a> |{" "}
-            <a href="#">Données personnelles</a> | <a href="#">Éthique</a> |{" "}
-            <a href="#">Contacter Nous</a>
+            <a href="/#home">Acceuil</a> |{" "}
+            <a href="/#pourquoi-choisir">À propos</a> |
+            <a href="/signup1">S'inscrire</a> |{" "} 
+            <a href="/hiw">Comment ca marche</a> |
+            <a href="/contact">Contact</a>
           </Col>
           <Col className="footer-copyright">
             <p style={{ color: "white" }}>

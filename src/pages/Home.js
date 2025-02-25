@@ -11,8 +11,8 @@ import effiency from "../assets/effiency.png";
 import user_sat from "../assets/user_sat.png";
 import missionIcon from "../assets/missionIcon.png";
 import visionIcon from "../assets/visionIcon.png";
-import { useNavigate } from "react-router-dom"; // Add this import
-
+import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar"; 
 
 const testimonials = [
   {
@@ -57,6 +57,8 @@ const Home = () => {
   return (
     <div id="home" className="home-container">
       <div className="first-screen-container">
+      <NavBar /> 
+
         <Container fluid>
 
           <Row className="content-section d-flex align-items-left justify-content-center text-center">

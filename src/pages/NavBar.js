@@ -42,10 +42,10 @@ const NavBar = () => {
       </Row>
 
       <nav className="navigation">
-        <Link to="/#home">Home</Link>
+        <Link to="/#home">Acceuil</Link>
         <Dropdown>
           <Dropdown.Toggle variant="link" id="dropdown-basic">
-            About
+            À propos
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
@@ -55,7 +55,7 @@ const NavBar = () => {
             <Dropdown.Item as={Link} to="/#mission-vision">Mission & Vision</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Link to="/signup1">Sign Up</Link>
+        <Link to="/signup1">S'inscrire</Link>
         <Link to="/hiw">Comment ca marche</Link>
         <Link to="/contact">Contact</Link>
       </nav>

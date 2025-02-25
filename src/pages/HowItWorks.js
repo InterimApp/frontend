@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import './HowItWorks.css'; 
+import NavBar from "./NavBar"; 
 
 export default function HowItWorks() {
 
@@ -9,6 +10,7 @@ export default function HowItWorks() {
 
   return (
     <div className="how-it-works-container">
+      <NavBar /> 
       <div className="how-it-works-header">
         <h1>Comment ça marche</h1>
         <p>Découvrez comment notre plateforme vous aide à trouver l'emploi idéal ou à recruter les meilleurs talents !</p>

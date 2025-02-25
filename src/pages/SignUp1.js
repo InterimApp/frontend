@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./SignUp1.css";
 import analysis from "../assets/analysis.jpeg";
 import { Button } from "react-bootstrap";
+import NavBar from "./NavBar";
 
 const SignUp1 = () => {
   const navigate = useNavigate();
@@ -20,18 +21,21 @@ const SignUp1 = () => {
   };
 
   return (
-    <div className="signup-page">
-      <div id="signup1"  className="signup-container">
-        <h2>S'enregistrer</h2>
-        <Button className="travailleur-btn" onClick={handleTravailleurClick}>Travailleur</Button>
-        <p>
-          Vous avez déja un compte? <span className="signin-link" onClick={handleSignClick}>Se connecter</span>
-        </p>
+    <>
+      <NavBar />
+      <div className="signup-page">
+        <div id="signup1"  className="signup-container">
+          <h2>S'enregistrer</h2>
+          <Button className="travailleur-btn" onClick={handleTravailleurClick}>Travailleur</Button>
+          <p>
+            Vous avez déja un compte? <span className="signin-link" onClick={handleSignClick}>Se connecter</span>
+          </p>
+        </div>
+        <div className="image-section">
+          <img src={analysis} alt="Analysis" />
+        </div>
       </div>
-      <div className="image-section">
-        <img src={analysis} alt="Analysis" />
-      </div>
-    </div>
+    </>
   );
 };
 

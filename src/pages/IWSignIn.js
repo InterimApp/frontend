@@ -3,6 +3,7 @@ import "./IWSignIn.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar"; 
 
 const IWSignin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,11 +14,12 @@ const IWSignin = () => {
   };
 
   const handleSignClick = () => {
-    navigate("/signup1"); // Navigate to the sign-up page
+    navigate("/IWDashboard");
   };
 
   return (
     <div className="iw-signin-page">
+      <NavBar /> 
       <div className="iw-signin-container">
         <div className="iw-form-container">
           <h2>
@@ -51,9 +53,8 @@ const IWSignin = () => {
                 Retour
               </button>
 
-              <button className="signin-submit-btn">Login</button>
+              <button className="signin-submit-btn" onClick={handleSignClick}>Login</button>
             </div>
-
           </form>
         </div>
       </div>

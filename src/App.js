@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp1 from "./pages/SignUp1";
 import WorkerSignUp from "./pages/WorkerSignUp";
 import Signin from "./pages/Signin";
-import NavBar from "./pages/NavBar";
 import Footer from "./pages/footer";
 import HowItWorks from "./pages/HowItWorks";
 import Contact from "./pages/Contact";
 import IWSignin from "./pages/IWSignIn";
 import CandidateSignIn from "./pages/CandidateSignIn";
 import ClientCompSignin from './pages/ClientCompSignIn';
+import IWDashboard from './pages/IWDashboard';
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -50,7 +50,6 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar />
       <ScrollToHash />
       <div 
         className="app-container" 
@@ -71,6 +70,7 @@ const App = () => {
           <Route path="/IWSignin" element={<IWSignin />} />
           <Route path="/CandidateSignIn" element={<CandidateSignIn />} />
           <Route path="/ClientCompSignin" element={<ClientCompSignin />} />
+          <Route path="/IWDashboard" element={<IWDashboard />} />
 
         </Routes>
       </div>
