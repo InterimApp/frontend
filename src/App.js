@@ -11,6 +11,7 @@ import IWSignin from "./pages/IWSignIn";
 import CandidateSignIn from "./pages/CandidateSignIn";
 import ClientCompSignin from './pages/ClientCompSignIn';
 import IWDashboard from './pages/IWDashboard';
+import Profile from './pages/Profile';
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -71,6 +72,7 @@ const App = () => {
           <Route path="/CandidateSignIn" element={<CandidateSignIn />} />
           <Route path="/ClientCompSignin" element={<ClientCompSignin />} />
           <Route path="/IWDashboard" element={<IWDashboard />} />
+          <Route path="/profile" element={<Profile />} />
 
         </Routes>
       </div>

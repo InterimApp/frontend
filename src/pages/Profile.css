@@ -1,0 +1,159 @@
+.IWP-profile-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-right: 10vh;
+  }
+  
+  .IWP-profile-image-section {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 200px;
+  }
+  
+  .IWP-role {
+    color: #a7a5a5;
+  }
+  
+  .IWP-profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .IWP-placeholder-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .IWP-h2 {
+    margin-top: 20px;
+    font-size: 30px;
+    color: #000000;
+  }
+  
+  .IWP-syrine {
+    margin-top: 100px; 
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .IWP-submit-btn,
+  .IWP-delete-btn {
+    border: none;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    margin-right: 15px;
+    margin-bottom: 0; /* Reduced bottom margin */
+  }
+  
+  .IWP-submit-btn {
+    background: linear-gradient(to right, #ff3c3c, #ff914d);
+    color: white;
+    border: 2px solid transparent;
+  }
+  
+  .IWP-delete-btn {
+    background: linear-gradient(to right, #ff3c3c, #ff914d);
+    color: #ff914d;
+    border: 2px solid transparent;
+  }
+  
+  .IWP-submit-btn:hover {
+    background: linear-gradient(to right, #ff914d, #ff3c3c);
+  }
+  
+  .IWP-delete-btn {
+    border: 2px solid #ff3c3c;
+    color: linear-gradient(to right, #ff3c3c, #ff914d);
+    background: white;
+  }
+  
+  .IWP-delete-btn:hover {
+    background: linear-gradient(to right, #359bbd, #ff914d);
+  }
+  
+  .IWP-profile-card h1 {
+    color: #0077a3;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .IWP-input-container {
+    margin-bottom: 15px;
+  }
+  
+  .IWP-input-container label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333333;
+  }
+  
+  .IWP-input-container input,
+  .IWP-input-container select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 5px;
+    transition: border-color 0.3s;
+  }
+  
+  .IWP-input-container input:focus,
+  .IWP-input-container select:focus {
+    border-color: #0077a3;
+    outline: none;
+  }
+  
+  .IWP-input-icon {
+    position: relative;
+  }
+  
+  .IWP-input-icon input {
+    padding-right: 40px;
+  }
+  
+  .IWP-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .IWP-grid {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .IWP-grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .IWP-between {
+    margin-left: 100px;
+  }
+  

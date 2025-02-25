@@ -6,6 +6,9 @@
 
 .content-section {
   padding: 50px 20px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
 }
 
 .tag {
@@ -64,9 +67,15 @@ p {
   background: linear-gradient(to right, #359bbd, #ff914d);
 }
 
+.image-section {
+  margin-top: 0; /* Set top margin to 0 for the image container */
+}
+
 .image-section img {
   max-width: 70%;
   border-radius: 10px;
+  display: block; /* Ensures no unwanted margin from image display */
+  margin-top: 0; 
 }
 
 .social-icons {
@@ -100,7 +109,6 @@ p {
 
 /* First screen styles */
 .first-screen-container {
-  padding: 50px 0;
   background-color: white;
 }
 

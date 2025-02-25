@@ -26,6 +26,8 @@ const IWNavBar = () => {
         <Link to="/#notifications" className="IWD-notification-link">
           <i className="IWD-notification-icon"></i> Notifications
         </Link>
+        <Link to="/profile">Profile</Link>
+
       </nav>
     </>
   );
