@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp1 from "./pages/SignUp1";
-import WorkerSignUp from "./pages/WorkerSignUp";
+import WorkerSignUp from "./pages/CondidateSignUp";
 import Signin from "./pages/Signin";
 import Footer from "./pages/footer";
 import HowItWorks from "./pages/HowItWorks";

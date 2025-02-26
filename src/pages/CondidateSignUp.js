@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import "./WorkerSignUp.css";
+import "./CondidateSignUp.css";
 import { 
   FaEnvelope, FaVenusMars, FaEye, FaEyeSlash, FaMapMarkerAlt 
 } from "react-icons/fa";
@@ -12,7 +12,7 @@ import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { storage } from "../config/Firebase"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; 
 
-const WorkerSignUp = () => {
+const CondidateSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -64,7 +64,7 @@ const WorkerSignUp = () => {
   
       console.log("User created successfully, CV uploaded at:", cvUrl);
       
-      // Store `cvUrl` in a variable for MySQL later
+      // Store cvUrl in a variable for MySQL later
       const cvPathForMySQL = cvUrl;
 
       navigate("/signup1"); // Redirect after successful signup
@@ -205,4 +205,4 @@ const WorkerSignUp = () => {
   );
 };
 
-export default WorkerSignUp;
+export default CondidateSignUp;
