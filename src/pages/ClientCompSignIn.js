@@ -12,12 +12,9 @@ const ClientCompSignin = () => {
     navigate("/signup1");
   };
 
-  const handleSignClick = () => {
-    navigate("/signup1"); 
-  };
-
   return (
     <div className="clientComp-signin-page">
+      <NavBar />
       <div className="clientComp-signin-container">
         <div className="clientComp-form-container">
           <h2>
@@ -36,14 +33,6 @@ const ClientCompSignin = () => {
               <input type="text" placeholder="Entrez le matricule fiscale" />
               <FaFileInvoice className="icon" />
             </div>
-
-            {/* Added Sign Up link */}
-            <p>
-              Vous n'avez pas déjà un compte?{" "}
-              <span className="signin-link" onClick={handleSignClick}>
-                Crée un compte
-              </span>
-            </p>
 
             <div className="signin-buttons-container">
               <button className="signin-back-btn" onClick={handleBackClick}>

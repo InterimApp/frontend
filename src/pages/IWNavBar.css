@@ -8,7 +8,7 @@
   justify-content: space-between; 
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 101%;
   z-index: 1000;
 }
 
@@ -36,7 +36,7 @@
   text-align: center;
   position: fixed;
   top: 60px;
-  left: 0;
+  right: 0;
   width: 100%;
   margin-top: 20px;
   padding: 15px;

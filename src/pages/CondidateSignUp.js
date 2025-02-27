@@ -1,24 +1,29 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./CondidateSignUp.css";
-import { 
-  FaEnvelope, FaVenusMars, FaEye, FaEyeSlash, FaMapMarkerAlt 
+import {
+  FaEnvelope,
+  FaVenusMars,
+  FaEye,
+  FaEyeSlash,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/Firebase"; 
-import { db } from "../config/Firebase"; 
+import { auth } from "../config/Firebase";
+import { db } from "../config/Firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { storage } from "../config/Firebase"; 
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; 
+import { storage } from "../config/Firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import NavBar from "./NavBar";
 
 const CondidateSignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [cvUrl, setCvUrl] = useState(""); // Store CV URL
-  const navigate = useNavigate(); 
+  const [cvUrl, setCvUrl] = useState("");
+  const navigate = useNavigate();
 
   const handleBackClick = (e) => {
     e.preventDefault(); // Prevent form submission
@@ -49,10 +54,14 @@ const CondidateSignUp = () => {
 
     try {
       // Create user in Firebase Authentication
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
       const role = "condidate"; // Define user role
-      
+
       // Save user info in Firestore
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
@@ -61,16 +70,18 @@ const CondidateSignUp = () => {
         cvUrl: cvUrl, // Store CV download URL in Firestore
         createdAt: serverTimestamp(), // Store Firestore timestamp
       });
-  
+
       console.log("User created successfully, CV uploaded at:", cvUrl);
-      
+
       // Store cvUrl in a variable for MySQL later
       const cvPathForMySQL = cvUrl;
 
-      navigate("/signup1"); // Redirect after successful signup
+      navigate("/IWDashboard"); // Redirect after successful signup
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        console.error("This email is already registered. Try logging in instead.");
+        console.error(
+          "This email is already registered. Try logging in instead."
+        );
       } else {
         console.error("Error:", error.message);
       }
@@ -78,10 +89,13 @@ const CondidateSignUp = () => {
   };
 
   return (
-    <div className="worker-signup-page">
-      <div className="worker-signup-container">
-        <div className="worker-form-container">
-          <h2>Créez votre <span>compte travailleur</span></h2>
+    <div className="candidate-signup-page">
+      <NavBar />
+      <div className="candidate-signup-container">
+        <div className="candidate-form-container">
+          <h2>
+            Créez votre <span>compte travailleur</span>
+          </h2>
           <div className="divider"></div>
 
           <form onSubmit={handleCondidateSignup}>
@@ -107,12 +121,12 @@ const CondidateSignUp = () => {
 
             <label>Email</label>
             <div className="input-icon">
-              <input 
-                type="email" 
-                placeholder="Entrez votre email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
+              <input
+                type="email"
+                placeholder="Entrez votre email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
               <FaEnvelope className="icon" />
             </div>
@@ -128,9 +142,15 @@ const CondidateSignUp = () => {
                   required
                 />
                 {showPassword ? (
-                  <FaEyeSlash className="icon" onClick={() => setShowPassword(false)} />
+                  <FaEyeSlash
+                    className="icon"
+                    onClick={() => setShowPassword(false)}
+                  />
                 ) : (
-                  <FaEye className="icon" onClick={() => setShowPassword(true)} />
+                  <FaEye
+                    className="icon"
+                    onClick={() => setShowPassword(true)}
+                  />
                 )}
               </div>
 
@@ -142,9 +162,15 @@ const CondidateSignUp = () => {
                   required
                 />
                 {showConfirmPassword ? (
-                  <FaEyeSlash className="icon" onClick={() => setShowConfirmPassword(false)} />
+                  <FaEyeSlash
+                    className="icon"
+                    onClick={() => setShowConfirmPassword(false)}
+                  />
                 ) : (
-                  <FaEye className="icon" onClick={() => setShowConfirmPassword(true)} />
+                  <FaEye
+                    className="icon"
+                    onClick={() => setShowConfirmPassword(true)}
+                  />
                 )}
               </div>
             </div>
@@ -152,13 +178,17 @@ const CondidateSignUp = () => {
             <div className="cv-location">
               <div className="cv">
                 <label>Uploader le CV</label>
-                <input type="file" required onChange={handleFileUpload}/>
+                <input type="file" required onChange={handleFileUpload} />
               </div>
 
               <div className="location">
                 <label>Localisation</label>
                 <div className="input-icon">
-                  <input type="text" placeholder="Entrez la localisation" required />
+                  <input
+                    type="text"
+                    placeholder="Entrez la localisation"
+                    required
+                  />
                   <FaMapMarkerAlt className="icon" />
                 </div>
               </div>
@@ -192,8 +222,12 @@ const CondidateSignUp = () => {
             </select>
 
             <div className="buttons-container">
-              <button className="back-btn" onClick={handleBackClick}>Retour</button>
-              <button className="company-submit-btn" type="submit">Sign Up</button>
+              <button className="back-btn" onClick={handleBackClick}>
+                Retour
+              </button>
+              <button className="condidate-submit-btn" type="submit">
+                Sign Up
+              </button>
             </div>
           </form>
         </div>

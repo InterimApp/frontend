@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import SignUp1 from "./pages/SignUp1";
-import WorkerSignUp from "./pages/CondidateSignUp";
+import CondidateSignUp from "./pages/CondidateSignUp";
 import Signin from "./pages/Signin";
 import Footer from "./pages/footer";
 import HowItWorks from "./pages/HowItWorks";
@@ -12,6 +12,7 @@ import CandidateSignIn from "./pages/CandidateSignIn";
 import ClientCompSignin from './pages/ClientCompSignIn';
 import IWDashboard from './pages/IWDashboard';
 import Profile from './pages/Profile';
+import Candidature from './pages/Candidature';
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -64,7 +65,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup1" element={<SignUp1 />} />
-          <Route path="/WorkerSignUp" element={<WorkerSignUp />} />
+          <Route path="/CondidateSignUp" element={<CondidateSignUp />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/hiw" element={<HowItWorks />} />
           <Route path="/contact" element={<Contact />} />
@@ -73,6 +74,7 @@ const App = () => {
           <Route path="/ClientCompSignin" element={<ClientCompSignin />} />
           <Route path="/IWDashboard" element={<IWDashboard />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/Candidature" element={<Candidature />} />
 
         </Routes>
       </div>

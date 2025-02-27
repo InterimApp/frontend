@@ -19,7 +19,7 @@ const IWNavBar = () => {
       </Row>
 
       <nav className="IWD-navigation">
-        <Link to="/#job-application">Candidature</Link>
+        <Link to="/Candidature">Candidature</Link>
         <Link to="/#contract">Contrat</Link>
         <Link to="/#document">Document</Link>
         <Link to="/#payment">Paiement</Link>
