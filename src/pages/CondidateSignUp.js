@@ -225,7 +225,7 @@ const CondidateSignUp = () => {
               <button className="back-btn" onClick={handleBackClick}>
                 Retour
               </button>
-              <button className="condidate-submit-btn" type="submit">
+              <button className="candidate-submit-btn" type="submit">
                 Sign Up
               </button>
             </div>
