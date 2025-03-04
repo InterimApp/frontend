@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./CondidateSignUp.css";
-import { 
-  FaEnvelope, FaVenusMars, FaEye, FaEyeSlash, FaMapMarkerAlt 
+import {
+  FaEnvelope,
+  FaVenusMars,
+  FaEye,
+  FaEyeSlash,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/Firebase"; 
-import { db } from "../config/Firebase"; 
+import { auth } from "../config/Firebase";
+import { db } from "../config/Firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { storage } from "../config/Firebase"; 
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; 
@@ -76,7 +80,7 @@ const CondidateSignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
       const user = userCredential.user;
       const role = "condidate"; // Define user role
-      
+
       // Save user info in Firestore
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
@@ -115,10 +119,13 @@ const CondidateSignUp = () => {
     }
   
   return (
-    <div className="worker-signup-page">
-      <div className="worker-signup-container">
-        <div className="worker-form-container">
-          <h2>Créez votre <span>compte travailleur</span></h2>
+    <div className="candidate-signup-page">
+      <NavBar />
+      <div className="candidate-signup-container">
+        <div className="candidate-form-container">
+          <h2>
+            Créez votre <span>compte travailleur</span>
+          </h2>
           <div className="divider"></div>
 
           <form onSubmit={handleCondidateSignup}>

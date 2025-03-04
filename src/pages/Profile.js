@@ -62,10 +62,13 @@ const Profile = () => {
       <IWNavBar />
 
       <div className="IWP-profile-container">
-        {/* Left side: Profile Image Section */}
         <div className="IWP-profile-image-section">
           {profileImage ? (
-            <img src={profileImage} alt="Profile" className="IWP-profile-image" />
+            <img
+              src={profileImage}
+              alt="Profile"
+              className="IWP-profile-image"
+            />
           ) : (
             <div className="IWP-placeholder-image">No Image</div>
           )}
