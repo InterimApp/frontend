@@ -42,6 +42,8 @@ const App = () => {
       });
     };
 
+
+
     window.addEventListener('resize', handleResize);
 
     return () => {
