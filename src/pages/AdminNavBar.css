@@ -1,0 +1,80 @@
+/* Top Bar Styling */
+.AD-top-bar {
+  background-color: white;
+  padding: 15px 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: 101%;
+  z-index: 1000;
+}
+
+.AD-logo img {
+  height: 50px;
+}
+
+.AD-profile-section {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.AD-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Navigation Bar Styling */
+.AD-navigation {
+  background-color: #359bbd;
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  z-index: 1001;
+}
+
+.AD-navigation a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.AD-navigation a:hover {
+  color: #ff914d;
+  border-radius: 5px;
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+/* Content Section */
+.AD-content-section {
+  padding-top: 180px;
+}
+/* Notification Icon */
+.AD-notification-link {
+  position: relative;
+  padding: 5px;
+  display: inline-block;
+}
+
+.AD-notification-icon {
+  font-size: 22px;
+  color: white;
+  transition: transform 0.2s ease-in-out;
+}
+
+.AD-notification-link:hover .AD-notification-icon {
+  color: #ff914d;
+  transform: scale(1.2);
+}

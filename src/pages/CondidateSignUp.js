@@ -26,8 +26,8 @@ const CondidateSignUp = () => {
   const navigate = useNavigate();
 
   const handleBackClick = (e) => {
-    e.preventDefault(); // Prevent form submission
-    navigate("/signup1");
+    e.preventDefault(); 
+    navigate("/candidatedashboard");
   };
 
   const handleFileUpload = async (event) => {

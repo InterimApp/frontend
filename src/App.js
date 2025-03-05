@@ -13,6 +13,13 @@ import ClientCompSignin from './pages/ClientCompSignIn';
 import IWDashboard from './pages/IWDashboard';
 import Profile from './pages/Profile';
 import Candidature from './pages/Candidature';
+import AdminSignIn from './pages/AdminSignIn';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminMGT from './pages/AdminMGT';
+import AdminDoc from './pages/AdminDoc';
+import CandidateDashboard from './pages/CandidateDashboard';
+import CandidateCand from './pages/CandidateCand';
+import AdminNot from './pages/AdminNot';
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -37,10 +44,7 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
+ 
     };
 
     window.addEventListener('resize', handleResize);
@@ -55,12 +59,7 @@ const App = () => {
       <ScrollToHash />
       <div 
         className="app-container" 
-        style={{
-          maxWidth: '1280px', 
-          margin: '0 auto', 
-          height: 'auto', 
-          overflow: 'hidden', 
-        }}
+
       >
         <Routes>
           <Route path="/" element={<Home />} />
@@ -75,6 +74,13 @@ const App = () => {
           <Route path="/IWDashboard" element={<IWDashboard />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/Candidature" element={<Candidature />} />
+          <Route path="/admin" element={<AdminSignIn />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/adminmanagement" element={<AdminMGT />} />
+          <Route path="/admindocuments" element={<AdminDoc />} />
+          <Route path="/candidatedashboard" element={<CandidateDashboard />} />
+          <Route path="/candidatecand" element={<CandidateCand />} />
+          <Route path="/adminnotifications" element={<AdminNot />} />
 
         </Routes>
       </div>
