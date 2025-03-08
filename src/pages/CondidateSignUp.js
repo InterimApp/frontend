@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Cloudinary } from '@cloudinary/url-gen';
 import "./CondidateSignUp.css";
 import {
   FaEnvelope,
@@ -13,8 +14,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/Firebase";
 import { db } from "../config/Firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { storage } from "../config/Firebase"; 
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; 
 import NavBar from "./NavBar";
 import axios from "axios";
 
@@ -35,14 +34,17 @@ const CondidateSignUp = () => {
   });
   
   const navigate = useNavigate(); 
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  //const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-   // Handle input changes
+  
   const handleChange = (e) => {
+    const { name: fieldName, value } = e.target;  // Extract fieldName 
+
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
+      [fieldName]: fieldName === "age" ? parseInt(value, 10) || "" : value, 
     }));
   };
 
@@ -52,25 +54,34 @@ const CondidateSignUp = () => {
     navigate("/signup1");
   };
 
+
+  //file upload
   const handleFileUpload = async (event) => {
     if (!event.target.files || event.target.files.length === 0) {
       console.error("No file selected!");
       return;
     }
-
+  
     const file = event.target.files[0]; // Get the selected file
-    const storageRef = ref(storage, `uploads/${file.name}`);
-
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "interim"); // Replace with your Cloudinary preset
+  
     try {
-      const snapshot = await uploadBytes(storageRef, file); // Upload file
-      const downloadURL = await getDownloadURL(snapshot.ref); // Get URL
-      console.log("File uploaded successfully! URL:", downloadURL);
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dxpua2z4b/upload", // Replace 'your_cloud_name' with your Cloudinary cloud name
+        formData
+      );
+  
+      const downloadURL = response.data.secure_url; // Get the uploaded file URL from Cloudinary
+      console.log("CV uploaded successfully! URL:", downloadURL);
       setFormData((prev) => ({ ...prev, cvUrl: downloadURL }));
-
+  
     } catch (error) {
       console.error("Error uploading file:", error);
     }
   };
+  
 
   const handleCondidateSignup = async (e) => {
     e.preventDefault(); // Prevent page reload
@@ -96,7 +107,7 @@ const CondidateSignUp = () => {
       const cvPathForMySQL = formData.cvUrl;
 
 
-       // Send data to your backend using Axios
+       // Send data to  backend using Axios
        await axios.post("http://localhost:8080/api/user/createUsers", {
         headers: { "Content-Type": "application/json" },
         name: formData.firstName + " " + formData.lastName,
@@ -174,11 +185,26 @@ const CondidateSignUp = () => {
     </div>
   </div>
 
-  <label>Localisation</label>
-  <div className="input-icon">
-    <input type="text" name="location" placeholder="Entrez la localisation" value={formData.location} onChange={handleChange} required />
-    <FaMapMarkerAlt className="icon" />
-  </div>
+
+            <div className="cv-location">
+              <div className="cv">
+                <label>Uploader le CV</label>
+                <input type="file" required onChange={handleFileUpload} name="cv" />
+              </div>
+
+              <div className="location">
+                <label>Localisation</label>
+                <div className="input-icon">
+                  <input
+                    type="text"
+                    placeholder="Entrez la localisation"
+                    required
+                  />
+                  <FaMapMarkerAlt className="icon" />
+                </div>
+              </div>
+            </div>
+
 
   <label>Profession</label>
   <select name="profession" value={formData.profession} onChange={handleChange} required>
@@ -204,10 +230,10 @@ const CondidateSignUp = () => {
   <label>Expérience</label>
   <select name="experience" value={formData.experience} onChange={handleChange} required>
     <option value="">Sélectionner une expérience</option>
-    <option value="Moins d'un an">0</option>
-    <option value="Un à deux ans">2</option>
-    <option value="Plus de 2 ans">3</option>
-    <option value="Plus de 5 ans">6</option>
+    <option value="Moins d'un an">Moins d'un an</option>
+    <option value="Un à deux ans">Un à deux ans</option>
+    <option value="Plus de 2 ans">Plus de 2 ans</option>
+    <option value="Plus de 5 ans">Plus de 5 ans</option>
   </select>
 
   <div className="buttons-container">
