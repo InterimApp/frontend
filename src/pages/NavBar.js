@@ -7,6 +7,7 @@ import linkedin from "../assets/linkedin.jpeg";
 import facebook from "../assets/facebook.jpeg";
 import instagram from "../assets/instagram.jpeg";
 import { Link } from "react-router-dom";
+import Contract from "./Contract";
 
 const NavBar = () => {
   return (
@@ -59,6 +60,8 @@ const NavBar = () => {
         <Link to="/hiw">How it works</Link>
         <Link to="/contact">Contact</Link>
         <Link to="/profile">Profile</Link>
+        <Link to="/contract">Contract</Link>
+
       </nav>
     </>
   );

@@ -58,169 +58,185 @@ const Profile = () => {
     alert('Profile Updated');
   };
 
+  const handleDeleteProfile = () => {
+    alert('Profile Deleted');
+    // Implement the deletion logic
+  };
+
   return (
-    <div className='syrine'>
-    <div className="profile-container">
-      {/* Left side: Profile Image Section */}
-      <div className="profile-image-section">
-        {profileImage ? (
-          <img src={profileImage} alt="Profile" className="profile-image" />
-        ) : (
-          <div className="placeholder-image">No Image</div>
-        )}
-       <button >
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleProfileImageChange} 
-        />
-        </button>
-        <h2>{formData.firstName} {formData.lastName}</h2>
-        <div className='role'><h>Interim Worker</h></div>
-
-      </div>
-
-      {/* Right side: Profile Form */}
-      <div className="profile-card">
-        <h1>Edit Your Profile</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="input-container">
-            <label>Prénom</label>
+    <div className="syrine">
+      <div className="profile-container">
+        {/* Left side: Profile Image Section */}
+        <div className="profile-image-section">
+          {profileImage ? (
+            <img src={profileImage} alt="Profile" className="profile-image" />
+          ) : (
+            <div className="placeholder-image">No Image</div>
+          )}
+          <div className="profile-image-actions">
+          <label htmlFor="upload-button" className="upload-btn">
+            <MdAddAPhoto className="upload-icon" />
             <input
-              type="text"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleChange}
+              id="upload-button"
+              type="file"
+              accept="image/*"
+              onChange={handleProfileImageChange}
+              style={{ display: 'none' }}
             />
-          </div>
+          </label>
 
-          <div className="input-container">
-            <label>Nom</label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-            />
+            {profileImage && (
+              <button className="delete-img-btn" onClick={handleProfileImageDelete}>
+                <FaTrash /> Supprimer Image
+              </button>
+            )}
           </div>
+          <h2>{formData.firstName} {formData.lastName}</h2>
+          <div className='role'><h3>Interim Worker</h3></div>
+        </div>
 
-          <div className="grid grid-cols-2 gap-4">
+        {/* Right side: Profile Form */}
+        <div className="profile-card">
+          <h1>Edit Your Profile</h1>
+          <form onSubmit={handleSubmit}>
             <div className="input-container">
-              <label>Âge</label>
+              <label>Prénom</label>
               <input
-                type="number"
-                name="age"
-                value={formData.age}
+                type="text"
+                name="firstName"
+                value={formData.firstName}
                 onChange={handleChange}
               />
             </div>
 
             <div className="input-container">
-              <label>Sexe</label>
-              <select
-                name="sexe"
-                value={formData.sex}
-                onChange={handleChange}
-              >
-                <option>Femme</option>
-                <option>Homme</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="input-container">
-            <label>Email</label>
-            <div className="input-icon">
+              <label>Nom</label>
               <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              <FaEnvelope className="icon" />
-            </div>
-          </div>
-
-          <div className="input-container">
-            <label>Mot de passe</label>
-            <div className="input-icon">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-              />
-              {showPassword ? (
-                <FaEyeSlash
-                  className="icon"
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaEye className="icon" onClick={() => setShowPassword(true)} />
-              )}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="input-container">
-              <label>CV</label>
-              <input
-                type="file"
-                name="cv"
+                type="text"
+                name="lastName"
+                value={formData.lastName}
                 onChange={handleChange}
               />
             </div>
 
-            <div className="input-container">
-              <label>Localisation</label>
-              <div className="input-icon">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="input-container">
+                <label>Âge</label>
                 <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
+                  type="number"
+                  name="age"
+                  value={formData.age}
                   onChange={handleChange}
                 />
-                <FaMapMarkerAlt className="icon" />
+              </div>
+
+              <div className="input-container">
+                <label>Sexe</label>
+                <select
+                  name="gender"
+                  value={formData.gender}
+                  onChange={handleChange}
+                >
+                  <option>Femme</option>
+                  <option>Homme</option>
+                </select>
               </div>
             </div>
-          </div>
 
-          <div className="input-container">
-            <label>Profession</label>
-            <select
-              name="profession"
-              value={formData.profession}
-              onChange={handleChange}
-            >
-              <option>Ingénieur logiciel</option>
-              <option>Data Scientist</option>
-              <option>Ingénieur mécanique</option>
-              <option>Spécialiste marketing</option>
-            </select>
-          </div>
+            <div className="input-container">
+              <label>Email</label>
+              <div className="input-icon">
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                <FaEnvelope className="icon" />
+              </div>
+            </div>
 
-          <div className="input-container">
-            <label>Compétences</label>
-            <select
-              name="skills"
-              value={formData.skills}
-              onChange={handleChange}
-            >
-              <option>Python</option>
-              <option>Java</option>
-              <option>React</option>
-              <option>Gestion de projet</option>
-            </select>
-          </div>
-          <div className='between'>
-          <button className="submit-btn" type="submit">Enregistrer</button>
-          <button className="delete-btn" type="submit" ><FaTrash /> Supprimer</button>
-          </div>
-        
-        </form>
-        
+            <div className="input-container">
+              <label>Mot de passe</label>
+              <div className="input-icon">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                />
+                {showPassword ? (
+                  <FaEyeSlash
+                    className="icon"
+                    onClick={() => setShowPassword(false)}
+                  />
+                ) : (
+                  <FaEye className="icon" onClick={() => setShowPassword(true)} />
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="input-container">
+                <label>CV</label>
+                <input
+                  type="file"
+                  name="cv"
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="input-container">
+                <label>Localisation</label>
+                <div className="input-icon">
+                  <input
+                    type="text"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                  />
+                  <FaMapMarkerAlt className="icon" />
+                </div>
+              </div>
+            </div>
+
+            <div className="input-container">
+              <label>Profession</label>
+              <select
+                name="profession"
+                value={formData.profession}
+                onChange={handleChange}
+              >
+                <option>Ingénieur logiciel</option>
+                <option>Data Scientist</option>
+                <option>Ingénieur mécanique</option>
+                <option>Spécialiste marketing</option>
+              </select>
+            </div>
+
+            <div className="input-container">
+              <label>Compétences</label>
+              <select
+                name="skills"
+                value={formData.skills}
+                onChange={handleChange}
+              >
+                <option>Python</option>
+                <option>Java</option>
+                <option>React</option>
+                <option>Gestion de projet</option>
+              </select>
+            </div>
+
+            <div className='between'>
+              <button className="submit-btn" type="submit">Enregistrer</button>
+              <button className="delete-btn" type="button" onClick={handleDeleteProfile}>
+                <FaTrash /> Supprimer
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

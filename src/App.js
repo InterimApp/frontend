@@ -10,6 +10,8 @@ import Footer from "./pages/footer";
 import HowItWorks from "./pages/HowItWorks";
 import Contact from "./pages/Contact";
 import Profile from './pages/Profile';
+import Contract from './pages/Contract';
+import Signature from './pages/Signature';
 const ScrollToHash = () => {
   const location = useLocation();
   
@@ -69,6 +71,10 @@ const App = () => {
           <Route path="/hiw" element={<HowItWorks />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/contract" element={<Contract />} />
+          <Route path="/signature" element={<Signature />} />
+
+
 
         </Routes>
       </div>
