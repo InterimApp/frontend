@@ -1,48 +1,43 @@
 import React, { useState } from "react";
-import "./CandidateSignIn.css";
+import "./AdminSignIn.css";
 import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
-import analysis from "../assets/analysis.jpeg";
+import analysis from "../assets/manpower-logo.png";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar"; 
 
-const CandidateSignin = () => {
+const AdminSignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate("/signup1");
+    navigate("/");
   };
 
   const handleSignClick = () => {
-    navigate("/candidatedashboard"); 
+    navigate("/admindashboard"); 
   };
-
-  const handleSignUpClick = () => {
-    navigate("/signup1"); 
-  };
-
 
   return (
-    <div className="candidate-signin-page">
+    <div className="admin-signin-page">
       <NavBar />
-      <div className="candidate-signin-container">
-        <div className="candidate-form-container">
+      <div className="admin-signin-container">
+        <div className="admin-form-container">
           <h2>
-            Sign in to your <span>account</span>
+           Admin Sign In <span>account</span>
           </h2>
           <div className="divider"></div>
 
           <form>
             <label>Email</label>
             <div className="input-icon">
-              <input type="email" placeholder="Entrer votre email" />
+              <input type="email" placeholder="Enter your email" />
               <FaEnvelope className="icon" />
             </div>
-            <label>Mot de Passe</label>
+            <label>Password</label>
             <div className="input-icon">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="Entrer votre mot de passe"
+                placeholder="Enter your password"
               />
               {showPassword ? (
                 <FaEyeSlash
@@ -56,18 +51,11 @@ const CandidateSignin = () => {
 
             <div className="signin-buttons-container">
               <button className="signin-back-btn" onClick={handleBackClick}>
-                Retour
+                Back
               </button>
 
               <button className="signin-submit-btn" onClick={handleSignClick}>Login</button>
             </div>
-
-            <p>
-              Vous n'avez pas déjà un compte?{" "}
-              <span className="signin-link" onClick={handleSignUpClick}>
-                Crée un compte
-              </span>
-            </p>
             
           </form>
         </div>
@@ -79,4 +67,4 @@ const CandidateSignin = () => {
   );
 };
 
-export default CandidateSignin;
+export default AdminSignIn;

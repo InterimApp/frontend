@@ -54,7 +54,9 @@ const Footer = () => {
             <a href="/#pourquoi-choisir">À propos</a> |
             <a href="/signup1">S'inscrire</a> |{" "} 
             <a href="/hiw">Comment ca marche</a> |
-            <a href="/contact">Contact</a>
+            <a href="/contact">Contact</a> |
+            <a href="/admin">Admin</a>
+
           </Col>
           <Col className="footer-copyright">
             <p style={{ color: "white" }}>

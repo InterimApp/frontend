@@ -8,7 +8,7 @@ html, body {
 
 .app-container {
   width: 100%;
-  height: 100%; /* Ensures the container fills the full screen */
+  height: 100%; 
   max-width: 1280px; /* Fixed max width to avoid diagonal stretching */
   margin: 0 auto;
   overflow: hidden; /* Ensures no overflow beyond the defined size */
