@@ -4,23 +4,37 @@ import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar"; 
+import { auth } from "../config/Firebase"; // Import Firebase auth
+import { signInWithEmailAndPassword } from "firebase/auth"; // Firebase sign-in method
 
 const CandidateSignin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-
+  const [email, setEmail] = useState(""); // State for email
+  const [password, setPassword] = useState(""); // State for password
+ 
   const handleBackClick = () => {
     navigate("/signup1");
-  };
-
-  const handleSignClick = () => {
-    navigate("/candidatedashboard"); 
   };
 
   const handleSignUpClick = () => {
     navigate("/signup1"); 
   };
 
+  const handleSignInClick = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    try {
+      // Sign in using Firebase Authentication
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      console.log("User signed in successfully:", user.email);
+      navigate("/candidatedashboard"); // Redirect to dashboard upon successful sign-in
+    } catch (error) {
+      console.error("Error signing in:", error.message);
+    }
+  };
 
   return (
     <div className="candidate-signin-page">
@@ -35,7 +49,12 @@ const CandidateSignin = () => {
           <form>
             <label>Email</label>
             <div className="input-icon">
-              <input type="email" placeholder="Entrer votre email" />
+              <input
+                type="email"
+                placeholder="Entrer votre email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Update email state
+              />
               <FaEnvelope className="icon" />
             </div>
             <label>Mot de Passe</label>
@@ -43,12 +62,11 @@ const CandidateSignin = () => {
               <input
                 type={showPassword ? "text" : "password"}
                 placeholder="Entrer votre mot de passe"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // Update password state
               />
               {showPassword ? (
-                <FaEyeSlash
-                  className="icon"
-                  onClick={() => setShowPassword(false)}
-                />
+                <FaEyeSlash className="icon" onClick={() => setShowPassword(false)} />
               ) : (
                 <FaEye className="icon" onClick={() => setShowPassword(true)} />
               )}
@@ -59,7 +77,9 @@ const CandidateSignin = () => {
                 Retour
               </button>
 
-              <button className="signin-submit-btn" onClick={handleSignClick}>Login</button>
+              <button className="signin-submit-btn" onClick={handleSignInClick}>
+                Login
+              </button>
             </div>
 
             <p>
@@ -68,7 +88,6 @@ const CandidateSignin = () => {
                 Crée un compte
               </span>
             </p>
-            
           </form>
         </div>
       </div>

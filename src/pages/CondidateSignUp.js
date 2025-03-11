@@ -106,10 +106,14 @@ const CondidateSignUp = () => {
       // Store cvUrl in a variable for MySQL later
       const cvPathForMySQL = formData.cvUrl;
 
+      // Use the user.uid provided by Firebase
+const firestoreUserId = user.uid;
+console.log("Firestore User ID:", firestoreUserId);
 
        // Send data to  backend using Axios
        await axios.post("http://localhost:8080/api/user/createUsers", {
         headers: { "Content-Type": "application/json" },
+        firestoreUserId,  // Ensure Firestore document ID is included
         name: formData.firstName + " " + formData.lastName,
         email: formData.email,
         role: role,
