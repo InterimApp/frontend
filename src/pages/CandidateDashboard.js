@@ -1,5 +1,5 @@
 import React, { useState } from "react"; 
-import "./IWDashboard.css"; // Using the same CSS as IWDashboard
+import "./CandidateDashboard.css"; // Using the same CSS as IWDashboard
 import { FaSearch, FaSlidersH } from "react-icons/fa"; 
 import analysis from "../assets/analysis.jpeg"; 
 import CandidateNavBar from "./CandidateNavBar"; // Assuming CandidateNavBar is the separate nav bar for candidates
@@ -10,49 +10,49 @@ const CandidateDashboard = () => {
   const [showPopup, setShowPopup] = useState(false);
 
   return (
-    <div className="IWD-dashboard">
+    <div className="CD-dashboard">
       <CandidateNavBar /> {/* Using CandidateNavBar instead of IWNavBar */}
-      <div className="IWD-content">
-        <div className="IWD-left-content">
+      <div className="CD-content">
+        <div className="CD-left-content">
           <h1>
-            Bienvenue, <span className="IWD-highlight">Candidat !</span>
+            Bienvenue, <span className="CD-highlight">Candidat !</span>
           </h1>
           <h2>Trouver un emploi qui vous convient ... </h2>
 
-          <div className="IWD-search-bar">
-            <FaSearch className="IWD-search-icon" />
+          <div className="CD-search-bar">
+            <FaSearch className="CD-search-icon" />
             <input type="text" placeholder="Poste, Lieu ..." />
-            <button className="IWD-filter-btn" onClick={() => setShowPopup(true)}>
+            <button className="CD-filter-btn" onClick={() => setShowPopup(true)}>
               <FaSlidersH />
             </button>
           </div>
         </div>
 
-        <div className="IWD-image-section">
+        <div className="CD-image-section">
           <img src={analysis} alt="Analyse" />
         </div>
       </div>
 
       <Modal show={showPopup} onHide={() => setShowPopup(false)} centered>
-        <div className="IWD-popup-container">
-          <button className="IWD-close-btn" onClick={() => setShowPopup(false)}>
+        <div className="CD-popup-container">
+          <button className="CD-close-btn" onClick={() => setShowPopup(false)}>
             ✖
           </button>
-          <h2 className="IWD-popup-title">Trouver un emploi</h2>
+          <h2 className="CD-popup-title">Trouver un emploi</h2>
 
-          <div className="IWD-input-container">
-            <div className="IWD-input-box">
+          <div className="CD-input-container">
+            <div className="CD-input-box">
               <input type="text" placeholder="Lieu" />
-              <FaSearch className="IWD-input-icon" />
+              <FaSearch className="CD-input-icon" />
             </div>
 
-            <div className="IWD-input-box">
+            <div className="CD-input-box">
               <input type="text" placeholder="Poste" />
-              <FaSlidersH className="IWD-input-icon" />
+              <FaSlidersH className="CD-input-icon" />
             </div>
           </div>
 
-          <button className="IWD-search-btn">Rechercher</button>
+          <button className="CD-search-btn">Rechercher</button>
         </div>
       </Modal>
     </div>

@@ -1,26 +1,52 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+
+// Authentication Pages
 import Home from "./pages/Home";
 import SignUp1 from "./pages/SignUp1";
 import CondidateSignUp from "./pages/CondidateSignUp";
 import Signin from "./pages/Signin";
-import Footer from "./pages/footer";
-import HowItWorks from "./pages/HowItWorks";
-import Contact from "./pages/Contact";
 import IWSignin from "./pages/IWSignIn";
 import CandidateSignIn from "./pages/CandidateSignIn";
 import ClientCompSignin from './pages/ClientCompSignIn';
+
+// Dashboard/Management Pages
 import IWDashboard from './pages/IWDashboard';
+import AdminDashboard from './pages/AdminDashboard';
+import CandidateDashboard from './pages/CandidateDashboard';
+import CCDashboard from './pages/CCDashboard';
+
+// Profile and Candidature Pages
 import Profile from './pages/Profile';
 import Candidature from './pages/Candidature';
+import CandidateCand from './pages/CandidateCand';
+import CandProfile from './pages/CandProfile';
+
+// Admin Pages
 import AdminSignIn from './pages/AdminSignIn';
-import AdminDashboard from './pages/AdminDashboard';
 import AdminMGT from './pages/AdminMGT';
 import AdminDoc from './pages/AdminDoc';
-import CandidateDashboard from './pages/CandidateDashboard';
-import CandidateCand from './pages/CandidateCand';
 import AdminNot from './pages/AdminNot';
 
+// Contract/Document Pages
+import Contract from './pages/IWContract';
+import Signature from './pages/Signature';
+import IWNot from './pages/IWNot';
+import CCJob from './pages/CCJob';
+import CCMan from './pages/CCMan';
+import IWDoc from './pages/IWDoc';
+import IWPayment from './pages/IWPayment';
+import CCNot from './pages/CCNot';
+import CCDoc from './pages/CCDoc';
+
+// Other Pages
+import HowItWorks from "./pages/HowItWorks";
+import Contact from "./pages/Contact";
+
+// Footer Component
+import Footer from "./pages/footer";
+
+// ScrollToHash Component for Smooth Scrolling
 const ScrollToHash = () => {
   const location = useLocation();
   
@@ -34,7 +60,7 @@ const ScrollToHash = () => {
   }, [location]);
 
   return null;
-}
+};
 
 const App = () => {
   const [windowSize, setWindowSize] = useState({
@@ -44,7 +70,10 @@ const App = () => {
 
   useEffect(() => {
     const handleResize = () => {
- 
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
     };
 
 
@@ -59,36 +88,54 @@ const App = () => {
   return (
     <Router>
       <ScrollToHash />
-      <div 
-        className="app-container" 
-
-      >
+      <div className="app-container">
         <Routes>
+          {/* Authentication Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/signup1" element={<SignUp1 />} />
           <Route path="/CondidateSignUp" element={<CondidateSignUp />} />
           <Route path="/signin" element={<Signin />} />
-          <Route path="/hiw" element={<HowItWorks />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/IWSignin" element={<IWSignin />} />
           <Route path="/CandidateSignIn" element={<CandidateSignIn />} />
           <Route path="/ClientCompSignin" element={<ClientCompSignin />} />
+
+          {/* Dashboard/Management Routes */}
           <Route path="/IWDashboard" element={<IWDashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/Candidature" element={<Candidature />} />
-          <Route path="/admin" element={<AdminSignIn />} />
           <Route path="/admindashboard" element={<AdminDashboard />} />
+          <Route path="/candidatedashboard" element={<CandidateDashboard />} />
+          <Route path="/clientcompDashboard" element={<CCDashboard />} />
+
+          {/* Profile and Candidature Routes */}
+          <Route path="/iwprofile" element={<Profile />} />
+          <Route path="/Candidature" element={<Candidature />} />
+          <Route path="/candidatecand" element={<CandidateCand />} />
+          <Route path="/candprofile" element={<CandProfile />} />
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminSignIn />} />
           <Route path="/adminmanagement" element={<AdminMGT />} />
           <Route path="/admindocuments" element={<AdminDoc />} />
-          <Route path="/candidatedashboard" element={<CandidateDashboard />} />
-          <Route path="/candidatecand" element={<CandidateCand />} />
           <Route path="/adminnotifications" element={<AdminNot />} />
 
+          {/* Contract/Document Routes */}
+          <Route path="/iwcontract" element={<Contract />} />
+          <Route path="/signature" element={<Signature />} />
+          <Route path="/iwnotifications" element={<IWNot />} />
+          <Route path="/clientcompJobPostings" element={<CCJob />} />
+          <Route path="/clientcompManagement" element={<CCMan />} />
+          <Route path="/iwdocument" element={<IWDoc />} />
+          <Route path="/iwpayment" element={<IWPayment />} />
+          <Route path="/ccdnotifications" element={<CCNot />} />
+          <Route path="/clientcompDocuments" element={<CCDoc />} />
+
+          {/* Other Routes */}
+          <Route path="/hiw" element={<HowItWorks />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </div>
       <Footer />
     </Router>
   );
-}
+};
 
 export default App;

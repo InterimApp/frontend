@@ -18,7 +18,7 @@ const CandidateSignin = () => {
   };
 
   const handleSignUpClick = () => {
-    navigate("/signup1"); 
+    navigate("/signup1");
   };
 
   const handleSignInClick = async (e) => {

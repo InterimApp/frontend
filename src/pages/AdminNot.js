@@ -29,27 +29,27 @@ const AdminNot = () => {
     <>
       <AdminNavBar />
       <Container className="admin-notifications-container" style={{ marginTop: "170px" }}>
-        <h2 className="notification-title">
+        <h2 className="admin-notifications-title">
           Notifications <FaBell />
         </h2>
         <ListGroup>
           {notifications.map((notification) => (
             <ListGroup.Item
               key={notification.id}
-              className={`d-flex justify-content-between align-items-center notification-item notification-${notification.type} ${
-                readNotifications[notification.id] ? "notification-read" : ""
+              className={`d-flex justify-content-between align-items-center admin-notification-card admin-notification-${notification.type} ${
+                readNotifications[notification.id] ? "admin-notification-read" : ""
               }`}
             >
               <div>
-                <div className="notification-message">{notification.message}</div>
-                <Badge bg="secondary" className="notification-time">
+                <div className="admin-notification-message">{notification.message}</div>
+                <Badge bg="secondary" className="admin-notification-time">
                   {notification.time}
                 </Badge>
               </div>
               {!readNotifications[notification.id] && (
                 <Button
                   size="sm"
-                  className="read-btn ms-auto"
+                  className="admin-read-btn ms-auto"
                   onClick={() => markAsRead(notification.id)}
                 >
                   Read

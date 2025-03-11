@@ -1,0 +1,181 @@
+/* CandidateDashboard.css */
+
+.CD-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .CD-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin-top: 130px;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+    margin-bottom: 70px;
+  }
+  
+  .CD-left-content {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .CD-dashboard h1 {
+    font-size: 2rem;
+    color: #359bbd;
+  }
+  
+  .CD-dashboard h1 .CD-highlight {
+    color: #ff6600;
+  }
+  
+  .CD-dashboard h2 {
+    font-size: 1.8rem;
+    color: #359bbd;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .CD-dashboard p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .CD-search-bar {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .CD-search-bar input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .CD-search-icon {
+    margin-right: 10px;
+    color: #0077cc;
+  }
+  
+  .CD-filter-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #0077cc;
+  }
+  
+  .CD-image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .CD-image-section img {
+    width: 80%;
+    max-width: 350px;
+    border-radius: 10px;
+  }
+  
+  .CD-popup-container {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .CD-modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .CD-modal-content {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .CD-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .CD-popup-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .CD-input-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .CD-input-box {
+    position: relative;
+    width: 45%;
+  }
+  
+  .CD-input-box input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 35px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .CD-input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+  }
+  
+  .CD-search-btn {
+    background-color: #ff5f6d;
+    background-image: linear-gradient(to right, #ff5f6d, #ff914d);
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 80%;
+    transition: 0.3s;
+  }
+  
+  .CD-search-btn:hover {
+    transform: scale(1.05);
+  }
+  

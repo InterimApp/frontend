@@ -1,0 +1,234 @@
+.CCD-dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .CCD-content {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin-top: 130px;
+    display: flex;
+    justify-content: space-between;
+    justify-content: center;
+  }
+  
+  .CCD-left-content {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .CCD-dashboard h1 {
+    font-size: 2rem;
+    color: #359bbd;
+  }
+  
+  .CCD-dashboard h1 .CCD-highlight {
+    color: #ff6600;
+  }
+  
+  .CCD-dashboard h2 {
+    font-size: 1.8rem;
+    color: #359bbd;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .CCD-dashboard p {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .CCD-search-bar {
+    display: flex;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    padding: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .CCD-search-bar input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    padding: 5px;
+    font-size: 1rem;
+    outline: none;
+  }
+  
+  .CCD-search-icon {
+    margin-right: 10px;
+    color: #0077cc;
+  }
+  
+  .CCD-filter-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #0077cc;
+  }
+  
+  .CCD-image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .CCD-image-section img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+  }
+  
+  .CCD-popup-container {
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .modal-content {
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  
+  .CCD-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .CCD-popup-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .CCD-input-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+  
+  .CCD-input-box {
+    position: relative;
+    width: 45%;
+  }
+  
+  .CCD-input-box input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 35px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .CCD-input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+  }
+  
+  .CCD-search-btn {
+    background-color: #ff5f6d;
+    background-image: linear-gradient(to right, #ff5f6d, #ff914d);
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 80%;
+    transition: 0.3s;
+  }
+  
+  .CCD-search-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Main Stats Container */
+.CCD-stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 70px; /* Increased spacing between boxes */
+    background: #e5e5e5;
+    border-radius: 30px;
+    padding: 30px;
+    max-width: 1000px; /* Wider for better layout */
+    margin: 40px auto;
+  }
+  
+  /* Each Stat Box */
+  .CCD-stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f5f5f5;
+    border-radius: 20px;
+    width: 300px; /* Bigger width */
+    padding: 20px; 
+  }
+  
+  /* Header Section */
+  .CCD-stat-header {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px; /* Bigger text */
+    font-weight: bold;
+    color: white;
+    border-radius: 15px 15px 15px 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Gradient Colors */
+  .red-gradient {
+    background: linear-gradient(90deg, #ff4d4d, #ff914d);
+  }
+  
+  .orange-gradient {
+    background: linear-gradient(90deg, #ff914d, #ffa94d);
+  }
+  
+  /* Stat Number */
+  .CCD-stat-value {
+    font-size: 36px; /* Much bigger */
+    font-weight: bold;
+    color: #ff7b4d;
+    background: #e5e5e5;
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    text-align: center;
+  }
+  

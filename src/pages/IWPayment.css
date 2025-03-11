@@ -1,0 +1,131 @@
+/* IWPA classes for layout and design consistency */
+.IWPA-contract-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    margin-top: 180px;
+    padding-bottom: 150px;
+  }
+  
+  .IWPA-table-card {
+    background-color: #e6e7ec;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .IWPA-title-contract {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    text-align: left;
+    color: #009fdb;
+  }
+  
+  .IWPA-mini-bar-header {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    background-color: #f75429;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .IWPA-mini-bar-header h6 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .IWPA-mini-bar-row {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    text-align: center;
+    gap: 10px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+  }
+  
+  .IWPA-mini-bar-row span {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .IWPA-mini-bar-row .not-signed {
+    color: #ffa726;
+  }
+  
+  .IWPA-mini-bar-row .expired {
+    color: #757575;
+  }
+  
+  .IWPA-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .IWPA-button:hover {
+    color: #009fdb;
+  }
+  
+  .IWPA-mini-bar-row span button {
+    margin-right: 5px;
+  }
+  
+  .IWPA-popup-container {
+    padding: 20px;
+    position: relative;
+  }
+  
+  .IWPA-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .IWPA-contract-details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .IWPA-contract-details-table th,
+  .IWPA-contract-details-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .IWPA-contract-details-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .IWPA-contract-details-table td {
+    text-align: right;
+  }
+  
+  .IWPA-contract-terms-list {
+    margin: 10px 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .IWPA-contract-terms-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  

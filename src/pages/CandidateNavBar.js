@@ -54,7 +54,7 @@ const CandidateNavBar = () => {
           {!isInterimWorker && <FaLock />} Notifications
         </Link>
 
-        <Link to="/profile">Profile</Link>
+        <Link to="/candprofile">Profile</Link>
       </nav>
     </>
   );

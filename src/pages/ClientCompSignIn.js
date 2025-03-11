@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../config/Firebase"; // Import Firestore
 import { collection, getDocs, query, where } from "firebase/firestore"; // Firestore methods to query user data
 import NavBar from "./NavBar";
+import { db } from "../config/Firebase"; // Import Firestore
+import { collection, getDocs, query, where } from "firebase/firestore"; // Firestore methods to query user data
+import NavBar from "./NavBar";
 
 const ClientCompSignin = () => {
   const [companyName, setCompanyName] = useState(""); // State for company name

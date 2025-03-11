@@ -1,0 +1,160 @@
+.CCJ-container {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 150px;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all content by default */
+  }
+  
+  .CCJ-title {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #126b82;
+    text-align: center; /* Ensures title is always centered */
+    width: 100%; /* Ensures the title takes full width */
+  }
+  
+  .CCJ-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; /* Aligns the button to the right */
+  }
+  
+  .CCJ-add-btn {
+    background-color: #ff3d3d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .CCJ-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  
+  .CCJ-table th,
+  .CCJ-table td {
+    padding: 12px;
+    text-align: center; /* Center content in table cells */
+  }
+  
+  .CCJ-table th {
+    background: linear-gradient(to right, #ff3d3d, #ff8741);
+    color: white;
+  }
+  
+  .CCJ-table td {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .CCJ-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .CCJ-icon {
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+  }
+  
+  .CCJ-eye-icon {
+    color: #126b82;
+  }
+  
+  .CCJ-delete-icon {
+    color: red;
+  }
+  
+  .CCJ-user-icon {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .CCJ-badge {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background: red;
+    color: white;
+    font-size: 10px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+/* General Modal Style */
+.CCJ-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    z-index: 1000;
+    width: 400px;
+  }
+
+  /* Shared Button Style */
+.CCJ-modal .cancel-btn {
+    background-color: #ff3d3d; /* Red color */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .CCJ-modal .cancel-btn:hover {
+    background-color: #cc2b2b; /* Darker red */
+  }
+  
+  
+  /* View Job Modal */
+  .CCJ-view-modal {
+    border: 2px solid #126b82;
+    background: #e3f2fd; /* Light blue background */
+  }
+  
+  /* Add Job Modal */
+  .CCJ-add-modal {
+    width: 500px;  /* Larger width */
+    height: 450px; /* Smaller height */
+    border: 2px solid #ff3d3d;
+    margin-top: 70px;
+    overflow-y: auto;
+  }
+
+  /* User List Modal */
+  .CCJ-user-list-modal {
+    border: 2px solid #ff8741;
+    background: #fff0db; /* Light orange background */
+  }
+  

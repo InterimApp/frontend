@@ -1,0 +1,134 @@
+/* Main Container */
+.CCM-container {
+    margin-top: 150px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Tabs Section */
+.CCM-tabs-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    border: 2px solid #ff574d;
+    border-radius: 20px;
+    width: fit-content;
+    margin: auto;
+}
+
+.CCM-tab {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.CCM-active-tab {
+    background: #ff574d;
+    color: white;
+}
+
+.CCM-inactive-tab {
+    background: #fca992;
+    color: white;
+    opacity: 0.6;
+}
+
+.CCM-inactive-tab:hover {
+    opacity: 1;
+}
+
+/* Table Container */
+.CCM-table-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: auto;
+    width: 80%;
+    margin-top: 30px;
+}
+
+/* Title */
+.CCM-title {
+    color: #1b6ca8;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.CCM-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+.CCM-table th {
+    background-color: #ff574d;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.CCM-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.CCM-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Actions Container (Ensures Icons & Checkbox Stay on the Same Line) */
+.CCM-actions-container {
+    display: flex;
+    align-items: center;  
+    justify-content: space-evenly; 
+    gap: 10px;  
+    width: 100%;  
+}
+
+
+/* Reduce Default Checkbox Size */
+.CCM-checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Adjust Icon Size & Spacing */
+.CCM-icon {
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.CCM-icon:hover {
+    transform: scale(1.2);
+}
+
+
+.CCM-view {
+    color: black;
+}
+
+.CCM-delete {
+    color: red;
+}
+
+.CCM-upload-red {
+    color: red;
+}
+
+.CCM-square {
+    color: black;
+    border: 2px solid black;
+    border-radius: 3px;
+}

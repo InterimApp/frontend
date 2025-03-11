@@ -7,20 +7,20 @@ import {
   FaTrash,
 } from "react-icons/fa";
 import "./Profile.css";
-import IWNavBar from "./IWNavBar";
+import CanNavBar from "./CandidateNavBar";
 
-const Profile = () => {
+const CandProfile = () => {
   const [formData, setFormData] = useState({
-    firstName: "Syrine",
-    lastName: "Eladeb",
-    age: 24,
-    gender: "Femme",
-    email: "syrine.eladeb@medtech.tn",
+    firstName: "Iheb",
+    lastName: "Abed",
+    age: 21,
+    gender: "Homme",
+    email: "iheb.abed@example.com",
     password: "",
     confirmPassword: "",
-    location: "Tunisie",
-    profession: "Ingénieur logiciel",
-    skills: "Python",
+    location: "Brasil",
+    profession: "Data Scientist",
+    skills: "Java",
     cv: null,
   });
 
@@ -53,24 +53,24 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Profil mis à jour :", formData);
-    alert("Profil mis à jour");
+    console.log("Updated profile:", formData);
+    alert("Profile Updated");
   };
 
   return (
     <div className="IWP-syrine">
-      <IWNavBar />
+      <CanNavBar />
 
       <div className="IWP-profile-container">
         <div className="IWP-profile-image-section">
           {profileImage ? (
             <img
               src={profileImage}
-              alt="Profil"
+              alt="Profile"
               className="IWP-profile-image"
             />
           ) : (
-            <div className="IWP-placeholder-image">Pas d'image</div>
+            <div className="IWP-placeholder-image">Pas d'Image</div>
           )}
           <button>
             <input
@@ -83,13 +83,13 @@ const Profile = () => {
             {formData.firstName} {formData.lastName}
           </h2>
           <div className="IWP-role">
-            <h>Collaborateur intérimaire</h>
+            <h>Candidat</h>
           </div>
         </div>
 
-        {/* Côté droit : Formulaire de profil */}
+        {/* Right side: Profile Form */}
         <div className="IWP-profile-card">
-          <h1>Modifier votre profil</h1>
+          <h1>Modifie ton Profile</h1>
           <form onSubmit={handleSubmit}>
             <div className="IWP-input-container">
               <label>Prénom</label>
@@ -129,9 +129,8 @@ const Profile = () => {
                   value={formData.gender}
                   onChange={handleChange}
                 >
-                  {" "}
-                  <option value="Femme">Femme</option>{" "}
-                  <option value="Homme">Homme</option>{" "}
+                  <option value="Femme">Femme</option>
+                  <option value="Homme">Homme</option>
                 </select>
               </div>
             </div>
@@ -234,4 +233,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default CandProfile;

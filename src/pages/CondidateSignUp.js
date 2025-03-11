@@ -50,8 +50,8 @@ const CondidateSignUp = () => {
 
   
   const handleBackClick = (e) => {
-    e.preventDefault(); 
-    navigate("/candidatedashboard");
+    e.preventDefault();
+    navigate("/signup1");
   };
 
 
