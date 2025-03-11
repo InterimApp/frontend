@@ -1,14 +1,16 @@
 import React from "react";
-import { Row, Col, Dropdown } from "react-bootstrap"; // Import Dropdown
+import { Row, Col, Dropdown } from "react-bootstrap"; 
+import { Link, useLocation } from "react-router-dom"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
 import logo from "../assets/manpower-logo.png";
 import linkedin from "../assets/linkedin.jpeg";
 import facebook from "../assets/facebook.jpeg";
 import instagram from "../assets/instagram.jpeg";
-import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const location = useLocation(); // Get current route
+
   return (
     <>
       <Row className="top-bar d-flex align-items-center px-4">
@@ -42,22 +44,39 @@ const NavBar = () => {
       </Row>
 
       <nav className="navigation">
-        <Link to="/#home">Acceuil</Link>
+        <Link to="/" className={location.pathname === "/" ? "active-link" : ""}>
+          Acceuil
+        </Link>
+
         <Dropdown>
           <Dropdown.Toggle variant="link" id="dropdown-basic">
             À propos
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
-            <Dropdown.Item as={Link} to="/#pourquoi-choisir">Pourquoi choisir ManPower</Dropdown.Item>
-            <Dropdown.Item as={Link} to="/#temoignages">Témoignages de nos clients</Dropdown.Item>
-            <Dropdown.Item as={Link} to="/#nos-statistiques">Nos statistiques</Dropdown.Item>
-            <Dropdown.Item as={Link} to="/#mission-vision">Mission & Vision</Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#pourquoi-choisir" className={location.pathname === "/#pourquoi-choisir" ? "active-link" : ""}>
+              Pourquoi choisir ManPower
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#temoignages" className={location.pathname === "/#temoignages" ? "active-link" : ""}>
+              Témoignages de nos clients
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#nos-statistiques" className={location.pathname === "/#nos-statistiques" ? "active-link" : ""}>
+              Nos statistiques
+            </Dropdown.Item>
+            <Dropdown.Item as={Link} to="/#mission-vision" className={location.pathname === "/#mission-vision" ? "active-link" : ""}>
+              Mission & Vision
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Link to="/signup1">S'inscrire</Link>
-        <Link to="/hiw">Comment ca marche</Link>
-        <Link to="/contact">Contact</Link>
+
+        <Link to="/signup1" className={location.pathname === "/signup1" ? "active-link" : ""}>
+          S'inscrire
+        </Link>
+        <Link to="/hiw" className={location.pathname === "/hiw" ? "active-link" : ""}>
+          Comment ça marche
+        </Link>
+        <Link to="/contact" className={location.pathname === "/contact" ? "active-link" : ""}>
+          Contact
+        </Link>
       </nav>
     </>
   );

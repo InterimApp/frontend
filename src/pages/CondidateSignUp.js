@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Cloudinary } from "@cloudinary/url-gen";
 import "./CondidateSignUp.css";
 import {
   FaEnvelope,
@@ -13,23 +14,44 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/Firebase";
 import { db } from "../config/Firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { storage } from "../config/Firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import NavBar from "./NavBar";
+import axios from "axios";
 
 const CondidateSignUp = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cvUrl, setCvUrl] = useState("");
-  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    age: "",
+    gender: "",
+    email: "",
+    password: "",
+    location: "",
+    profession: "",
+    academic_level: "",
+    experience: "",
+    cvUrl: "",
+  });
 
-  const handleBackClick = (e) => {
-    e.preventDefault(); 
-    navigate("/candidatedashboard");
+  const navigate = useNavigate();
+  //const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleChange = (e) => {
+    const { name: fieldName, value } = e.target; // Extract fieldName
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+      [fieldName]: fieldName === "age" ? parseInt(value, 10) || "" : value,
+    }));
   };
 
+  const handleBackClick = (e) => {
+    e.preventDefault();
+    navigate("/signup1");
+  };
+
+  //file upload
   const handleFileUpload = async (event) => {
     if (!event.target.files || event.target.files.length === 0) {
       console.error("No file selected!");
@@ -37,13 +59,19 @@ const CondidateSignUp = () => {
     }
 
     const file = event.target.files[0]; // Get the selected file
-    const storageRef = ref(storage, `uploads/${file.name}`); // Define storage path
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "interim"); // Replace with your Cloudinary preset
 
     try {
-      const snapshot = await uploadBytes(storageRef, file); // Upload file
-      const downloadURL = await getDownloadURL(snapshot.ref); // Get URL
-      console.log("File uploaded successfully! URL:", downloadURL);
-      setCvUrl(downloadURL); // Store CV URL in state
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dxpua2z4b/upload", // Replace 'your_cloud_name' with your Cloudinary cloud name
+        formData
+      );
+
+      const downloadURL = response.data.secure_url; // Get the uploaded file URL from Cloudinary
+      console.log("CV uploaded successfully! URL:", downloadURL);
+      setFormData((prev) => ({ ...prev, cvUrl: downloadURL }));
     } catch (error) {
       console.error("Error uploading file:", error);
     }
@@ -56,8 +84,8 @@ const CondidateSignUp = () => {
       // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
-        email,
-        password
+        formData.email,
+        formData.password
       );
       const user = userCredential.user;
       const role = "condidate"; // Define user role
@@ -66,25 +94,40 @@ const CondidateSignUp = () => {
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         role: role,
-        passwordHash: password, // this is only for testing the passwords are securely stored and hashed in firestore
-        cvUrl: cvUrl, // Store CV download URL in Firestore
+        passwordHash: formData.password, // this is only for testing the passwords are securely stored and hashed in firestore
+        cvUrl: formData.cvUrl, // Store CV download URL in Firestore
         createdAt: serverTimestamp(), // Store Firestore timestamp
       });
 
-      console.log("User created successfully, CV uploaded at:", cvUrl);
+      console.log("User created successfully, CV uploaded at:", formData.cvUrl);
 
       // Store cvUrl in a variable for MySQL later
-      const cvPathForMySQL = cvUrl;
+      const cvPathForMySQL = formData.cvUrl;
 
-      navigate("/IWDashboard"); // Redirect after successful signup
+      // Use the user.uid provided by Firebase
+      const firestoreUserId = user.uid;
+      console.log("Firestore User ID:", firestoreUserId);
+
+      // Send data to  backend using Axios
+      await axios.post("http://localhost:8080/api/user/createUsers", {
+        headers: { "Content-Type": "application/json" },
+        firestoreUserId, // Ensure Firestore document ID is included
+        name: formData.firstName + " " + formData.lastName,
+        email: formData.email,
+        role: role,
+        age: formData.age,
+        gender: formData.gender,
+        location: formData.location,
+        profession: formData.profession,
+        academic_level: formData.academic_level,
+        experience: formData.experience,
+        //cvUrl: formData.cvUrl,
+      });
+
+      console.log("Data sent to backend successfully!");
+      navigate("/signup1");
     } catch (error) {
-      if (error.code === "auth/email-already-in-use") {
-        console.error(
-          "This email is already registered. Try logging in instead."
-        );
-      } else {
-        console.error("Error:", error.message);
-      }
+      console.error("Error:", error.message);
     }
   };
 
@@ -100,20 +143,48 @@ const CondidateSignUp = () => {
 
           <form onSubmit={handleCondidateSignup}>
             <label>Prénom</label>
-            <input type="text" placeholder="Entrez votre prénom" required />
+            <input
+              type="text"
+              name="firstName"
+              placeholder="Entrez votre prénom"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
 
             <label>Nom</label>
-            <input type="text" placeholder="Entrez votre nom" required />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Entrez votre nom"
+              value={formData.lastName}
+              onChange={handleChange}
+              required
+            />
 
             <div className="age-gender">
               <div className="age">
                 <label>Âge</label>
-                <input type="number" placeholder="Âge" required />
+                <input
+                  type="number"
+                  name="age"
+                  placeholder="Âge"
+                  value={formData.age}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="gender">
                 <label>Sexe</label>
                 <div className="input-icon">
-                  <input type="text" placeholder="Sexe" required />
+                  <input
+                    type="text"
+                    name="gender"
+                    placeholder="Sexe"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    required
+                  />
                   <FaVenusMars className="icon" />
                 </div>
               </div>
@@ -123,9 +194,10 @@ const CondidateSignUp = () => {
             <div className="input-icon">
               <input
                 type="email"
+                name="email"
                 placeholder="Entrez votre email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={formData.email}
+                onChange={handleChange}
                 required
               />
               <FaEnvelope className="icon" />
@@ -136,9 +208,10 @@ const CondidateSignUp = () => {
               <div className="input-icon">
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="Entrez le mot de passe"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={handleChange}
                   required
                 />
                 {showPassword ? (
@@ -153,32 +226,17 @@ const CondidateSignUp = () => {
                   />
                 )}
               </div>
-
-              <label>Confirmer le mot de passe</label>
-              <div className="input-icon">
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirmer le mot de passe"
-                  required
-                />
-                {showConfirmPassword ? (
-                  <FaEyeSlash
-                    className="icon"
-                    onClick={() => setShowConfirmPassword(false)}
-                  />
-                ) : (
-                  <FaEye
-                    className="icon"
-                    onClick={() => setShowConfirmPassword(true)}
-                  />
-                )}
-              </div>
             </div>
 
             <div className="cv-location">
               <div className="cv">
                 <label>Uploader le CV</label>
-                <input type="file" required onChange={handleFileUpload} />
+                <input
+                  type="file"
+                  required
+                  onChange={handleFileUpload}
+                  name="cv"
+                />
               </div>
 
               <div className="location">
@@ -195,30 +253,50 @@ const CondidateSignUp = () => {
             </div>
 
             <label>Profession</label>
-            <select required>
-              <option>Ingénieur logiciel</option>
-              <option>Data Scientist</option>
-              <option>Ingénieur mécanique</option>
-              <option>Spécialiste marketing</option>
+            <select
+              name="profession"
+              value={formData.profession}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Sélectionner une profession</option>
+              <option value="Ingénieur logiciel">Ingénieur logiciel</option>
+              <option value="Data Scientist">Data Scientist</option>
+              <option value="Ingénieur mécanique">Ingénieur mécanique</option>
+              <option value="Spécialiste marketing">
+                Spécialiste marketing
+              </option>
             </select>
 
             <label>Niveau académique</label>
-            <select required>
-              <option>Licence (Bac+3)</option>
-              <option>Master (Bac+5)</option>
-              <option>Doctorat</option>
-              <option>Post-doctorat</option>
-              <option>Étudiant en licence</option>
-              <option>Étudiant en master</option>
-              <option>Enseignant-chercheur</option>
+            <select
+              name="academic_level"
+              value={formData.academic_level}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Sélectionner un niveau académique</option>
+              <option value="Licence (Bac+3)">Licence (Bac+3)</option>
+              <option value="Master (Bac+5)">Master (Bac+5)</option>
+              <option value="Doctorat">Doctorat</option>
+              <option value="Post-doctorat">Post-doctorat</option>
+              <option value="Étudiant en licence">Étudiant en licence</option>
+              <option value="Étudiant en master">Étudiant en master</option>
+              <option value="Enseignant-chercheur">Enseignant-chercheur</option>
             </select>
 
             <label>Expérience</label>
-            <select required>
-              <option>Moin d'un an</option>
-              <option> Un à deux ans</option>
-              <option>Plus de 2 ans</option>
-              <option>Plus de 5 ans</option>
+            <select
+              name="experience"
+              value={formData.experience}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Sélectionner une expérience</option>
+              <option value="Moins d'un an">Moins d'un an</option>
+              <option value="Un à deux ans">Un à deux ans</option>
+              <option value="Plus de 2 ans">Plus de 2 ans</option>
+              <option value="Plus de 5 ans">Plus de 5 ans</option>
             </select>
 
             <div className="buttons-container">
