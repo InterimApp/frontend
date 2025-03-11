@@ -18,7 +18,6 @@ const AdminDashboard = () => {
       
       {/* IWDashboard Search Section (scrollable) */}
       <div className="AD-dashboard">
-        <div className="AD-content">
           <div className="AD-left-content">
             <h1>
               Bienvenue, <span className="AD-highlight">Admin Iheb</span>
@@ -32,7 +31,6 @@ const AdminDashboard = () => {
                 <FaSlidersH />
               </button>
             </div>
-          </div>
         </div>
 
         <Modal show={showPopup} onHide={() => setShowPopup(false)} centered>
@@ -61,23 +59,23 @@ const AdminDashboard = () => {
 
       {/* Admin Dashboard Overview Section */}
       <div className="AD-overview">
-        <h2>Admin Dashboard Overview</h2>
+        <h2>Aperçu du tableau de bord Admin</h2>
 
         <div className="AD-metrics">
           <div className="AD-metric-box AD-red">
-            <p className="AD-metric-title">Total Registered Companies</p>
+            <p className="AD-metric-title">Total des entreprises enregistrées</p>
             <img src={company} alt="Companies" className="AD-metric-img" />
             <p className="AD-metric-value">50</p>
           </div>
 
           <div className="AD-metric-box AD-orange">
-            <p className="AD-metric-title">Total Interim Workers</p>
+            <p className="AD-metric-title">Total des travailleurs intérimaires</p>
             <img src={employee} alt="Workers" className="AD-metric-img" />
             <p className="AD-metric-value">1,200</p>
           </div>
 
           <div className="AD-metric-box AD-blue">
-            <p className="AD-metric-title">New Workers Added This Week</p>
+            <p className="AD-metric-title">Nouveaux collaborateurs ajoutés cette semaine</p>
             <img src={newworker} alt="New Workers" className="AD-metric-img" />
             <p className="AD-metric-value">30</p>
           </div>

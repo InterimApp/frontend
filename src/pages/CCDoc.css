@@ -1,0 +1,208 @@
+/* Container */
+.CCDC-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: white;
+    margin-top: 140px;
+    margin-bottom: 50px;
+}
+
+/* Table Card */
+.CCDC-table-card {
+    background-color: #e6e7ec;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 70%; /* Adjusted the width of the table card */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tab Switcher */
+.CCDC-tab-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.CCDC-tab {
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.CCDC-tab.active {
+    background: linear-gradient(90deg, #ff3c3c, #ff884d);
+    color: white;
+}
+
+/* Report Header */
+.CCDC-report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.CCDC-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #009fdb;
+}
+
+.CCDC-submit-button {
+    background-color: #f75429;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.CCDC-submit-button svg {
+    margin-left: 5px;
+}
+
+/* Compliance Table Header */
+.CCDC-compliance-table-header {
+    display: grid;
+    grid-template-columns: 10% 20% 30% 20% 20%; /* Adjust columns for compliance report */
+    text-align: center;
+    background-color: #f75429;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.CCDC-compliance-table-header h6 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Compliance Table Rows */
+.CCDC-compliance-table-row {
+    display: grid;
+    grid-template-columns: 10% 20% 30% 20% 20%; /* Ensure alignment */
+    text-align: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.CCDC-compliance-table-row span {
+    font-size: 15px;
+    color: #333;
+}
+
+/* Documents Table Header */
+.CCDC-documents-table-header {
+    display: grid;
+    grid-template-columns: 10% 20% 25% 25% 20%; /* Adjust columns for documents */
+    text-align: center;
+    background-color: #f75429;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.CCDC-documents-table-header h6 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Documents Table Rows */
+.CCDC-documents-table-row {
+    display: grid;
+    grid-template-columns: 10% 20% 25% 25% 20%; /* Ensure alignment */
+    text-align: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.CCDC-documents-table-row span {
+    font-size: 15px;
+    color: #333;
+}
+
+/* Icons */
+.CCDC-documents-table-row span svg {
+    cursor: pointer;
+    margin-right: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.CCDC-documents-table-row span svg:hover {
+    color: #f75429;
+    transform: scale(1.2);
+}
+
+/* Modal */
+.CCDC-modal-container {
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+.CCDC-input, .CCDC-input-textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.CCDC-input-group {
+    display: flex;
+    gap: 15px;
+}
+
+.CCDC-submit-modal-button {
+    background-color: #f75429;
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.CCDC-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Document Submit Modal */
+.CCDC-doc-modal-container {
+    padding: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+.CCDC-doc-submit-modal-button {
+    background-color: #f75429;
+    color: white;
+    padding: 12px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}

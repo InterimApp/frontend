@@ -12,6 +12,10 @@ const ClientCompSignin = () => {
     navigate("/signup1");
   };
 
+  const handleSignClick = () => {
+    navigate("/clientcompDashboard");
+  };
+
   return (
     <div className="clientComp-signin-page">
       <NavBar />
@@ -39,7 +43,7 @@ const ClientCompSignin = () => {
                 Retour
               </button>
 
-              <button className="signin-submit-btn">Sign In</button>
+              <button className="signin-submit-btn" onClick={handleSignClick}>Sign In</button>
             </div>
           </form>
         </div>

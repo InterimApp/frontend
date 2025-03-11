@@ -5,6 +5,7 @@ import "./IWNavBar.css";
 import logo from "../assets/manpower-logo.png"; 
 import { Link } from "react-router-dom"; 
 import profilePic from "../assets/Director2.png"; 
+import { FaBell } from "react-icons/fa"; // Import the Bell Icon
 
 const IWNavBar = () => {
   return (
@@ -19,16 +20,16 @@ const IWNavBar = () => {
       </Row>
 
       <nav className="IWD-navigation">
-      <Link to="/IWDashboard">Dashboard</Link>
+        <Link to="/IWDashboard">Dashboard</Link>
         <Link to="/Candidature">Candidature</Link>
-        <Link to="/#contract">Contrat</Link>
-        <Link to="/#document">Document</Link>
-        <Link to="/#payment">Paiement</Link>
-        <Link to="/#notifications" className="IWD-notification-link">
-          <i className="IWD-notification-icon"></i> Notifications
+        <Link to="/iwcontract">Contrat</Link>
+        <Link to="/iwdocument">Document</Link>
+        <Link to="/iwpayment">Paiement</Link>
+ 
+        <Link to="/iwprofile">Profile</Link>
+        <Link to="/iwnotifications" className="IWD-notification-link">
+          <FaBell className="IWD-notification-icon" /> 
         </Link>
-        <Link to="/profile">Profile</Link>
-
       </nav>
     </>
   );

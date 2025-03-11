@@ -1,0 +1,82 @@
+.cc-notifications-container {
+    max-width: 800px;
+    margin: 50px auto 20px; /* Increase top margin to 80px */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #359bbd;
+  }
+  
+  .cc-notification-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Notification Card Styling */
+  .cc-notification-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: white;
+    border-left: 5px solid #359bbd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .cc-notification-item:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Notification Types */
+  .cc-notification-info {
+    border-left-color: #17a2b8;
+  }
+  
+  .cc-notification-success {
+    border-left-color: #28a745;
+  }
+  
+  .cc-notification-warning {
+    border-left-color: #ffc107;
+  }
+  
+  .cc-notification-danger {
+    border-left-color: #dc3545;
+  }
+  
+  /* Notification Content */
+  .cc-notification-message {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .cc-notification-time {
+    font-size: 12px;
+    color: white;
+    background-color: #e9ecef;
+    padding: 3px 8px;
+    border-radius: 12px;
+  }
+  
+  .cc-notification-read {
+    opacity: 0.6;
+  }
+  
+  /* Read button styling */
+  .cc-read-btn {
+    background-color: white !important;
+    border-color: #359bbd !important;
+    color: #359bbd !important;
+  }
+  
+  .cc-read-btn:hover {
+    background-color: #287e99 !important;
+    border-color: #287e99 !important;
+  }

@@ -18,7 +18,7 @@
 }
 
 /* Notification Card Styling */
-.notification-card {
+.admin-notification-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,34 +31,34 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.notification-card:hover {
+.admin-notification-card:hover {
   transform: scale(1.02);
 }
 
 /* Notification Types */
-.notification-success {
+.admin-notification-success {
   border-left-color: #28a745;
 }
 
-.notification-info {
+.admin-notification-info {
   border-left-color: #17a2b8;
 }
 
-.notification-warning {
+.admin-notification-warning {
   border-left-color: #ffc107;
 }
 
-.notification-danger {
+.admin-notification-danger {
   border-left-color: #dc3545;
 }
 
 /* Notification Content */
-.notification-message {
+.admin-notification-message {
   font-size: 16px;
   color: #333;
 }
 
-.notification-time {
+.admin-notification-time {
   font-size: 12px;
   color: white;
   background-color: #e9ecef;
@@ -66,18 +66,17 @@
   border-radius: 12px;
 }
 
-.notification-read {
-    opacity: 0.6;
-  }
-  
-  .read-btn {
-    background-color: white !important;
-    border-color: #359bbd !important;
-    color: #359bbd !important;
-  }
-  
-  .read-btn:hover {
-    background-color: #287e99 !important;
-    border-color: #287e99 !important;
-  }
-  
+.admin-notification-read {
+  opacity: 0.6;
+}
+
+.admin-read-btn {
+  background-color: white !important;
+  border-color: #359bbd !important;
+  color: #359bbd !important;
+}
+
+.admin-read-btn:hover {
+  background-color: #287e99 !important;
+  border-color: #287e99 !important;
+}
