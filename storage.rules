@@ -1,0 +1,24 @@
+rules_version = '2';
+
+// Craft rules based on data in your Firestore database
+// allow write: if firestore.get(
+//    /databases/(default)/documents/users/$(request.auth.uid)).data.isAdmin;
+
+
+//service firebase.storage {
+//  match /b/{bucket}/o {
+//    match /{allPaths=**} {
+//      allow read, write: if false;
+//    }
+//  }
+//}
+
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      // Allow read and write to any file if the request comes from a specific origin
+      allow read, write: if request.method == "OPTIONS" || request.headers.referer.matches('^http://localhost:3000');
+    }
+  }
+}

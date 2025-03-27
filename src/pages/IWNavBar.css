@@ -1,0 +1,63 @@
+/* Top Bar Styling */
+.IWD-top-bar {
+  background-color: white;
+  padding: 15px 0;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  position: fixed;
+  top: 0;
+  width: 101%;
+  z-index: 1000;
+}
+
+.IWD-logo img {
+  height: 50px;
+}
+
+.IWD-profile-section {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.IWD-profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Navigation Bar Styling */
+.IWD-navigation {
+  background-color: #359bbd;
+  color: white;
+  text-align: center;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  z-index: 1001;
+}
+
+.IWD-navigation a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.IWD-navigation a:hover {
+  color: #ff914d;
+  border-radius: 5px;
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+/* Content Section */
+.IWD-content-section {
+  padding-top: 180px;
+}

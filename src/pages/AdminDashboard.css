@@ -1,0 +1,202 @@
+/* AdminDashboard.css */
+
+.AD-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  margin-top: 140px;
+  margin-bottom: 70px;
+}
+
+.AD-dashboard {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.AD-left-content h1,
+.AD-left-content h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #359bbd;
+}
+
+.AD-highlight {
+  color: #ff6600;
+}
+
+.AD-search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f3f3;
+  padding: 10px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+.AD-search-icon,
+.AD-filter-btn {
+  font-size: 18px;
+  color: #555;
+}
+
+.AD-search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.AD-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.AD-overview {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.AD-popup-container {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.AD-metrics {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.AD-metric-box {
+  background: #e0e0e0;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  width: 300px; /* Increased width */
+  color: white;
+}
+.AD-modal-content {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.AD-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.AD-popup-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
+.AD-input-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.AD-input-box {
+  position: relative;
+  width: 45%;
+}
+.AD-modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.AD-input-box input {
+  width: 100%;
+  padding: 12px;
+  padding-right: 35px;
+  border: none;
+  background: #f0f0f0;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+.AD-input-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.AD-search-btn {
+  background-color: #ff5f6d;
+  background-image: linear-gradient(to right, #ff5f6d, #ff914d);
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 80%;
+  transition: 0.3s;
+}
+
+.AD-red {
+  background: #e74c3c;
+}
+.AD-orange {
+  background: #f39c12;
+}
+.AD-blue {
+  background: #3498db;
+}
+
+.AD-metric-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.AD-metric-value {
+  font-size: 26px;
+  font-weight: bold;
+  color: white;
+}
+
+.AD-metric-img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}

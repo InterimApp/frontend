@@ -1,69 +1,51 @@
-import React, { useState } from "react";
-import "./Signin.css";
-import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
-import analysis from "../assets/analysis.jpeg";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Signin.css";
+import analysis from "../assets/analysis.jpeg";
+import { Button } from "react-bootstrap";
+import NavBar from "./NavBar";
 
 const Signin = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    navigate("/signup1");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleCandidateClick = () => {
+    navigate("/CandidateSignIn"); 
+  };
+
+  const handleIWClick = () => {
+    navigate("/IWSignIn"); 
+  };
+
+  const handleClientCompClick = () => {
+    navigate("/ClientCompSignIn"); 
   };
 
   const handleSignClick = () => {
-    navigate("/signup1"); // Navigate to the sign-up page
+    navigate("/SignUp1"); 
   };
 
   return (
     <div className="signin-page">
-      <div className="signin-container">
-        <div className="form-container">
-          <h2>
-            Sign in to your <span>account</span>
-          </h2>
-          <div className="divider"></div>
-
-          <form>
-            <label>Email</label>
-            <div className="input-icon">
-              <input type="email" placeholder="Enter your email" />
-              <FaEnvelope className="icon" />
-            </div>
-            <label>Password</label>
-            <div className="input-icon">
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder="Enter password"
-              />
-              {showPassword ? (
-                <FaEyeSlash
-                  className="icon"
-                  onClick={() => setShowPassword(false)}
-                />
-              ) : (
-                <FaEye className="icon" onClick={() => setShowPassword(true)} />
-              )}
-            </div>
-
-            {/* Added Sign Up link */}
-            <p>
-              Vous n'avez pas déjà un compte?{" "}
-              <span className="signin-link" onClick={handleSignClick}>
-                Crée un compte
-              </span>
-            </p>
-
-            <div className="signin-buttons-container">
-              <button className="signin-back-btn" onClick={handleBackClick}>
-                Retour
-              </button>
-
-              <button className="signin-submit-btn">Sign In</button>
-            </div>
-          </form>
-        </div>
+      <NavBar /> 
+      <div id="signin" className="signin-container">
+        <h2>Se connecter</h2>
+        <Button className="travailleur-btn" onClick={handleCandidateClick}>
+          Comme un Candidat
+        </Button>
+        <Button className="travailleur-btn" onClick={handleIWClick}>
+          Comme un collaborateur interimaire
+        </Button>
+        <Button className="travailleur-btn" onClick={handleClientCompClick}>
+          Comme une compagnie cliente
+        </Button>
+        <p>
+          Vous n'avez pas encore de compte ? 
+          <span className="signin-link" onClick={handleSignClick}>Créer un compte</span>
+        </p>
       </div>
       <div className="image-section">
         <img src={analysis} alt="Analysis" />

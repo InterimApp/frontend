@@ -1,0 +1,64 @@
+/* Top Bar Styling */
+.CC-top-bar {
+    background-color: white;
+    padding: 15px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    position: fixed;
+    top: 0;
+    width: 101%;
+    z-index: 1000;
+  }
+  
+  .CC-logo img {
+    height: 50px;
+  }
+  
+  .CC-profile-section {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+  }
+  
+  .CC-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Navigation Bar Styling */
+  .CC-navigation {
+    background-color: #359bbd;
+    color: white;
+    text-align: center;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    z-index: 1001;
+  }
+  
+  .CC-navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+  }
+  
+  .CC-navigation a:hover {
+    color: #ff914d;
+    border-radius: 5px;
+    text-decoration: underline;
+    transform: scale(1.1);
+  }
+  
+  /* Content Section */
+  .CC-content-section {
+    padding-top: 180px;
+  }
+  

@@ -1,20 +1,20 @@
-.company-signup-page {
+
+.candidate-signup-page {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
-    min-height: 700px;
     padding: 20px;
+    min-height: 700px;
   }
   
-  .company-signup-container {
+  .candidate-signup-container {
     background: #f2f2f2;
     border-radius: 20px;
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 500px;
     margin-top: 150px;
-
   }
   
   h2 {
@@ -56,13 +56,14 @@
     display: flex;
     justify-content: space-between;
   }
- 
+  
   .age, .gender {
-    width: 100%;
+    width: 48%;
   }
   
   .input-icon {
     position: relative;
+    
   }
   
   .input-icon input {
@@ -89,21 +90,7 @@
   }
   
   .cv, .location {
-    width: 100%;
-  }
-  
-  .company-submit-btn {
-    width: 100%;
-    padding: 15px;
-    margin-top: 50px;
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    background: linear-gradient(to right, #ff4b2b, #ff5e41);
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
+    width: 45%;
   }
   
   .submit-btn:hover {
@@ -112,13 +99,13 @@
   
   .image-section {
     margin-top: 80px;    
-    max-width: 70%;
+    max-width: 50%;
     border-radius: 10px;
     display: flex;
     justify-content: center;
   }
 
-  .company-form-container {
+  .candidate-form-container {
     max-height: 550vh; 
     padding: 20px;
     background-color: #f5f5f5;
@@ -126,14 +113,28 @@
     margin-top: 2px; 
   }
   
-  .company-signup-page {
+  .worker-signup-page {
     padding-bottom: 40px; 
+  }
+
+  .candidate-submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
   }
 
   .back-btn {
     width: 100%;
     padding: 15px;
-    margin-top: 50px;
+    margin-top: 30px;
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -148,3 +149,15 @@
     background-color: #e0e0e0;
   }
   
+  .submit-btn, .back-btn {
+    width: 48%; 
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row; 
+  gap: 30px;
+  align-items: center;
+  width: 100%;
+}
+

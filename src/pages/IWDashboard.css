@@ -1,0 +1,254 @@
+.IWD-dashboard-container {
+  background: #f8f9fa;
+}
+
+.IWD-main-content {
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* Section Titles */
+.IWD-section-title {
+  color: #ff6600;
+  font-weight: bold;
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.IWD-activity-card {
+  height: 250px; /* Increased height */
+  width: 100%; /* Keep it as wide as possible */
+  max-width: 400px; /* Limit the max width */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px; /* More rounded */
+  color: white;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  padding: 30px; /* Increased padding for larger content */
+  border: none;
+}
+
+.IWD-activity-card:hover {
+  transform: scale(1.05);
+}
+
+/* Card Colors */
+.bg-pink {
+  background-color: #d77b8c;
+}
+
+.bg-orange {
+  background-color: #f4a997;
+}
+
+.bg-blue {
+  background-color: #8aa9d6;
+}
+
+/* Icons */
+.IWD-activity-icon {
+  font-size: 2.5rem; /* Increased size */
+  margin-bottom: 10px;
+}
+
+/* Text Styles */
+.IWD-activity-title {
+  font-weight: bold;
+  font-size: 1.2rem; /* Larger text */
+  text-transform: uppercase;
+}
+
+.IWD-activity-value {
+  font-size: 1rem; /* Larger text */
+  color: white;
+}
+
+/* Section Container */
+.IWD-section-container {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 30px;
+}
+
+.IWD-body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+
+.IWD-job-list {
+  display: flex;
+  justify-content: center; /* Centers the cards */
+  gap: 30px; /* Adds space between cards */
+  flex-wrap: wrap; /* Ensures responsiveness */
+  width: 100%;
+  padding: 20px;
+}
+
+.IWD-job-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%; /* Make the card as wide as possible */
+  max-width: 400px; /* Limit the width to match the size of the activity cards */
+  text-align: center;
+  color: white;
+}
+
+.IWD-job-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+}
+
+.IWD-apply-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.IWD-apply-button:hover {
+  background-color: #0056b3;
+}
+
+.IWD-Suggestion-card {
+  margin-bottom: 90px;
+}
+
+.IWD-left-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow-y: hidden;
+  margin-top: 100px;
+}
+
+.IWD-left-content h1 {
+  font-size: 2rem;
+  color: #359bbd;
+}
+
+.IWD-left-content h1 .IWD-highlight {
+  color: #ff6600;
+}
+
+.IWD-left-content h2 {
+  font-size: 2rem;
+  color: #359bbd;
+}
+
+.IWD-search-bar {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.IWD-search-bar input {
+  border: none;
+  background: transparent;
+  padding: 7px;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.IWD-search-icon {
+  margin-right: 10px;
+  color: #0077cc;
+}
+
+.IWD-filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #0077cc;
+  flex-shrink: 0;
+}
+
+.IWD-popup-container {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.IWD-modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.IWD-modal-content {
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.IWD-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.IWD-search-btn {
+  background-color: #ff5f6d;
+  background-image: linear-gradient(to right, #ff5f6d, #ff914d);
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 80%;
+  transition: 0.3s;
+}
+
+.IWD-search-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Resize the icons inside the modal */
+.IWD-input-icon {
+  font-size: 1.2rem;
+  position: absolute; 
+  left: 320px; 
+  pointer-events: none; 
+}
+/* Adjust input box styles */
+.IWD-input-box {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  position: relative;
+}

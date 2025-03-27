@@ -11,8 +11,8 @@ import effiency from "../assets/effiency.png";
 import user_sat from "../assets/user_sat.png";
 import missionIcon from "../assets/missionIcon.png";
 import visionIcon from "../assets/visionIcon.png";
-import { useNavigate } from "react-router-dom"; // Add this import
-
+import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar"; 
 
 const testimonials = [
   {
@@ -50,10 +50,15 @@ const Home = () => {
     navigate("./signup1");
   };
 
+  const handleDemoClick = () => {
+    navigate("./hiw");
+  };
 
   return (
     <div id="home" className="home-container">
       <div className="first-screen-container">
+      <NavBar /> 
+
         <Container fluid>
 
           <Row className="content-section d-flex align-items-left justify-content-center text-center">
@@ -71,7 +76,7 @@ const Home = () => {
                 solutions les plus expertes pour nos clients.
               </p>
               <Button className="start-btn" onClick={handleCommencerClick}>Commencer</Button>
-              <Button className="demo-btn">Demo</Button>
+              <Button className="demo-btn" onClick={handleDemoClick}>Demo</Button>
             </Col>
             <Col md={6} className="image-section">
               <img src={analysis} alt="Analysis" className="img-fluid" />

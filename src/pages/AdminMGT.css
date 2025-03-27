@@ -1,0 +1,113 @@
+/* Main Container */
+.AMG-container {
+    margin-top: 150px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Tabs Section */
+.AMG-tabs-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    border: 2px solid #ff574d;
+    border-radius: 20px;
+    width: fit-content;
+    margin: auto;
+}
+
+.AMG-tab {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.AMG-active-tab {
+    background: #ff574d;
+    color: white;
+}
+
+.AMG-inactive-tab {
+    background: #fca992;
+    color: white;
+    opacity: 0.6;
+}
+
+.AMG-inactive-tab:hover {
+    opacity: 1;
+}
+
+/* Table Container */
+.AMG-table-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: auto;
+    width: 80%;
+    margin-top: 30px;
+}
+
+/* Title */
+.AMG-title {
+    color: #1b6ca8;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.AMG-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+.AMG-table th {
+    background-color: #ff574d;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.AMG-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.AMG-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Action Icons */
+.AMG-icon {
+    font-size: 18px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.AMG-view {
+    color: black;
+}
+
+.AMG-delete {
+    color: red;
+}
+
+.AMG-square {
+    color: black;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+/* Hover Effects */
+.AMG-icon:hover {
+    transform: scale(1.2);
+}

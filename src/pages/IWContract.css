@@ -1,0 +1,141 @@
+.IWC-contract-container {
+  display: flex;
+  flex-direction: column; /* Stack the contract tables vertically */
+  gap: 20px;
+  padding: 10px;
+  background-color: white;
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+
+.IWC-table-card {
+  background-color: #e6e7ec;
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Modern shadow */
+  padding: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.IWC-title-contract {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-align: left; /* Align to left */
+  color: #009fdb; /* Blue title */
+}
+
+.IWC-mini-bar-header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Create 6 equal columns */
+  text-align: center;
+  background-color: #f75429; /* Red-orange background for header */
+  color: white; /* White text */
+  padding: 10px;
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+.IWC-mini-bar-header h6 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.IWC-mini-bar-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+.IWC-mini-bar-row span {
+  font-size: 15px;
+  color: #333;
+}
+
+.IWC-mini-bar-row .IWC-not-signed {
+  color: #ffa726; /* Orange for 'Not signed' status */
+}
+
+.IWC-mini-bar-row .IWC-expired {
+  color: #757575; /* Gray for 'Expired' status */
+}
+
+.IWC-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.IWC-button:hover {
+  color: #009fdb; /* Hover color */
+}
+
+/* Make sure the action buttons are spaced nicely */
+.IWC-mini-bar-row span .IWC-button {
+  margin-right: 5px;
+}
+
+/* Popup container with modern styling */
+.IWC-popup-container {
+  padding: 20px;
+  position: relative;
+}
+
+.IWC-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #f75429; 
+}
+
+/* Add hover effect for the close button */
+.IWC-close-btn:hover {
+  color: #009fdb; /* Color change on hover */
+}
+
+.IWC-contract-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.IWC-contract-details-table th,
+.IWC-contract-details-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.IWC-contract-details-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.IWC-contract-details-table td {
+  text-align: right;
+}
+
+/* Contract terms list */
+.IWC-ul {
+  margin: 10px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.IWC-ul li {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
