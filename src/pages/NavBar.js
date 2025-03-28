@@ -9,7 +9,7 @@ import facebook from "../assets/facebook.jpeg";
 import instagram from "../assets/instagram.jpeg";
 
 const NavBar = () => {
-  const location = useLocation(); // Get current route
+  const location = useLocation();
 
   return (
     <>
@@ -76,6 +76,12 @@ const NavBar = () => {
         </Link>
         <Link to="/contact" className={location.pathname === "/contact" ? "active-link" : ""}>
           Contact
+        </Link>
+        <Link to="/profile" className={location.pathname === "/profile" ? "active-link" : ""}>
+          Profile
+        </Link>
+        <Link to="/contract" className={location.pathname === "/contract" ? "active-link" : ""}>
+          Contract
         </Link>
       </nav>
     </>

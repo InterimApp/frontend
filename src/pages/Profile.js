@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+
 import {
   FaEnvelope,
+  FaVenusMars,
   FaEye,
   FaEyeSlash,
   FaMapMarkerAlt,
   FaTrash,
-} from "react-icons/fa";
-import "./Profile.css";
+} from 'react-icons/fa';
+import { MdAddAPhoto } from "react-icons/md";
+import './Profile.css';
 import IWNavBar from "./IWNavBar";
+
 
 const Profile = () => {
   const [formData, setFormData] = useState({
-    firstName: "Syrine",
-    lastName: "Eladeb",
+    firstName: 'Syrine',
+    lastName: 'Eladeb',
     age: 24,
-    gender: "Femme",
-    email: "syrine.eladeb@medtech.tn",
-    password: "",
-    confirmPassword: "",
-    location: "Tunisie",
-    profession: "Ingénieur logiciel",
-    skills: "Python",
+    gender: 'Femme',
+    email: 'syrine.eladeb@medtech.tn',
+    password: '',
+    confirmPassword: '',
+    location: 'Tunisie',
+    profession: 'Ingénieur logiciel',
+    skills: 'Python',
     cv: null,
   });
 
@@ -53,45 +57,54 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Profil mis à jour :", formData);
-    alert("Profil mis à jour");
+    console.log('Profil mis à jour :', formData);
+    alert('Profil mis à jour');
+  };
+
+  const handleDeleteProfile = () => {
+    alert('Profile Deleted');
+    // Implement the deletion logic
   };
 
   return (
     <div className="IWP-syrine">
       <IWNavBar />
-
-      <div className="IWP-profile-container">
-        <div className="IWP-profile-image-section">
+      
+      <div className="profile-container">
+        {/* Left side: Profile Image Section */}
+        <div className="profile-image-section">
           {profileImage ? (
-            <img
-              src={profileImage}
-              alt="Profil"
-              className="IWP-profile-image"
-            />
+            <img src={profileImage} alt="Profile" className="profile-image" />
           ) : (
-            <div className="IWP-placeholder-image">Pas d'image</div>
+            <div className="placeholder-image">Pas d'image</div>
           )}
-          <button>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleProfileImageChange}
-            />
-          </button>
-          <h2 className="IWP-h2">
-            {formData.firstName} {formData.lastName}
-          </h2>
-          <div className="IWP-role">
-            <h>Collaborateur intérimaire</h>
+          <div className="profile-image-actions">
+            <label htmlFor="upload-button" className="upload-btn">
+              <MdAddAPhoto className="upload-icon" />
+              <input
+                id="upload-button"
+                type="file"
+                accept="image/*"
+                onChange={handleProfileImageChange}
+                style={{ display: 'none' }}
+              />
+            </label>
+
+            {profileImage && (
+              <button className="delete-img-btn" onClick={handleProfileImageDelete}>
+                <FaTrash /> Supprimer Image
+              </button>
+            )}
           </div>
+          <h2>{formData.firstName} {formData.lastName}</h2>
+          <div className='role'><h3>Collaborateur intérimaire</h3></div>
         </div>
 
-        {/* Côté droit : Formulaire de profil */}
-        <div className="IWP-profile-card">
+        {/* Right side: Profile Form */}
+        <div className="profile-card">
           <h1>Modifier votre profil</h1>
           <form onSubmit={handleSubmit}>
-            <div className="IWP-input-container">
+            <div className="input-container">
               <label>Prénom</label>
               <input
                 type="text"
@@ -101,7 +114,7 @@ const Profile = () => {
               />
             </div>
 
-            <div className="IWP-input-container">
+            <div className="input-container">
               <label>Nom</label>
               <input
                 type="text"
@@ -111,8 +124,8 @@ const Profile = () => {
               />
             </div>
 
-            <div className="IWP-grid IWP-grid-cols-2">
-              <div className="IWP-input-container">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="input-container">
                 <label>Âge</label>
                 <input
                   type="number"
@@ -122,77 +135,77 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="IWP-input-container">
+              <div className="input-container">
                 <label>Sexe</label>
                 <select
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
                 >
-                  {" "}
-                  <option value="Femme">Femme</option>{" "}
-                  <option value="Homme">Homme</option>{" "}
+                  <option>Femme</option>
+                  <option>Homme</option>
                 </select>
               </div>
             </div>
 
-            <div className="IWP-input-container">
+            <div className="input-container">
               <label>Email</label>
-              <div className="IWP-input-icon">
+              <div className="input-icon">
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                 />
-                <FaEnvelope className="IWP-icon" />
+                <FaEnvelope className="icon" />
               </div>
             </div>
 
-            <div className="IWP-input-container">
+            <div className="input-container">
               <label>Mot de passe</label>
-              <div className="IWP-input-icon">
+              <div className="input-icon">
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
                 />
                 {showPassword ? (
                   <FaEyeSlash
-                    className="IWP-icon"
+                    className="icon"
                     onClick={() => setShowPassword(false)}
                   />
                 ) : (
-                  <FaEye
-                    className="IWP-icon"
-                    onClick={() => setShowPassword(true)}
-                  />
+                  <FaEye className="icon" onClick={() => setShowPassword(true)} />
                 )}
               </div>
             </div>
 
-            <div className="IWP-grid IWP-grid-cols-2">
-              <div className="IWP-input-container">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="input-container">
                 <label>CV</label>
-                <input type="file" name="cv" onChange={handleChange} />
+                <input
+                  type="file"
+                  name="cv"
+                  onChange={handleChange}
+                />
               </div>
 
-              <div className="IWP-input-container">
+              <div className="input-container">
                 <label>Localisation</label>
-                <div className="IWP-input-icon">
+                <div className="input-icon">
                   <input
                     type="text"
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
                   />
-                  <FaMapMarkerAlt className="IWP-icon" />
+                  <FaMapMarkerAlt className="icon" />
                 </div>
               </div>
             </div>
 
-            <div className="IWP-input-container">
+            <div className="input-container">
               <label>Profession</label>
               <select
                 name="profession"
@@ -206,7 +219,7 @@ const Profile = () => {
               </select>
             </div>
 
-            <div className="IWP-input-container">
+            <div className="input-container">
               <label>Compétences</label>
               <select
                 name="skills"
@@ -219,11 +232,10 @@ const Profile = () => {
                 <option>Gestion de projet</option>
               </select>
             </div>
-            <div className="IWP-between">
-              <button className="IWP-submit-btn" type="submit">
-                Enregistrer
-              </button>
-              <button className="IWP-delete-btn" type="submit">
+
+            <div className='between'>
+              <button className="submit-btn" type="submit">Enregistrer</button>
+              <button className="delete-btn" type="button" onClick={handleDeleteProfile}>
                 <FaTrash /> Supprimer
               </button>
             </div>
