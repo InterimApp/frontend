@@ -72,17 +72,8 @@ p {
 }
 
 .image-section img {
-<<<<<<< HEAD
   margin-top: -130px;
   max-width: 80%;
-  border-radius: 20px;
-  margin-left: 100px;
-=======
-  max-width: 70%;
-  border-radius: 10px;
-  display: block; /* Ensures no unwanted margin from image display */
-  margin-top: 0; 
->>>>>>> origin/iheb
 }
 
 .social-icons {

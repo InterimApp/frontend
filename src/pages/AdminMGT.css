@@ -111,3 +111,89 @@
 .AMG-icon:hover {
     transform: scale(1.2);
 }
+/* Modal Styles */
+.AMG-modal-header {
+    background: linear-gradient(to right, #ff3d3d, #ff914d);
+    color: white;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  
+  .AMG-modal-title {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  
+  .AMG-modal-body {
+    padding: 25px;
+  }
+  
+  .AMG-user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .AMG-detail-row {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+  }
+  
+  .AMG-detail-label {
+    font-weight: 600;
+    width: 180px;
+    color: #555;
+  }
+  
+  .AMG-detail-value {
+    flex: 1;
+  }
+  
+  .AMG-cv-download {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d32f2f;
+    text-decoration: none;
+    padding: 0;
+  }
+  
+  .AMG-cv-download:hover {
+    color: #b71c1c;
+    text-decoration: underline;
+  }
+  
+  .AMG-modal-footer {
+    border-top: 1px solid #eee;
+    padding: 15px 25px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .AMG-detail-row {
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .AMG-detail-label {
+      width: 100%;
+    }
+  }
+  /* Job Description Style */
+.AMG-job-description {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #ff574d;
+    margin-top: 5px;
+    white-space: pre-wrap;
+  }
+  
+  /* Responsive adjustments for job details */
+  @media (max-width: 768px) {
+    .AMG-job-description {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  }
+  

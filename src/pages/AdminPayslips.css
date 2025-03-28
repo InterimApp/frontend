@@ -1,0 +1,200 @@
+/* Previous styles remain the same... */
+/* Conteneur principal */
+.PS-container {
+    margin-top: 150px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Header with title and upload button */
+  .PS-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10%;
+  }
+  
+  /* Titre */
+  .PS-title {
+    color: #1b6ca8;
+    font-weight: bold;
+  }
+  
+  /* Upload Button */
+  .PS-upload-btn {
+    background: linear-gradient(to right, #ff3d3d, #ff914d);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .PS-upload-btn:hover {
+    background: linear-gradient(to right, #ff5e5e, #ffa867);
+    transform: translateY(-2px);
+  }
+  
+  .PS-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  
+  /* Table Container */
+  .PS-table-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: auto;
+    width: 80%;
+  }
+  
+  /* Style des tableaux */
+  .PS-table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: collapse;
+  }
+  
+  .PS-table th {
+    background-color: #ff574d;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .PS-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .PS-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Action Buttons */
+  .PS-actions-cell {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .PS-icon {
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .PS-view {
+    color: #3498db;
+  }
+  
+  .PS-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .PS-header {
+      flex-direction: column;
+      gap: 15px;
+      padding: 0 5%;
+    }
+    
+    .PS-table-container {
+      width: 95%;
+      padding: 10px;
+    }
+    
+    .PS-table th, 
+    .PS-table td {
+      padding: 8px;
+    }
+    
+    .PS-actions-cell {
+      gap: 10px;
+    }
+  }
+/* Modal Styles */
+.modal-content {
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .modal-header {
+    background: linear-gradient(to right, #ff3d3d, #ff914d);
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+    border: none;
+  }
+  
+  .modal-header .btn-close {
+    color: white;
+    opacity: 0.8;
+  }
+  
+  .modal-title {
+    font-weight: bold;
+  }
+  
+  .modal-body {
+    padding: 25px;
+  }
+  
+  .PS-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .PS-modal-submit {
+    background: linear-gradient(to right, #ff3d3d, #ff914d);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+  }
+  
+  .PS-modal-submit:hover {
+    background: linear-gradient(to right, #ff5e5e, #ffa867);
+  }
+  
+  .PS-modal-cancel {
+    background: #6c757d;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+  }
+  
+  .PS-modal-cancel:hover {
+    background: #5a6268;
+  }
+  
+  /* Form Styles */
+  .form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .form-control:focus {
+    border-color: #ff574d;
+    box-shadow: 0 0 0 0.25rem rgba(255, 87, 77, 0.25);
+  }
+  
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555;
+  }

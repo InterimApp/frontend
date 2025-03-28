@@ -7,14 +7,9 @@ import logo from "../assets/manpower-logo.png";
 import linkedin from "../assets/linkedin.jpeg";
 import facebook from "../assets/facebook.jpeg";
 import instagram from "../assets/instagram.jpeg";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-import Contract from "./Contract";
-=======
->>>>>>> origin/iheb
 
 const NavBar = () => {
-  const location = useLocation(); // Get current route
+  const location = useLocation();
 
   return (
     <>
@@ -72,14 +67,6 @@ const NavBar = () => {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-<<<<<<< HEAD
-        <Link to="/signup1">Sign Up</Link>
-        <Link to="/hiw">How it works</Link>
-        <Link to="/contact">Contact</Link>
-        <Link to="/profile">Profile</Link>
-        <Link to="/contract">Contract</Link>
-
-=======
 
         <Link to="/signup1" className={location.pathname === "/signup1" ? "active-link" : ""}>
           S'inscrire
@@ -90,7 +77,12 @@ const NavBar = () => {
         <Link to="/contact" className={location.pathname === "/contact" ? "active-link" : ""}>
           Contact
         </Link>
->>>>>>> origin/iheb
+        <Link to="/profile" className={location.pathname === "/profile" ? "active-link" : ""}>
+          Profile
+        </Link>
+        <Link to="/contract" className={location.pathname === "/contract" ? "active-link" : ""}>
+          Contract
+        </Link>
       </nav>
     </>
   );

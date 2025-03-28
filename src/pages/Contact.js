@@ -4,13 +4,9 @@ import Director1 from "../assets/MrMohamedMejri.png";
 import Director2 from "../assets/Director2.png";
 import Director3 from "../assets/Director3.png";
 import Director4 from "../assets/Director4.png"; 
-<<<<<<< HEAD
-import Director5 from "../assets/Director5.png"; 
-=======
 import Director5 from "../assets/Director5.png";
 import NavBar from "./NavBar";
 
->>>>>>> origin/iheb
 const agencies = [
   {
     name: "Agence Tunis",

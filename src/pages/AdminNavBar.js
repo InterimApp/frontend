@@ -22,7 +22,10 @@ const AdminNavBar = () => {
       <nav className="AD-navigation">
         <Link to="/admindashboard">Dashboard</Link>
         <Link to="/adminmanagement">Management</Link>
-        <Link to="/admindocuments">Documents</Link>
+        <Link to="/adminApplicants">Applicants</Link>
+        <Link to="/admindocuments">Documents</Link> 
+         <Link to="/adminPayslips">Payslips</Link>
+
         <Link to="/adminnotifications" className="AD-notification-link">
           <FaBell className="AD-notification-icon" /> {/* Bell Icon */}
         </Link>

@@ -4,7 +4,63 @@
   padding: 20px;
   text-align: center;
 }
+/* Assign Button */
+.ADC-assign-btn {
+  background: linear-gradient(to right, #4CAF50, #45a049);
+  border: none;
+  border-radius: 50px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
 
+.ADC-assign-btn:hover {
+  background: linear-gradient(to right, #45a049, #3d8b40);
+  transform: translateY(-1px);
+}
+
+/* File Upload */
+.ADC-file-upload {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ADC-file-upload:hover {
+  border-color: #ff574d;
+}
+
+.ADC-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.ADC-upload-icon {
+  font-size: 24px;
+  color: #ff574d;
+}
+
+#contract-upload {
+  display: none;
+}
+
+/* Modal Actions */
+.ADC-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
 /* Tab Container */
 .ADC-tabs-box {
   display: flex;
@@ -123,4 +179,96 @@
 
 .ADC-icon:hover {
   transform: scale(1.2);
+}
+/* Report Details Styles */
+.ADC-report-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ADC-detail-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.ADC-detail-label {
+  font-weight: 600;
+  width: 180px;
+  color: #555;
+}
+
+.ADC-detail-value {
+  flex: 1;
+}
+
+.ADC-report-description {
+  background-color: #f8f9fa;
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 3px solid #1b6ca8;
+  margin-top: 5px;
+}
+
+.ADC-recommendations-list {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.ADC-recommendations-list li {
+  margin-bottom: 6px;
+}
+
+.ADC-file-download {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #1b6ca8;
+  text-decoration: none;
+  padding: 0;
+}
+
+.ADC-file-download:hover {
+  color: #0d4b7a;
+  text-decoration: underline;
+}
+
+/* Status Badges */
+.ADC-status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ADC-status-approuvé {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.ADC-status-en-révision {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.ADC-status-rejeté {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ADC-detail-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .ADC-detail-label {
+    width: 100%;
+  }
+  
+  .ADC-report-description {
+    margin-left: 0;
+  }
 }
