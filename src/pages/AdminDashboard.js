@@ -1,4 +1,5 @@
-import React, { useState } from "react"; 
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./AdminDashboard.css";
 import AdminNavBar from "./AdminNavBar";
 import { FaSearch, FaSlidersH } from "react-icons/fa";
@@ -11,6 +12,32 @@ import newworker from "../assets/newworker.png";
 
 const AdminDashboard = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [dashboardData, setDashboardData] = useState({
+    totalClientCompanies: 0,
+    totalInterimCollaborators: 0,
+    totalActiveMissions: 0,
+  });
+
+  // Fetch data from backend API on component mount
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/admin/dashboard");
+        if (response.status === 200) {
+          setDashboardData({
+            totalClientCompanies: response.data.total_client_companies,
+            totalInterimCollaborators: response.data.total_interim_collaborators,
+            totalActiveMissions: response.data.total_active_missions,
+          });
+        }
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
+
 
   return (
     <div className="AD-dashboard-container">
@@ -65,19 +92,19 @@ const AdminDashboard = () => {
           <div className="AD-metric-box AD-red">
             <p className="AD-metric-title">Total des entreprises enregistrées</p>
             <img src={company} alt="Companies" className="AD-metric-img" />
-            <p className="AD-metric-value">50</p>
+            <p className="AD-metric-value">{dashboardData.totalClientCompanies}</p>
           </div>
 
           <div className="AD-metric-box AD-orange">
             <p className="AD-metric-title">Total des travailleurs intérimaires</p>
             <img src={employee} alt="Workers" className="AD-metric-img" />
-            <p className="AD-metric-value">1,200</p>
+            <p className="AD-metric-value">{dashboardData.totalInterimCollaborators}</p>
           </div>
 
           <div className="AD-metric-box AD-blue">
-            <p className="AD-metric-title">Nouveaux collaborateurs ajoutés cette semaine</p>
+            <p className="AD-metric-title">Nombre total des missions actives</p>
             <img src={newworker} alt="New Workers" className="AD-metric-img" />
-            <p className="AD-metric-value">30</p>
+            <p className="AD-metric-value">{dashboardData.totalActiveMissions}</p>
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Table, Button, Modal } from "react-bootstrap";
 import { FaEye, FaTimes, FaSquare, FaDownload, FaFilePdf } from "react-icons/fa";
 import "./AdminMGT.css";
 import AdminNavBar from "./AdminNavBar";
+import axios from 'axios';
 
 const AdminMGT = () => {
   const [activeTab, setActiveTab] = useState("utilisateurs");
@@ -10,57 +11,25 @@ const AdminMGT = () => {
   const [showJobModal, setShowJobModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [selectedJob, setSelectedJob] = useState(null);
+  const [utilisateurs, setUtilisateurs] = useState([]);
+  const [offresEmploi, setOffresEmploi] = useState([]);
 
-  const utilisateurs = [
-    {
-      id: "10001",
-      nom: "Jean Dupont",
-      role: "Travailleur Intérimaire",
-      age: 32,
-      localisation: "Ariana, tunis",
-      skills: ["React", "Node.js", "MongoDB"],
-      experience: 5,
-      profession: "Développeur Full Stack",
-      cvFile: "jean_dupont_cv.pdf"
-    },
-    {
-      id: "20001",
-      nom: "XYZ Entreprise",
-      role: "Entreprise",
-      secteur: "Technologie",
-      taille: "50-100 employés",
-      localisation: "Nabeul, tunis"
-    }
-  ];
+  // Fetch utilisateurs and offresEmploi from the API
+  useEffect(() => {
+    // Fetching utilisateurs
+    axios.get('http://localhost:8080/api/admin/users')
+      .then(response => {
+        setUtilisateurs(response.data.users); // Adjust based on your API response
+      })
+      .catch(error => console.error("Error fetching utilisateurs:", error));
 
-  const offresEmploi = [
-    {
-      id: "5001",
-      poste: "Ingénieur Logiciel",
-      entreprise: "Entreprise ABC",
-      datePublication: "2025-03-01",
-      nombreCandidats: 3,
-      competencesRequises: ["JavaScript", "React", "Node.js", "TypeScript"],
-      experienceRequise: 5,
-      description: "Nous recherchons un ingénieur logiciel expérimenté pour rejoindre notre équipe de développement. Vous serez responsable de la conception et de l'implémentation de nouvelles fonctionnalités pour nos applications web.",
-      localisation: "Mehdia, tunis",
-      typeContrat: "CDI",
-      salaire: "100-150 dt",
-    },
-    {
-      id: "5002",
-      poste: "Analyste de Données",
-      entreprise: "Entreprise XYZ",
-      datePublication: "2025-02-28",
-      nombreCandidats: 2,
-      competencesRequises: ["Python", "SQL", "Machine Learning", "Tableau"],
-      experienceRequise: 3,
-      description: "Nous cherchons un analyste de données pour aider à interpréter nos données clients et fournir des insights actionnables. Le candidat idéal aura une solide expérience en analyse de données et en visualisation.",
-      localisation: "Ben arous, tunis",
-      typeContrat: "CDD",
-      salaire: "80-100 dt",
-    }
-  ];
+    // Fetching offresEmploi
+    axios.get('http://localhost:8080/api/admin/job-postings/requests')
+      .then(response => {
+        setOffresEmploi(response.data); // Assuming the response is an array of job offers
+      })
+      .catch(error => console.error("Error fetching offresEmploi:", error));
+  }, []);
 
   const handleViewUser = (user) => {
     setSelectedUser(user);
@@ -121,7 +90,7 @@ const AdminMGT = () => {
                 {utilisateurs.map((utilisateur) => (
                   <tr key={utilisateur.id}>
                     <td>{utilisateur.id}</td>
-                    <td>{utilisateur.nom}</td>
+                    <td>{utilisateur.name}</td>
                     <td>{utilisateur.role}</td>
                     <td className="AMG-actions-cell">
                       <FaEye 
@@ -146,7 +115,7 @@ const AdminMGT = () => {
                   <th>Intitulé du Poste</th>
                   <th>Entreprise</th>
                   <th>Date de Publication</th>
-                  <th>Candidats Requis</th>
+                  <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -154,10 +123,10 @@ const AdminMGT = () => {
                 {offresEmploi.map((offre) => (
                   <tr key={offre.id}>
                     <td>{offre.id}</td>
-                    <td>{offre.poste}</td>
-                    <td>{offre.entreprise}</td>
-                    <td>{offre.datePublication}</td>
-                    <td>{offre.nombreCandidats}</td>
+                    <td>{offre.job_title}</td>
+                    <td>{offre.company_name}</td>
+                    <td>{new Date(offre.created_at).toLocaleDateString()}</td>
+                    <td>{offre.status}</td>
                     <td>
                       <FaEye 
                         className="AMG-icon AMG-view" 
@@ -188,66 +157,38 @@ const AdminMGT = () => {
               </div>
               <div className="AMG-detail-row">
                 <span className="AMG-detail-label">Nom:</span>
-                <span className="AMG-detail-value">{selectedUser.nom}</span>
+                <span className="AMG-detail-value">{selectedUser.name}</span>
               </div>
               <div className="AMG-detail-row">
                 <span className="AMG-detail-label">Rôle:</span>
                 <span className="AMG-detail-value">{selectedUser.role}</span>
               </div>
-              
-              {selectedUser.role === "Travailleur Intérimaire" && (
-                <>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Âge:</span>
-                    <span className="AMG-detail-value">{selectedUser.age}</span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Localisation:</span>
-                    <span className="AMG-detail-value">{selectedUser.localisation}</span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Compétences:</span>
-                    <span className="AMG-detail-value">
-                      {selectedUser.skills.join(", ")}
-                    </span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Années d'expérience:</span>
-                    <span className="AMG-detail-value">{selectedUser.experience}</span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Profession:</span>
-                    <span className="AMG-detail-value">{selectedUser.profession}</span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">CV:</span>
-                    <Button 
-                      variant="link" 
-                      className="AMG-cv-download"
-                      onClick={() => handleDownloadCV(selectedUser.cvFile)}
-                    >
-                      <FaFilePdf /> {selectedUser.cvFile}
-                    </Button>
-                  </div>
-                </>
-              )}
-
-              {selectedUser.role === "Entreprise" && (
-                <>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Secteur:</span>
-                    <span className="AMG-detail-value">{selectedUser.secteur}</span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Taille:</span>
-                    <span className="AMG-detail-value">{selectedUser.taille}</span>
-                  </div>
-                  <div className="AMG-detail-row">
-                    <span className="AMG-detail-label">Localisation:</span>
-                    <span className="AMG-detail-value">{selectedUser.localisation}</span>
-                  </div>
-                </>
-              )}
+              <div className="AMG-detail-row">
+                <span className="AMG-detail-label">Profession:</span>
+                <span className="AMG-detail-value">{selectedUser.profession}</span>
+              </div>
+              <div className="AMG-detail-row">
+                <span className="AMG-detail-label">Âge:</span>
+                <span className="AMG-detail-value">{selectedUser.age}</span>
+              </div>
+              <div className="AMG-detail-row">
+                <span className="AMG-detail-label">Localisation:</span>
+                <span className="AMG-detail-value">{selectedUser.location}</span>
+              </div>
+              <div className="AMG-detail-row">
+                <span className="AMG-detail-label">Années d'expérience:</span>
+                <span className="AMG-detail-value">{selectedUser.experience_years}</span>
+              </div>
+              <div className="AMG-detail-row">
+                <span className="AMG-detail-label">CV:</span>
+                <Button 
+                  variant="link" 
+                  className="AMG-cv-download"
+                  onClick={() => handleDownloadCV(selectedUser.code_interimaire)}
+                >
+                  <FaFilePdf /> {selectedUser.code_interimaire}
+                </Button>
+              </div>
             </div>
           )}
         </Modal.Body>
@@ -271,50 +212,24 @@ const AdminMGT = () => {
                 <span className="AMG-detail-value">{selectedJob.id}</span>
               </div>
               <div className="AMG-detail-row">
-                <span className="AMG-detail-label">Poste:</span>
-                <span className="AMG-detail-value">{selectedJob.poste}</span>
+                <span className="AMG-detail-label">Intitulé du Poste:</span>
+                <span className="AMG-detail-value">{selectedJob.job_title}</span>
               </div>
               <div className="AMG-detail-row">
                 <span className="AMG-detail-label">Entreprise:</span>
-                <span className="AMG-detail-value">{selectedJob.entreprise}</span>
+                <span className="AMG-detail-value">{selectedJob.company_name}</span>
               </div>
               <div className="AMG-detail-row">
                 <span className="AMG-detail-label">Date de Publication:</span>
-                <span className="AMG-detail-value">{selectedJob.datePublication}</span>
-              </div>
-              <div className="AMG-detail-row">
-                <span className="AMG-detail-label">Nombre de Candidats Requis:</span>
-                <span className="AMG-detail-value">{selectedJob.nombreCandidats}</span>
-              </div>
-              <div className="AMG-detail-row">
-                <span className="AMG-detail-label">Compétences Requises:</span>
-                <span className="AMG-detail-value">
-                  {selectedJob.competencesRequises.join(", ")}
-                </span>
+                <span className="AMG-detail-value">{new Date(selectedJob.created_at).toLocaleDateString()}</span>
               </div>
               <div className="AMG-detail-row">
                 <span className="AMG-detail-label">Expérience Requise:</span>
-                <span className="AMG-detail-value">{selectedJob.experienceRequise} ans</span>
-              </div>
-              <div className="AMG-detail-row">
-                <span className="AMG-detail-label">Localisation:</span>
-                <span className="AMG-detail-value">{selectedJob.localisation}</span>
-              </div>
-              <div className="AMG-detail-row">
-                <span className="AMG-detail-label">Type de Contrat:</span>
-                <span className="AMG-detail-value">{selectedJob.typeContrat}</span>
-              </div>
-              <div className="AMG-detail-row">
-                <span className="AMG-detail-label">Salaire:</span>
-                <span className="AMG-detail-value">{selectedJob.salaire}</span>
+                <span className="AMG-detail-value">{selectedJob.required_experience} ans</span>
               </div>
               <div className="AMG-detail-row">
                 <span className="AMG-detail-label">Description:</span>
-                <span className="AMG-detail-value">
-                  <div className="AMG-job-description">
-                    {selectedJob.description}
-                  </div>
-                </span>
+                <span className="AMG-detail-value">{selectedJob.job_description}</span>
               </div>
             </div>
           )}
