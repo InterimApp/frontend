@@ -21,13 +21,12 @@ const IWNavBar = () => {
 
       <nav className="IWD-navigation">
         <Link to="/IWDashboard">Dashboard</Link>
-        <Link to="/Candidature">Candidature</Link>
-        <Link to="/iwcontract">Contrat</Link>
+        <Link to="/contract">Contrat</Link>
         <Link to="/iwdocument">Document</Link>
         <Link to="/iwpayment">Paiement</Link>
  
-        <Link to="/iwprofile">Profile</Link>
-        <Link to="/iwnotifications" className="IWD-notification-link">
+        <Link to="/profile">Profile</Link>
+        <Link to="/IWNot" className="IWD-notification-link">
           <FaBell className="IWD-notification-icon" /> 
         </Link>
       </nav>

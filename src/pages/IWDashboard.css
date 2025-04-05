@@ -1,254 +1,356 @@
-.IWD-dashboard-container {
-  background: #f8f9fa;
+/* Base Styles */
+.iw-dashboard {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 80px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
-.IWD-main-content {
+.iw-content {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
-  margin-top: 50px;
 }
 
-/* Section Titles */
-.IWD-section-title {
-  color: #ff6600;
-  font-weight: bold;
-  text-align: left;
-  font-size: 2rem;
+/* Welcome Section */
+.iw-welcome {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
   margin-bottom: 30px;
-  padding: 20px;
-}
-
-.IWD-activity-card {
-  height: 250px; /* Increased height */
-  width: 100%; /* Keep it as wide as possible */
-  max-width: 400px; /* Limit the max width */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 25px; /* More rounded */
-  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   text-align: center;
-  transition: transform 0.2s ease-in-out;
-  padding: 30px; /* Increased padding for larger content */
-  border: none;
 }
 
-.IWD-activity-card:hover {
-  transform: scale(1.05);
-}
-
-/* Card Colors */
-.bg-pink {
-  background-color: #d77b8c;
-}
-
-.bg-orange {
-  background-color: #f4a997;
-}
-
-.bg-blue {
-  background-color: #8aa9d6;
-}
-
-/* Icons */
-.IWD-activity-icon {
-  font-size: 2.5rem; /* Increased size */
+.iw-welcome h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
   margin-bottom: 10px;
 }
 
-/* Text Styles */
-.IWD-activity-title {
-  font-weight: bold;
-  font-size: 1.2rem; /* Larger text */
-  text-transform: uppercase;
+.iw-welcome h1 span {
+  color: #f87336;
 }
 
-.IWD-activity-value {
-  font-size: 1rem; /* Larger text */
-  color: white;
+.iw-welcome p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 25px;
 }
 
-/* Section Container */
-.IWD-section-container {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 30px;
+/* Search Bar */
+.iw-search-container {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-.IWD-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-}
-
-.IWD-job-list {
-  display: flex;
-  justify-content: center; /* Centers the cards */
-  gap: 30px; /* Adds space between cards */
-  flex-wrap: wrap; /* Ensures responsiveness */
-  width: 100%;
-  padding: 20px;
-}
-
-.IWD-job-card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%; /* Make the card as wide as possible */
-  max-width: 400px; /* Limit the width to match the size of the activity cards */
-  text-align: center;
-  color: white;
-}
-
-.IWD-job-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.5em;
-}
-
-.IWD-apply-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.IWD-apply-button:hover {
-  background-color: #0056b3;
-}
-
-.IWD-Suggestion-card {
-  margin-bottom: 90px;
-}
-
-.IWD-left-content {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  overflow-y: hidden;
-  margin-top: 100px;
-}
-
-.IWD-left-content h1 {
-  font-size: 2rem;
-  color: #359bbd;
-}
-
-.IWD-left-content h1 .IWD-highlight {
-  color: #ff6600;
-}
-
-.IWD-left-content h2 {
-  font-size: 2rem;
-  color: #359bbd;
-}
-
-.IWD-search-bar {
+.iw-search-bar {
   display: flex;
   align-items: center;
   background: #f5f5f5;
-  border-radius: 8px;
-  padding: 10px;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  border-radius: 30px;
+  padding: 8px 15px;
 }
 
-.IWD-search-bar input {
+.iw-search-bar input {
+  flex: 1;
   border: none;
   background: transparent;
-  padding: 7px;
-  font-size: 1.2rem;
+  padding: 8px 15px;
+  font-size: 1rem;
   outline: none;
 }
 
-.IWD-search-icon {
-  margin-right: 10px;
-  color: #0077cc;
+.iw-search-icon {
+  color: #777;
 }
 
-.IWD-filter-btn {
-  background: none;
+.iw-filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f87336;
+  color: white;
   border: none;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 500;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: #0077cc;
-  flex-shrink: 0;
+  transition: all 0.3s ease;
 }
 
-.IWD-popup-container {
-  position: relative;
+.iw-filter-btn:hover {
+  background: #f87336;
+}
+
+/* Stats Cards */
+.iw-stats {
+  margin: 30px auto;
+}
+
+.iw-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+.iw-stats-row {
+  margin-bottom: 40px;
+}
+
+.iw-stat-card {
+  border: none;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
   padding: 20px;
+  height: 100%;
   text-align: center;
+}
+
+.iw-stat-icon {
+  font-size: 2rem;
+  color: #f87336;
+  margin-bottom: 15px;
+}
+
+.iw-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin: 10px 0;
+}
+
+.iw-stat-description {
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* Jobs Section */
+.iw-jobs {
+  margin: 30px auto;
+}
+
+.iw-jobs-grid {
+  margin-top: 20px;
+}
+
+.iw-job-card {
+  border: none;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.iw-job-card:hover {
+  transform: translateY(-5px);
+}
+
+.iw-job-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.iw-job-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.iw-job-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.iw-job-meta svg {
+  margin-right: 5px;
+  color: #777;
+}
+
+.iw-job-salary {
+  font-weight: 600;
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.iw-job-salary svg {
+  margin-right: 5px;
+}
+
+.iw-job-posted {
+  font-size: 0.8rem;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.iw-apply-btn {
+  width: 100%;
+  border-radius: 6px;
+  padding: 10px;
+  font-weight: 500;
+  background: #f87336;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.iw-apply-btn:hover {
+  background: #f87336;
+}
+
+/* Filter Modal */
+.iw-filter-modal {
+  position: relative;
+  padding: 25px;
   background: white;
   border-radius: 10px;
-  width: 400px;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.IWD-modal-dialog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-}
-
-.IWD-modal-content {
-  width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
-  padding: 10px;
-}
-
-.IWD-close-btn {
+.iw-close-btn {
   position: absolute;
   top: 15px;
-  right: 20px;
-  font-size: 18px;
-  border: none;
+  right: 15px;
   background: none;
-  cursor: pointer;
-}
-
-.IWD-search-btn {
-  background-color: #ff5f6d;
-  background-image: linear-gradient(to right, #ff5f6d, #ff914d);
   border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  border-radius: 25px;
-  cursor: pointer;
-  width: 80%;
-  transition: 0.3s;
-}
-
-.IWD-search-btn:hover {
-  transform: scale(1.05);
-}
-
-/* Resize the icons inside the modal */
-.IWD-input-icon {
   font-size: 1.2rem;
-  position: absolute; 
-  left: 320px; 
-  pointer-events: none; 
+  cursor: pointer;
+  color: #777;
 }
-/* Adjust input box styles */
-.IWD-input-box {
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  padding: 5px 10px;
-  margin-bottom: 15px;
+
+.iw-modal-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.iw-filter-section {
+  margin-bottom: 20px;
+}
+
+.iw-filter-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.iw-input-box {
   position: relative;
+}
+
+.iw-input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+
+.iw-input-box input {
+  width: 100%;
+  padding: 10px 15px 10px 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.iw-apply-filters {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background:#f87336;
+  color: white;
+  font-weight: 500;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.iw-apply-filters:hover {
+  background: #f87336;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .iw-welcome {
+    padding: 20px;
+  }
+  
+  .iw-welcome h1 {
+    font-size: 1.6rem;
+  }
+  
+  .iw-section-title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .iw-search-bar {
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 15px;
+  }
+  
+  .iw-search-bar input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .iw-filter-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .iw-filter-modal {
+    padding: 20px;
+  }
+}
+/* Search Button */
+.iw-search-btn {
+  background: #f87336;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+}
+
+.iw-search-btn:hover {
+  background:#f87336;
+}
+
+/* Responsive adjustments for search bar */
+@media (max-width: 768px) {
+  .iw-search-bar {
+    flex-wrap: wrap;
+  }
+  
+  .iw-search-btn {
+    margin-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
 }

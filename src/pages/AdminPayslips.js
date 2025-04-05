@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Table, Button, Modal, Form } from "react-bootstrap";
 import { FaEye, FaUpload, FaTimes } from "react-icons/fa";
 import "./AdminPayslips.css";
-
+import AdminNavBar from "./AdminNavBar";
 const Payslips = () => {
   // Sample payslip data
   const [payslips, setPayslips] = useState([
@@ -78,6 +78,7 @@ const Payslips = () => {
 
   return (
     <div className="PS-container">
+              <AdminNavBar />
       <div className="PS-header">
         <h2 className="PS-title">Payslips Management</h2>
         <Button 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Table, Button, Modal } from "react-bootstrap";
 import { FaEye, FaTrash, FaCheck, FaUser } from "react-icons/fa";
 import "./AdminApplicants.css";
-
+import AdminNavBar from "./AdminNavBar";
 const AdminApplicants = () => {
   // Sample job data with applicants
   const [jobs, setJobs] = useState([
@@ -75,6 +75,7 @@ const AdminApplicants = () => {
 
   return (
     <div className="AA-container">
+              <AdminNavBar />
       <h2 className="AA-title">Job Applications Management</h2>
       
       <div className="AA-table-container">
