@@ -3,12 +3,10 @@ import "./ClientCompSignIn.css";
 import { FaBuilding, FaFileInvoice } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { useNavigate } from "react-router-dom";
-//import { db } from "../config/Firebase"; // Import Firestore
-import { collection, getDocs, query, where } from "firebase/firestore"; // Firestore methods to query user data
+// import { db } from "../config/Firebase"; // Import Firestore
+// import { collection, getDocs, query, where } from "firebase/firestore"; // Firestore methods to query user data
 import NavBar from "./NavBar";
-import { db } from "../config/Firebase"; // Import Firestore
-//import { collection, getDocs, query, where } from "firebase/firestore"; // Firestore methods to query user data
-//import NavBar from "./NavBar";
+// import { db } from "../config/Firebase"; // Import Firestore
 
 const ClientCompSignin = () => {
   const [companyName, setCompanyName] = useState(""); // State for company name
@@ -30,8 +28,13 @@ const ClientCompSignin = () => {
       return;
     }
 
+    // 🔓 Bypass Firestore logic and go directly to dashboard
+    console.log("Bypassing Firestore check. Navigating to dashboard...");
+    navigate("/CompanyDashboard");
+
+    // 🔒 Original Firestore authentication logic (commented out)
+    /*
     try {
-      // Query Firestore to find users with the role 'client_company' and the given matricule fiscale
       const usersRef = collection(db, "users");
       const q = query(
         usersRef,
@@ -45,16 +48,13 @@ const ClientCompSignin = () => {
         return;
       }
 
-      // Iterate through the results and check if the company name matches
       let companyFound = false;
       querySnapshot.forEach((doc) => {
         const companyData = doc.data();
-
-        // Check if the company name matches the one stored in Firestore
         if (companyData.companyName.toLowerCase() === companyName.toLowerCase()) {
           companyFound = true;
           console.log("Company signed in successfully:", companyName);
-          navigate("/CompanyDashboard"); // Redirect to the company dashboard upon successful sign-in
+          navigate("/CompanyDashboard");
         }
       });
 
@@ -65,6 +65,7 @@ const ClientCompSignin = () => {
       setErrorMessage("Error signing in: " + error.message);
       console.error("Error signing in:", error.message);
     }
+    */
   };
 
   return (

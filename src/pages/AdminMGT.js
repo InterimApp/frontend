@@ -17,7 +17,7 @@ const AdminMGT = () => {
   // Fetch utilisateurs and offresEmploi from the API
   useEffect(() => {
     // Fetching utilisateurs
-    axios.get('http://localhost:8080/api/admin/users')
+    axios.get('http://localhost:8080/api/admin/allUsers')
       .then(response => {
         setUtilisateurs(response.data.users); // Adjust based on your API response
       })
@@ -87,21 +87,25 @@ const AdminMGT = () => {
                 </tr>
               </thead>
               <tbody>
-                {utilisateurs.map((utilisateur) => (
-                  <tr key={utilisateur.id}>
-                    <td>{utilisateur.id}</td>
-                    <td>{utilisateur.name}</td>
-                    <td>{utilisateur.role}</td>
-                    <td className="AMG-actions-cell">
-                      <FaEye 
-                        className="AMG-icon AMG-view" 
-                        onClick={() => handleViewUser(utilisateur)} 
-                      />
-                      <FaTimes className="AMG-icon AMG-delete" />
-                      <FaSquare className="AMG-icon AMG-square" />
-                    </td>
-                  </tr>
-                ))}
+             {utilisateurs
+  .filter(user => user.role !== 'company') // filters out companies
+  .map((utilisateur) => (
+    <tr key={utilisateur.id}>
+      <td>{utilisateur.id}</td>
+      <td>{utilisateur.name}</td>
+      <td>{utilisateur.role}</td>
+      <td className="AMG-actions-cell">
+        <FaEye 
+          className="AMG-icon AMG-view" 
+          onClick={() => handleViewUser(utilisateur)} 
+        />
+        <FaTimes className="AMG-icon AMG-delete" />
+        <FaSquare className="AMG-icon AMG-square" />
+      </td>
+    </tr>
+))}
+
+
               </tbody>
             </Table>
           </div>
