@@ -1,40 +1,75 @@
-import React, { useState } from 'react';
-import './Contract.css'; // Import the CSS file
-import { FaEye, FaSearch, FaSlidersH } from "react-icons/fa";
-import { IoMdDownload } from "react-icons/io";
-import { TbContract } from "react-icons/tb";
+import React, { useState, useEffect } from 'react';
+import './Contract.css';
+import { FaEye } from 'react-icons/fa';
+import { IoMdDownload } from 'react-icons/io';
+import { TbContract } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-const PDF_FILE_URL = 'http://localhost:3000/file_pdf.png';
+import { fetchContracts, downloadContract } from '../services/ContractApi';
 
 const Contract = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  const [state, setState] = useState({
+    contracts: [],
+    loading: true,
+    error: null,
+    currentContract: null,
+    showModal: false
+  });
 
-  const downloadFileAtURL = (url) => {
-    fetch(url)
-      .then((response) => response.blob())
-      .then((blob) => {
-        const blobURL = window.URL.createObjectURL(new Blob([blob]));
-        const fileName = url.split("/").pop();
-        const aTag = document.createElement("a");
-        aTag.href = blobURL;
-        aTag.setAttribute("download", fileName);
-        document.body.appendChild(aTag);
-        aTag.click();
-        aTag.remove();
-      });
+  const userId = 8; // Replace with actual user ID from auth
+
+  useEffect(() => {
+    const loadContracts = async () => {
+      try {
+        const response = await fetchContracts(userId);
+        setState(prev => ({
+          ...prev,
+          contracts: response.data || [],
+          loading: false,
+          error: null
+        }));
+      } catch (error) {
+        setState(prev => ({
+          ...prev,
+          loading: false,
+          error: error.message,
+          contracts: []
+        }));
+      }
+    };
+
+    loadContracts();
+  }, [userId]);
+
+  const handleViewContract = (contract) => {
+    setState(prev => ({ ...prev, currentContract: contract, showModal: true }));
   };
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
+  const handleDownload = async (contractId) => {
+    try {
+      const response = await downloadContract(contractId);
+      window.open(response.data.downloadUrl, '_blank');
+    } catch (error) {
+      alert('Failed to download contract');
+    }
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  if (state.loading) return <div className="contract-container">Loading contracts...</div>;
+  if (state.error) return <div className="contract-container">Error: {state.error}</div>;
+
+  const activeContracts = state.contracts.filter(c => 
+    c.status === 'active' && new Date() <= new Date(c.end_date)
+  );
+  
+  const contractHistory = state.contracts.filter(c => 
+    c.status !== 'active' || new Date() > new Date(c.end_date)
+  );
 
   return (
     <div className="contract-container">
@@ -49,27 +84,41 @@ const Contract = () => {
           <h6>Status</h6>
           <h6>Actions</h6>
         </div>
-        {/* Sample row for active contract */}
-        <div className="mini-bar-row">
-          <span>Warehouse Assistant</span>
-          <span>XYZ</span>
-          <span>January 1, 2025</span>
-          <span>December 31, 2025</span>
-          <span className="not-signed">Not signed</span>
-          <span>
-            <button onClick={handleOpenModal}>
-              <FaEye />
-            </button>
-            <Link to="/Signature">
-              <button>
-                <TbContract />
-              </button>
-            </Link>
-            <button onClick={() => downloadFileAtURL(PDF_FILE_URL)}>
-              <IoMdDownload />
-            </button>
-          </span>
-        </div>
+        
+        {activeContracts.length > 0 ? (
+          activeContracts.map(contract => (
+            <div className="mini-bar-row" key={contract.id}>
+              <span>{contract.job_title}</span>
+              <span>{contract.company_name}</span>
+              <span>{formatDate(contract.start_date)}</span>
+              <span>{formatDate(contract.end_date)}</span>
+              <span className={contract.signed ? 'signed' : 'not-signed'}>
+                {contract.signed ? 'Signed' : 'Not signed'}
+              </span>
+              <span>
+                <button onClick={() => handleViewContract(contract)}>
+                  <FaEye />
+                </button>
+                {!contract.signed && (
+                  <Link to="/signature" state={{ contractId: contract.id }}>
+                    <button>
+                      <TbContract />
+                    </button>
+                  </Link>
+                )}
+                <button onClick={() => handleDownload(contract.id)}>
+                  <IoMdDownload />
+                </button>
+              </span>
+            </div>
+          ))
+        ) : (
+          <div className="mini-bar-row">
+            <span style={{ gridColumn: '1 / -1', textAlign: 'center' }}>
+              No active contracts found
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Contract History Section */}
@@ -83,85 +132,90 @@ const Contract = () => {
           <h6>Status</h6>
           <h6>Actions</h6>
         </div>
-        {/* Sample rows for contract history */}
-        <div className="mini-bar-row">
-          <span>Sales Assistant</span>
-          <span>XYZ</span>
-          <span>Jan 1, 2024</span>
-          <span>Dec 31, 2024</span>
-          <span className="expired">Expired</span>
-          <span>
-            <button onClick={handleOpenModal}>
-              <FaEye />
-            </button>
-            <button>
-              <IoMdDownload />
-            </button>
-          </span>
-        </div>
-
-        <div className="mini-bar-row">
-          <span>Customer Service Rep</span>
-          <span>XYZ</span>
-          <span>Jan 15, 2023</span>
-          <span>Dec 15, 2023</span>
-          <span className="expired">Expired</span>
-          <span>
-            <button onClick={handleOpenModal}>
-              <FaEye />
-            </button>
-            <button>
-              <IoMdDownload />
-            </button>
-          </span>
-        </div>
+        
+        {contractHistory.length > 0 ? (
+          contractHistory.map(contract => (
+            <div className="mini-bar-row" key={contract.id}>
+              <span>{contract.job_title}</span>
+              <span>{contract.company_name}</span>
+              <span>{formatDate(contract.start_date)}</span>
+              <span>{formatDate(contract.end_date)}</span>
+              <span className="expired">Expired</span>
+              <span>
+                <button onClick={() => handleViewContract(contract)}>
+                  <FaEye />
+                </button>
+                <button onClick={() => handleDownload(contract.id)}>
+                  <IoMdDownload />
+                </button>
+              </span>
+            </div>
+          ))
+        ) : (
+          <div className="mini-bar-row">
+            <span style={{ gridColumn: '1 / -1', textAlign: 'center' }}>
+              No contract history available
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Modal Popup */}
-      <Modal show={isModalOpen} onHide={handleCloseModal} centered>
-        <div className="IWD-popup-container">
-          <button className="IWD-close-btn" onClick={handleCloseModal}>
-            ✖
-          </button>
-          <div >
-          <h2>Contract Details</h2>
-        <table className="contract-details-table">
-          <tbody>
-            <tr>
-              <th>Job Title</th>
-              <td>Warehouse Assistant</td>
-            </tr>
-            <tr>
-              <th>Company</th>
-              <td>XYZ Corporation</td>
-            </tr>
-            <tr>
-              <th>Start Date</th>
-              <td>January 1, 2025</td>
-            </tr>
-            <tr>
-              <th>End Date</th>
-              <td>December 31, 2025</td>
-            </tr>
-            <tr>
-              <th>Status</th>
-              <td className="not-signed">Not Signed</td>
-            </tr>
-          </tbody>
-        </table>
+      <Modal show={state.showModal} onHide={() => setState(prev => ({ ...prev, showModal: false }))} centered>
+        {state.currentContract && (
+          <div className="IWD-popup-container">
+            <button className="IWD-close-btn" onClick={() => setState(prev => ({ ...prev, showModal: false }))}>
+              ✖
+            </button>
+            <div>
+              <h2>Contract Details</h2>
+              <table className="contract-details-table">
+                <tbody>
+                  <tr>
+                    <th>Job Title</th>
+                    <td>{state.currentContract.job_title}</td>
+                  </tr>
+                  <tr>
+                    <th>Company</th>
+                    <td>{state.currentContract.company_name}</td>
+                  </tr>
+                  <tr>
+                    <th>Start Date</th>
+                    <td>{formatDate(state.currentContract.start_date)}</td>
+                  </tr>
+                  <tr>
+                    <th>End Date</th>
+                    <td>{formatDate(state.currentContract.end_date)}</td>
+                  </tr>
+                  <tr>
+                    <th>Status</th>
+                    <td className={state.currentContract.signed ? 'signed' : 'not-signed'}>
+                      {state.currentContract.signed ? 'Signed' : 'Not Signed'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Location</th>
+                    <td>{state.currentContract.location}</td>
+                  </tr>
+                  <tr>
+                    <th>Salary</th>
+                    <td>${state.currentContract.salary}</td>
+                  </tr>
+                </tbody>
+              </table>
 
-        <h4>Contract Terms:</h4>
-        <ul>
-          <li>Salary: $40,000 per year</li>
-          <li>Working Hours: 40 hours per week</li>
-          <li>Location: XYZ Warehouse, Downtown</li>
-        </ul>
-           
+              <h4>Contract Terms:</h4>
+              <ul>
+                <li>Salary: ${state.currentContract.salary}</li>
+                <li>Duration: {state.currentContract.duration} months</li>
+                <li>Working Hours: {state.currentContract.work_hours || 40} hours/week</li>
+                <li>Location: {state.currentContract.location}</li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
       </Modal>
     </div>
   );
 };
-
 export default Contract;

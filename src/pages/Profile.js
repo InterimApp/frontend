@@ -17,7 +17,7 @@ import './Profile.css';
 import IWNavBar from "./IWNavBar";
 
 const Profile = () => {
-  const userId = 2; // Replace with dynamic user ID from auth context
+  const userId = 8; // Replace with dynamic user ID from auth context
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

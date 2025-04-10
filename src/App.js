@@ -6,7 +6,6 @@ import Footer from "./pages/footer";  // Fixed case to match file name
 import Profile from './pages/Profile';
 import Contract from './pages/Contract';
 import IWDoc from './pages/IWDoc';
-import FilteredJobsOffer  from './pages/FilteredJobsOffer ';  // Fixed import path
 import IWNot from './pages/IWNot';  // Fixed import path
 import IWDashboard from './pages/IWDashboard';  // Fixed import path
 import React, { useState, useEffect } from 'react';
@@ -58,7 +57,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="iwdashboard" element={<IWDashboard />} />
-          <Route path="FilteredJobsOffer " element={<FilteredJobsOffer />} />
           <Route path="contract" element={<Contract />} />
           <Route path="signature" element={<Signature />} />
 

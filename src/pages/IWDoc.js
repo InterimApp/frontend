@@ -6,10 +6,9 @@ import { submitReport, fetchUserReports } from "../services/ReportApi";
 import IWNavBar from "./IWNavBar";
 import "./IWDoc.css";
 
-// Temporary hardcoded values - replace these with real values from your database
-const TEMP_USER_ID = 2; // Interim collaborator user ID that exists in your database
-const TEMP_ADMIN_ID = 1; // Admin user ID that exists in your database
-const TEMP_TOKEN = "development-token"; // Mock token for development
+const TEMP_USER_ID = 3;
+const TEMP_ADMIN_ID = 1;
+const TEMP_TOKEN = "development-token";
 
 const IWDoc = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,11 +22,11 @@ const IWDoc = () => {
     const loadReports = async () => {
       try {
         setLoading(true);
-        const response = await fetchUserReports(TEMP_USER_ID, TEMP_TOKEN);
+        const reportsData = await fetchUserReports(TEMP_USER_ID, TEMP_TOKEN);
         
-        const transformedReports = response.data.map(report => ({
+        const transformedReports = reportsData.map(report => ({
           id: report.id,
-          date: new Date(report.created_at).toLocaleDateString('fr-FR'),
+          date: new Date(report.date).toLocaleDateString('fr-FR'),
           title: report.subject,
           status: report.status || "Soumis",
           description: report.description

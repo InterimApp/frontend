@@ -19,11 +19,24 @@ const IWPayment = () => {
     const loadPayslips = async () => {
       try {
         setLoading(true);
+        console.log('Fetching payslips...'); // Debug log
         const response = await fetchUserPayslips(userId);
-        setPayslips(response.data);
+        console.log('API Response:', response); // Debug log
+        
+        if (!response) {
+          throw new Error('Empty response from server');
+        }
+  
+        const transformedPayslips = response.map(payslip => ({
+          ...payslip,
+          date: new Date(payslip.date).toLocaleDateString('fr-FR'),
+          salary: "5000.00" // Temporary mock value
+        }));
+        
+        setPayslips(transformedPayslips);
       } catch (error) {
         console.error('Failed to load payslips:', error);
-        alert('Error loading payslips');
+        alert(`Error loading payslips: ${error.message}`);
       } finally {
         setLoading(false);
       }
@@ -33,8 +46,15 @@ const IWPayment = () => {
 
   const handleViewDetails = async (payslipId) => {
     try {
-      const response = await fetchPayslipDetails(payslipId);
-      setCurrentPayslip(response.data);
+      const payslipDetails = await fetchPayslipDetails(payslipId);
+      setCurrentPayslip({
+        ...payslipDetails,
+        formatted_date: new Date(payslipDetails.date).toLocaleDateString('fr-FR', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        })
+      });
       setIsModalOpen(true);
     } catch (error) {
       console.error('Failed to load payslip details:', error);
@@ -43,14 +63,33 @@ const IWPayment = () => {
   };
 
   const handleDownload = async (payslipId) => {
-    try {
-      const downloadUrl = await downloadPayslip(payslipId);
-      window.open(downloadUrl, '_blank');
-    } catch (error) {
-      console.error('Download failed:', error);
-      alert('Failed to download payslip');
+  try {
+    console.log(`Initiating download for payslip ID: ${payslipId}`);
+    
+    // For development (direct download):
+    const response = await fetch(`http://localhost:8080/api/payslips/download/${payslipId}`);
+    if (response.status === 200) {
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `payslip_${payslipId}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      return;
     }
-  };
+
+    // For production (Firebase signed URL):
+    const result = await downloadPayslip(payslipId);
+    console.log('Received download URL:', result);
+    window.open(result, '_blank');
+    
+  } catch (error) {
+    console.error('Download failed:', error);
+    alert(`Échec du téléchargement: ${error.message}`);
+  }
+};
 
   const getStatusColor = (status) => {
     return status === 'Paid' ? '#28a745' : '#ffa726';
@@ -119,7 +158,7 @@ const IWPayment = () => {
                   </tr>
                   <tr>
                     <th>Company</th>
-                    <td>{currentPayslip.company || 'N/A'}</td>
+                    <td>{currentPayslip.company}</td>
                   </tr>
                   <tr>
                     <th>Position</th>
@@ -132,6 +171,14 @@ const IWPayment = () => {
                   <tr>
                     <th>Salary</th>
                     <td>${currentPayslip.salary}</td>
+                  </tr>
+                  <tr>
+                    <th>Regular Hours</th>
+                    <td>{currentPayslip.work_hours}</td>
+                  </tr>
+                  <tr>
+                    <th>Overtime Hours</th>
+                    <td>{currentPayslip.overtime_hours}</td>
                   </tr>
                   <tr>
                     <th>Status</th>
@@ -148,12 +195,17 @@ const IWPayment = () => {
           <Button variant="secondary" onClick={() => setIsModalOpen(false)}>
             Close
           </Button>
-          <Button 
-            variant="primary" 
-            onClick={() => handleDownload(currentPayslip.id)}
-          >
-            Download Payslip
-          </Button>
+          <button 
+  className="btn btn-link p-0 ml-2"
+  onClick={() => handleDownload(payslips.id)}
+  disabled={loading}
+>
+  {loading ? (
+    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  ) : (
+    <IoMdDownload className="text-success" />
+  )}
+</button>
         </Modal.Footer>
       </Modal>
     </div>

@@ -1,5 +1,3 @@
-/* Contract.css */
-
 /* General Container Styles */
 .contract-container {
   display: flex;
@@ -106,23 +104,23 @@
   font-weight: 600;
 }
 
+.mini-bar-row .signed {
+  color: #27ae60;
+  font-weight: 600;
+}
+
 .mini-bar-row .expired {
   color: #95a5a6;
   font-weight: 600;
 }
 
-/* Action Icons */
-.mini-bar-row .action-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
+/* Action Buttons */
 .mini-bar-row button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin: 0 5px;
 }
 
 .mini-bar-row svg {
@@ -135,15 +133,15 @@
   transform: scale(1.2);
 }
 
-.mini-bar-row svg:first-child:hover {
+.mini-bar-row button:nth-child(1) svg:hover {
   color: #009fdb;
 }
 
-.mini-bar-row svg:nth-child(2):hover {
+.mini-bar-row button:nth-child(2) svg:hover {
   color: #fd5826;
 }
 
-.mini-bar-row svg:last-child:hover {
+.mini-bar-row button:nth-child(3) svg:hover {
   color: #2c3e50;
 }
 
@@ -239,6 +237,16 @@ ul li::before {
   font-size: 20px;
 }
 
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fadbd8;
+  border-radius: 5px;
+  text-align: center;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .contract-container {
@@ -270,4 +278,123 @@ ul li::before {
   .contract-details-table td {
     padding: 10px 15px;
   }
+}
+/* Add these new styles to your existing Contract.css */
+
+/* Signature Modal Styles */
+.signature-modal-content {
+  padding: 20px;
+}
+
+.signature-instructions {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+}
+
+.signature-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.sigCanvas {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
+
+.signature-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Update existing button styles for signature */
+.mini-bar-row button:nth-child(2) svg {
+  color: #27ae60;
+}
+
+.mini-bar-row button:nth-child(2):hover svg {
+  color: #2ecc71;
+  transform: scale(1.2);
+}
+
+/* Signature button specific styles */
+.sign-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sign-button:hover {
+  background-color: #2ecc71;
+}
+
+/* Error message styles */
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fadbd8;
+  border-radius: 5px;
+  text-align: center;
+}
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.sign-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2ecc71;
+  font-size: 1.2rem;
+}
+
+.sign-button:hover {
+  color: #27ae60;
+  transform: scale(1.1);
+}
+
+.signed {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.not-signed {
+  color: #e74c3c;
+  font-weight: bold;
+}
+.post-sign-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.butt-sign {
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.butt-sign:hover {
+  background: linear-gradient(to right, #27ae60, #219653);
+  transform: translateY(-2px);
 }

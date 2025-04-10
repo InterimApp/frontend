@@ -1,5 +1,4 @@
-// src/services/api.js
-const API_URL = "http://localhost:8080/api"; // Ensure this matches your backend
+const API_URL = "http://localhost:8080/api";
 
 export const submitReport = async (reportData, token) => {
   try {
@@ -35,7 +34,9 @@ export const fetchUserReports = async (userId, token) => {
       const errorData = await response.json();
       throw new Error(errorData.message || "Échec de la récupération des rapports");
     }
-    return await response.json();
+    
+    const responseData = await response.json();
+    return responseData.data; // Access the data property directly
   } catch (error) {
     console.error("API Error:", error);
     throw error;
