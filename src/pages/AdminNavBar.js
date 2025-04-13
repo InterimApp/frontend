@@ -12,19 +12,22 @@ const AdminNavBar = () => {
     <>
       <Row className="AD-top-bar d-flex align-items-center px-4">
         <Col xs="auto" className="AD-logo d-flex justify-content-start">
-          <img src={logo} alt="ManPower Logo" className="img-fluid" />
+          <img src={logo} alt="Logo ManPower" className="img-fluid" />
         </Col>
         <Col className="d-flex justify-content-end AD-profile-section">
-          <img src={profilePic} alt="Profile" className="AD-profile-pic" />
+          <img src={profilePic} alt="Profil" className="AD-profile-pic" />
         </Col>
       </Row>
 
       <nav className="AD-navigation">
-        <Link to="/admindashboard">Dashboard</Link>
-        <Link to="/adminmanagement">Management</Link>
-        <Link to="/admindocuments">Documents</Link>
+        <Link to="/admindashboard">Tableau de bord</Link>
+        <Link to="/adminmanagement">Gestion</Link>
+        <Link to="/adminApplicants">Candidats</Link>
+        <Link to="/admindocuments">Documents</Link> 
+        <Link to="/adminPayslips">Fiches de paie</Link>
+
         <Link to="/adminnotifications" className="AD-notification-link">
-          <FaBell className="AD-notification-icon" /> {/* Bell Icon */}
+          <FaBell className="AD-notification-icon" /> {/* Icône de cloche */}
         </Link>
       </nav>
     </>

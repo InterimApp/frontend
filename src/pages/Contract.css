@@ -1,0 +1,400 @@
+/* General Container Styles */
+.contract-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px;
+  background-color: white;
+  margin-top: 150px;
+  padding-bottom: 50px;
+  margin-bottom: 100px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Table Card */
+.table-card {
+  background-color: #f2f3f3;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.table-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Contract Header */
+.title-contract {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 25px 0;
+  position: relative;
+  padding-left: 15px;
+}
+
+.title-contract::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 4px;
+  background-color: #009fdb;
+  border-radius: 2px;
+}
+
+/* Table Header */
+.mini-bar-header {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+  background-color: #fd5826;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.mini-bar-header h6 {
+  font-size: 15px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Table Rows */
+.mini-bar-row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  text-align: center;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.mini-bar-row:last-child {
+  border-bottom: none;
+}
+
+.mini-bar-row:hover {
+  background-color: rgba(0, 159, 219, 0.05);
+  transform: scale(1.005);
+}
+
+.mini-bar-row span {
+  font-size: 15px;
+  color: #34495e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+/* Status Styling */
+.mini-bar-row .not-signed {
+  color: #ffa726;
+  font-weight: 600;
+}
+
+.mini-bar-row .signed {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.mini-bar-row .expired {
+  color: #95a5a6;
+  font-weight: 600;
+}
+
+/* Action Buttons */
+.mini-bar-row button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 5px;
+}
+
+.mini-bar-row svg {
+  font-size: 18px;
+  color: #7f8c8d;
+  transition: all 0.2s ease;
+}
+
+.mini-bar-row svg:hover {
+  transform: scale(1.2);
+}
+
+.mini-bar-row button:nth-child(1) svg:hover {
+  color: #009fdb;
+}
+
+.mini-bar-row button:nth-child(2) svg:hover {
+  color: #fd5826;
+}
+
+.mini-bar-row button:nth-child(3) svg:hover {
+  color: #2c3e50;
+}
+
+/* Modal Styles */
+.IWD-popup-container {
+  padding: 30px;
+  position: relative;
+  background-color: white;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.IWD-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #95a5a6;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.IWD-close-btn:hover {
+  background-color: #f5f5f5;
+  color: #e74c3c;
+}
+
+/* Contract Details Table */
+.contract-details-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.contract-details-table th,
+.contract-details-table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.contract-details-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+  width: 30%;
+}
+
+.contract-details-table tr:last-child td {
+  border-bottom: none;
+}
+
+.contract-details-table tr:hover td {
+  background-color: #f8f9fa;
+}
+
+/* Contract terms list */
+ul {
+  margin: 20px 0 10px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #34495e;
+  position: relative;
+  padding-left: 30px;
+}
+
+ul li::before {
+  content: '•';
+  position: absolute;
+  left: 15px;
+  color: #009fdb;
+  font-size: 20px;
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fadbd8;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .contract-container {
+    padding: 15px;
+    margin-top: 120px;
+  }
+  
+  .table-card {
+    padding: 20px;
+    overflow-x: auto;
+  }
+  
+  .mini-bar-header,
+  .mini-bar-row {
+    grid-template-columns: repeat(6, 1fr);
+    padding: 12px 15px;
+    min-width: 800px;
+  }
+  
+  .title-contract {
+    font-size: 20px;
+  }
+  
+  .IWD-popup-container {
+    padding: 20px;
+  }
+  
+  .contract-details-table th,
+  .contract-details-table td {
+    padding: 10px 15px;
+  }
+}
+/* Add these new styles to your existing Contract.css */
+
+/* Signature Modal Styles */
+.signature-modal-content {
+  padding: 20px;
+}
+
+.signature-instructions {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+}
+
+.signature-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.sigCanvas {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
+
+.signature-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Update existing button styles for signature */
+.mini-bar-row button:nth-child(2) svg {
+  color: #27ae60;
+}
+
+.mini-bar-row button:nth-child(2):hover svg {
+  color: #2ecc71;
+  transform: scale(1.2);
+}
+
+/* Signature button specific styles */
+.sign-button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.sign-button:hover {
+  background-color: #2ecc71;
+}
+
+/* Error message styles */
+.error-message {
+  color: #e74c3c;
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fadbd8;
+  border-radius: 5px;
+  text-align: center;
+}
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.sign-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2ecc71;
+  font-size: 1.2rem;
+}
+
+.sign-button:hover {
+  color: #27ae60;
+  transform: scale(1.1);
+}
+
+.signed {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.not-signed {
+  color: #e74c3c;
+  font-weight: bold;
+}
+.post-sign-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.butt-sign {
+  background: linear-gradient(to right, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.butt-sign:hover {
+  background: linear-gradient(to right, #27ae60, #219653);
+  transform: translateY(-2px);
+}

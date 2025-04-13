@@ -1,208 +1,247 @@
-/* Container */
-.CCDC-container {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: white;
-    margin-top: 140px;
-    margin-bottom: 50px;
-}
-
-/* Table Card */
-.CCDC-table-card {
-    background-color: #e6e7ec;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 70%; /* Adjusted the width of the table card */
+/* Main Container */
+.CCD-container {
+    margin-top: 150px;
+    padding: 30px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* Tab Switcher */
-.CCDC-tab-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.CCDC-tab {
-    font-size: 18px;
-    padding: 12px 24px;
-    border-radius: 30px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease;
-}
-
-.CCDC-tab.active {
-    background: linear-gradient(90deg, #ff3c3c, #ff884d);
-    color: white;
-}
-
-/* Report Header */
-.CCDC-report-header {
+/* Header Section */
+.CCD-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 30px;
 }
 
-.CCDC-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #009fdb;
-}
-
-.CCDC-submit-button {
-    background-color: #f75429;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 20px;
-    cursor: pointer;
+.CCD-title {
+    color: #484452;
+    font-weight: 700;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
-    font-weight: bold;
-}
-
-.CCDC-submit-button svg {
-    margin-left: 5px;
-}
-
-/* Compliance Table Header */
-.CCDC-compliance-table-header {
-    display: grid;
-    grid-template-columns: 10% 20% 30% 20% 20%; /* Adjust columns for compliance report */
-    text-align: center;
-    background-color: #f75429;
-    color: white;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-}
-
-.CCDC-compliance-table-header h6 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* Compliance Table Rows */
-.CCDC-compliance-table-row {
-    display: grid;
-    grid-template-columns: 10% 20% 30% 20% 20%; /* Ensure alignment */
-    text-align: center;
     gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    color: #333;
 }
 
-.CCDC-compliance-table-row span {
-    font-size: 15px;
-    color: #333;
-}
-
-/* Documents Table Header */
-.CCDC-documents-table-header {
-    display: grid;
-    grid-template-columns: 10% 20% 25% 25% 20%; /* Adjust columns for documents */
-    text-align: center;
-    background-color: #f75429;
-    color: white;
-    padding: 10px;
-    border-radius: 10px 10px 0 0;
-}
-
-.CCDC-documents-table-header h6 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-}
-
-/* Documents Table Rows */
-.CCDC-documents-table-row {
-    display: grid;
-    grid-template-columns: 10% 20% 25% 25% 20%; /* Ensure alignment */
-    text-align: center;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-}
-
-.CCDC-documents-table-row span {
-    font-size: 15px;
-    color: #333;
-}
-
-/* Icons */
-.CCDC-documents-table-row span svg {
-    cursor: pointer;
-    margin-right: 15px;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.CCDC-documents-table-row span svg:hover {
-    color: #f75429;
-    transform: scale(1.2);
-}
-
-/* Modal */
-.CCDC-modal-container {
-    padding: 20px;
-    width: 400px;
-    text-align: center;
-}
-
-.CCDC-input, .CCDC-input-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
-
-.CCDC-input-group {
+.CCD-submit-button {
     display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #ff4800, #63a9fac9);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(55, 58, 70, 0.3);
+    transition: all 0.3s ease;
+}
+
+.CCD-submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(55, 58, 70, 0.4);
+}
+
+/* Table Container */
+.CCD-table-container {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(83, 79, 79, 0.1);
+    margin: auto;
+}
+
+/* Table Styling */
+.CCD-table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.CCD-table th {
+    background: linear-gradient(to right, #ff580a, #ff631b);
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.CCD-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+.CCD-table tr:hover {
+    background-color: rgba(102, 105, 117, 0.05);
+}
+
+/* Status Badge */
+.CCD-status-badge {
+    font-size: 0.9em;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+/* Action Button */
+.CCD-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    color: #323241;
+    border-color: #323241;
+}
+
+.CCD-action-btn:hover {
+    transform: scale(1.1);
+    background-color: rgba(102, 105, 117, 0.1);
+}
+
+/* Modal Styles */
+.CCD-modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.CCD-modal-header .modal-title {
+    font-weight: 600;
+    color: #484452;
+}
+
+/* Details Table */
+.CCD-details-container {
+    padding: 10px;
+}
+
+.CCD-details-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.CCD-details-table th, 
+.CCD-details-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.CCD-details-table th {
+    width: 30%;
+    color: #ff4006;
+    font-weight: 600;
+}
+
+/* Report Form */
+.CCD-report-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.CCD-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.CCD-form-group label {
+    font-weight: 600;
+    color: #484452;
+}
+
+.CCD-input, .CCD-textarea {
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.CCD-input:focus, 
+.CCD-textarea:focus {
+    outline: none;
+    border-color: #ff580a;
+    box-shadow: 0 0 0 0.2rem rgba(255, 88, 10, 0.25);
+}
+
+.CCD-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.CCD-form-actions {
+    display: flex;
+    justify-content: flex-end;
     gap: 15px;
-}
-
-.CCDC-submit-modal-button {
-    background-color: #f75429;
-    color: white;
-    padding: 12px 20px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
     margin-top: 20px;
 }
 
-.CCDC-close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-/* Document Submit Modal */
-.CCDC-doc-modal-container {
-    padding: 20px;
-    width: 400px;
-    text-align: center;
-}
-
-.CCDC-doc-submit-modal-button {
-    background-color: #f75429;
-    color: white;
-    padding: 12px 20px;
-    font-weight: bold;
+.CCD-cancel-btn {
+    background-color: #6c757d;
     border: none;
+    padding: 10px 20px;
     border-radius: 8px;
-    cursor: pointer;
-    margin-top: 20px;
+}
+
+.CCD-submit-form-btn {
+    background: linear-gradient(135deg, #ff4800, #63a9fac9);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .CCD-container {
+        padding: 20px;
+        margin-top: 120px;
+    }
+    
+    .CCD-table-container {
+        padding: 15px;
+        overflow-x: auto;
+    }
+    
+    .CCD-table {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .CCD-container {
+        margin-top: 100px;
+        padding: 15px;
+    }
+    
+    .CCD-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .CCD-submit-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .CCD-form-actions {
+        flex-direction: column;
+    }
+    
+    .CCD-cancel-btn,
+    .CCD-submit-form-btn {
+        width: 100%;
+    }
 }

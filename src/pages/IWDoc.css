@@ -1,25 +1,34 @@
+/* IWDoc.css */
+
 /* General Container Styles */
 .IWDC-contract-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 10px;
+  gap: 25px;
+  padding: 25px;
   background-color: white;
   margin-top: 150px;
-  padding-bottom: 30px;
-
-  margin-bottom: 150px;
-}
-
-.IWDC-table-card {
-  background-color: #e6e7ec;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 90%;
-  overflow: hidden;
+  padding-bottom: 50px;
+  margin-bottom: 100px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Table Card */
+.IWDC-table-card {
+  background-color: #f2f3f3;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  width: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.IWDC-table-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 /* Report Header */
@@ -27,119 +36,334 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .IWDC-title-contract {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 16px;
-  text-align: left;
-  color: #009fdb;
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+  position: relative;
+  padding-left: 15px;
+}
+
+.IWDC-title-contract::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  bottom: 5px;
+  width: 4px;
+  background-color: #009fdb;
+  border-radius: 2px;
 }
 
 .IWDC-submit-button {
   background-color: #f75429;
   color: white;
   border: none;
-  padding: 8px 15px;
-  border-radius: 20px;
+  padding: 10px 22px;
+  border-radius: 25px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  font-weight: bold;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(247, 84, 41, 0.3);
+}
+
+.IWDC-submit-button:hover {
+  background-color: #e04a24;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(247, 84, 41, 0.4);
 }
 
 .IWDC-submit-button svg {
-  margin-left: 5px;
+  font-size: 16px;
 }
 
 /* Table Header */
 .IWDC-mini-bar-header {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 60px repeat(4, 1fr) 100px;
   text-align: center;
-  background-color: #f75429;
+  background-color: #fd5826;
   color: white;
-  padding: 10px;
+  padding: 14px 20px;
   border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .IWDC-mini-bar-header h6 {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 15px;
   margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 /* Table Rows */
 .IWDC-mini-bar-row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 60px repeat(4, 1fr) 100px;
   text-align: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
-  color: #333;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.IWDC-mini-bar-row:last-child {
+  border-bottom: none;
+}
+
+.IWDC-mini-bar-row:hover {
+  background-color: rgba(0, 159, 219, 0.05);
+  transform: scale(1.005);
 }
 
 .IWDC-mini-bar-row span {
   font-size: 15px;
-  color: #333;
+  color: #34495e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
-/* Icon Styling */
-.IWDC-mini-bar-row span svg {
+/* Status Styling */
+.IWDC-mini-bar-row .status-submitted {
+  color: #009fdb;
+  font-weight: 600;
+}
+
+.IWDC-mini-bar-row .status-revised {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.IWDC-mini-bar-row .status-in-review {
+  color: #f75429;
+  font-weight: 600;
+}
+
+/* Action Icons */
+.IWDC-mini-bar-row .action-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.IWDC-mini-bar-row svg {
   cursor: pointer;
-  margin-right: 15px; /* Space between the icons */
-  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+  transition: all 0.2s ease;
+  font-size: 18px;
+  color: #7f8c8d;
 }
 
-.IWDC-mini-bar-row span svg:hover {
-  color: #f75429; /* Change icon color on hover */
-  transform: scale(1.2); /* Enlarge icon on hover */
+.IWDC-mini-bar-row svg:hover {
+  transform: scale(1.2);
 }
 
-/* Modal */
+.IWDC-mini-bar-row svg:first-child:hover {
+  color: #009fdb;
+}
+
+.IWDC-mini-bar-row svg:last-child:hover {
+  color: #e74c3c;
+}
+
+/* Modal Styles */
 .IWDC-popup-container {
-  padding: 20px;
+  padding: 30px;
   position: relative;
+  background-color: white;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .IWDC-close-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
+  top: 15px;
+  right: 15px;
+  background: none;
   border: none;
-  font-size: 18px;
+  font-size: 22px;
   cursor: pointer;
-  color: #f75429;
+  color: #95a5a6;
+  transition: color 0.2s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .IWDC-close-btn:hover {
-  color: #009fdb;
+  background-color: #f5f5f5;
+  color: #e74c3c;
 }
 
 /* Contract Details Table */
 .IWDC-contract-details-table {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .IWDC-contract-details-table th,
 .IWDC-contract-details-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  padding: 14px 20px;
   text-align: left;
+  border-bottom: 1px solid #ecf0f1;
 }
 
 .IWDC-contract-details-table th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+  width: 30%;
 }
 
-.IWDC-contract-details-table td {
-  text-align: right;
+.IWDC-contract-details-table tr:last-child td {
+  border-bottom: none;
+}
+
+.IWDC-contract-details-table tr:hover td {
+  background-color: #f8f9fa;
+}
+
+/* Report Form Styles */
+.IWDC-report-form {
+  padding: 20px 0;
+}
+
+.IWDC-report-form .form-group {
+  margin-bottom: 22px;
+}
+
+.IWDC-report-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 15px;
+}
+
+.IWDC-report-form input,
+.IWDC-report-form textarea,
+.IWDC-report-form select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.IWDC-report-form input:focus,
+.IWDC-report-form textarea:focus,
+.IWDC-report-form select:focus {
+  outline: none;
+  border-color: #009fdb;
+  box-shadow: 0 0 0 3px rgba(0, 159, 219, 0.2);
+  background-color: white;
+}
+
+.IWDC-report-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.form-actions button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-actions button:first-child {
+  background-color: #f1f1f1;
+  color: #7f8c8d;
+  border: 1px solid #ddd;
+}
+
+.form-actions button:first-child:hover {
+  background-color: #e0e0e0;
+  color: #34495e;
+}
+
+.form-actions button.submit-btn {
+  background-color: #009fdb;
+  color: white;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 159, 219, 0.3);
+}
+
+.form-actions button.submit-btn:hover {
+  background-color: #0088c4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 159, 219, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .IWDC-contract-container {
+    padding: 15px;
+    margin-top: 120px;
+  }
+  
+  .IWDC-table-card {
+    padding: 20px;
+    overflow-x: auto;
+  }
+  
+  .IWDC-mini-bar-header,
+  .IWDC-mini-bar-row {
+    grid-template-columns: 50px repeat(4, 1fr) 90px;
+    padding: 12px 15px;
+    min-width: 800px;
+  }
+  
+  .IWDC-title-contract {
+    font-size: 20px;
+  }
+  
+  .IWDC-submit-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .IWDC-popup-container {
+    padding: 20px;
+  }
+  
+  .IWDC-contract-details-table th,
+  .IWDC-contract-details-table td {
+    padding: 10px 15px;
+  }
 }

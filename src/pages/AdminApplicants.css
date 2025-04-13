@@ -1,0 +1,238 @@
+/* Main Container */
+.AA-container {
+  margin-top: 150px;
+  padding: 20px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Title */
+.AA-title {
+  color: #359bbd;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
+
+/* Table Container */
+.AA-table-container {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: 85%;
+}
+
+/* Table Styles */
+.AA-table {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.AA-table th {
+  background: linear-gradient(to right, #ff3d3d, #ff914d);
+  color: white;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.AA-table td {
+  padding: 14px;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: middle;
+}
+
+.AA-table tr:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.3s ease;
+}
+
+/* Applicant Count */
+.AA-applicant-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* View Button */
+.AA-view-btn {
+  background: linear-gradient(to right, #3498db, #2c7be5);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.AA-view-btn:hover {
+  background: linear-gradient(to right, #2c7be5, #1a68d1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Modal Styles */
+.AA-modal-header {
+  background: linear-gradient(to right, #ff3d3d, #ff914d);
+  color: white;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 20px;
+}
+
+.AA-modal-title {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.AA-modal-body {
+  padding: 25px;
+}
+
+.AA-applicant-table {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.AA-applicant-table th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Modal Container (parent of header, body, footer) */
+.modal-content {
+  max-width: 600px;
+  width: 90%; 
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Optional: Ensure table doesn't overflow inside modal */
+.AA-applicant-table {
+  table-layout: auto;
+  word-break: break-word;
+}
+
+.AA-modal-body {
+  overflow-x: auto;
+}
+
+/* Action Buttons */
+.AA-applicant-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.AA-select-btn {
+  background: linear-gradient(to right, #28a745, #218838);
+  border: none;
+  border-radius: 50px;
+  padding: 6px 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.AA-select-btn:hover {
+  background: linear-gradient(to right, #218838, #1e7e34);
+}
+
+.AA-select-btn:disabled {
+  background: #6c757d;
+  opacity: 0.7;
+}
+
+.AA-delete-btn {
+  background: linear-gradient(to right, #dc3545, #c82333);
+  border: none;
+  border-radius: 50px;
+  padding: 6px 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.AA-delete-btn:hover {
+  background: linear-gradient(to right, #c82333, #bd2130);
+}
+
+/* Modal Footer */
+.AA-modal-footer {
+  border-top: 1px solid #eee;
+  padding: 15px 25px;
+}
+
+.AA-modal-close-btn {
+  background: linear-gradient(to right, #6c757d, #5a6268);
+  border: none;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.AA-modal-close-btn:hover {
+  background: linear-gradient(to right, #5a6268, #495056);
+}
+
+/* No Applicants Message */
+.AA-no-applicants {
+  text-align: center;
+  color: #6c757d;
+  font-size: 16px;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .AA-table-container {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .AA-container {
+    margin-top: 120px;
+    padding: 15px;
+  }
+
+  .AA-table th,
+  .AA-table td {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .AA-view-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .AA-applicant-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .AA-select-btn,
+  .AA-delete-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

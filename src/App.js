@@ -27,6 +27,8 @@ import AdminSignIn from './pages/AdminSignIn';
 import AdminMGT from './pages/AdminMGT';
 import AdminDoc from './pages/AdminDoc';
 import AdminNot from './pages/AdminNot';
+import AdminApplicants from './pages/AdminApplicants';
+import AdminPayslips from './pages/AdminPayslips';
 
 // Contract/Document Pages
 import Contract from './pages/IWContract';
@@ -38,6 +40,7 @@ import IWDoc from './pages/IWDoc';
 import IWPayment from './pages/IWPayment';
 import CCNot from './pages/CCNot';
 import CCDoc from './pages/CCDoc';
+import CCProfile from './pages/CCProfile';
 
 // Other Pages
 import HowItWorks from "./pages/HowItWorks";
@@ -114,6 +117,8 @@ const App = () => {
           <Route path="/adminmanagement" element={<AdminMGT />} />
           <Route path="/admindocuments" element={<AdminDoc />} />
           <Route path="/adminnotifications" element={<AdminNot />} />
+          <Route path="/adminApplicants" element={<AdminApplicants />} />
+          <Route path="/adminPayslips" element={<AdminPayslips />} />
 
           {/* Contract/Document Routes */}
           <Route path="/iwcontract" element={<Contract />} />
@@ -125,6 +130,7 @@ const App = () => {
           <Route path="/iwpayment" element={<IWPayment />} />
           <Route path="/ccdnotifications" element={<CCNot />} />
           <Route path="/clientcompDocuments" element={<CCDoc />} />
+          <Route path="/ccprofile" element={<CCProfile />} />
 
           {/* Other Routes */}
           <Route path="/hiw" element={<HowItWorks />} />

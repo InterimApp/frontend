@@ -1,254 +1,471 @@
-.IWD-dashboard-container {
-  background: #f8f9fa;
+/* Dashboard Layout */
+.dashboard {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-top: 80px;
 }
 
-.IWD-main-content {
-  padding: 20px;
-  margin-top: 50px;
-}
-
-/* Section Titles */
-.IWD-section-title {
-  color: #ff6600;
-  font-weight: bold;
-  text-align: left;
-  font-size: 2rem;
-  margin-bottom: 30px;
-  padding: 20px;
-}
-
-.IWD-activity-card {
-  height: 250px; /* Increased height */
-  width: 100%; /* Keep it as wide as possible */
-  max-width: 400px; /* Limit the max width */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 25px; /* More rounded */
-  color: white;
-  text-align: center;
-  transition: transform 0.2s ease-in-out;
-  padding: 30px; /* Increased padding for larger content */
-  border: none;
-}
-
-.IWD-activity-card:hover {
-  transform: scale(1.05);
-}
-
-/* Card Colors */
-.bg-pink {
-  background-color: #d77b8c;
-}
-
-.bg-orange {
-  background-color: #f4a997;
-}
-
-.bg-blue {
-  background-color: #8aa9d6;
-}
-
-/* Icons */
-.IWD-activity-icon {
-  font-size: 2.5rem; /* Increased size */
-  margin-bottom: 10px;
-}
-
-/* Text Styles */
-.IWD-activity-title {
-  font-weight: bold;
-  font-size: 1.2rem; /* Larger text */
-  text-transform: uppercase;
-}
-
-.IWD-activity-value {
-  font-size: 1rem; /* Larger text */
-  color: white;
-}
-
-/* Section Container */
-.IWD-section-container {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 30px;
-}
-
-.IWD-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-}
-
-.IWD-job-list {
-  display: flex;
-  justify-content: center; /* Centers the cards */
-  gap: 30px; /* Adds space between cards */
-  flex-wrap: wrap; /* Ensures responsiveness */
-  width: 100%;
-  padding: 20px;
-}
-
-.IWD-job-card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 100%; /* Make the card as wide as possible */
-  max-width: 400px; /* Limit the width to match the size of the activity cards */
-  text-align: center;
-  color: white;
-}
-
-.IWD-job-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.5em;
-}
-
-.IWD-apply-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.IWD-apply-button:hover {
-  background-color: #0056b3;
-}
-
-.IWD-Suggestion-card {
-  margin-bottom: 90px;
-}
-
-.IWD-left-content {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  overflow-y: hidden;
-  margin-top: 100px;
-}
-
-.IWD-left-content h1 {
-  font-size: 2rem;
-  color: #359bbd;
-}
-
-.IWD-left-content h1 .IWD-highlight {
-  color: #ff6600;
-}
-
-.IWD-left-content h2 {
-  font-size: 2rem;
-  color: #359bbd;
-}
-
-.IWD-search-bar {
-  display: flex;
-  align-items: center;
-  background: #f5f5f5;
-  border-radius: 8px;
-  padding: 10px;
-  max-width: 600px;
-  width: 100%;
+.dashboard-content {
+  max-width: 1200px;
   margin: 0 auto;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  padding: 2rem;
+}
+.nameW{
+color: rgb(247, 76, 13);
+
 }
 
-.IWD-search-bar input {
-  border: none;
-  background: transparent;
-  padding: 7px;
-  font-size: 1.2rem;
-  outline: none;
-}
-
-.IWD-search-icon {
-  margin-right: 10px;
-  color: #0077cc;
-}
-
-.IWD-filter-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: #0077cc;
-  flex-shrink: 0;
-}
-
-.IWD-popup-container {
-  position: relative;
-  padding: 20px;
-  text-align: center;
+/* Welcome Section */
+.welcome-section {
   background: white;
-  border-radius: 10px;
-  width: 400px;
-  max-width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-  margin: 0 auto;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgb(255, 119, 8);
 }
 
-.IWD-modal-dialog {
+.welcome-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+ 
+}
+
+.welcome-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.welcome-subtitle {
+  color: #8b6d64;
+  font-size: 1.1rem;
+}
+
+.last-login {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Search Bar */
+.search-container {
+  margin-top: 2rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 1px 2px rgba(245, 124, 10, 0);
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  outline: none;
+  border-right: 1px solid #e2e8f0;
+}
+
+.search-icon {
+  color: #94a3b8;
+  margin: 0 1rem;
+}
+
+.filter-btn, .search-btn {
+  display: flex;
+  align-items: center;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn {
+  background: #f1f5f9;
+  color: #909192;
+}
+
+.filter-btn:hover {
+  background: #f1ad6eb7;
+}
+
+.search-btn {
+  background: #3b82f6;
+  color: white;
+}
+
+.search-btn:hover {
+  background: #f1ad6eb7;
+}
+
+.active-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+/* Search Results Section */
+.search-results-section {
+  background: #f175101a;
+  border-radius: 55px;
+  padding: 2rem;
+  margin: 1rem 0 2rem 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Stats Section */
+.stats-section {
+  margin: 2rem 0;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3b2c1e;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.stats-row {
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  border: none;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.hours-icon {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.contracts-icon {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.applications-icon {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0.5rem 0;
+}
+
+.stat-value small {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+/* Jobs Sections */
+.recommendations-section {
+  margin: 2rem 0;
+}
+
+.jobs-grid {
+  margin-top: 1rem;
+}
+
+/* Job Card */
+.job-card {
+  border: none;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+  height: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.job-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.job-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4f84f7;
+  margin-bottom: 0.75rem;
+}
+
+.job-company {
+  display: flex;
+  align-items: center;
+  color: #687d99;
+  margin-bottom: 0.5rem;
+}
+
+.job-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.job-meta span {
+  display: flex;
+  align-items: center;
+}
+
+.job-salary {
+  font-weight: 600;
+  color: #15803d;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: #f1f5f9;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #334155;
+}
+
+.job-posted {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.apply-btn {
+  width: 100%;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-weight: 500;
+  background: #ff650b;
+  border: none;
+  transition: background 0.2s;
+}
+
+.apply-btn:hover {
+  background: #2563eb;
+}
+
+/* Empty States */
+.no-results {
+  padding: 3rem 0;
+}
+
+.empty-state-icon {
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+}
+
+/* Pagination */
+.pagination-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  max-width: 100%;
+  margin-top: 2rem;
 }
 
-.IWD-modal-content {
-  width: 100%;
-  max-width: 400px;
-  box-sizing: border-box;
-  padding: 10px;
+/* Orange Color Variables */
+:root {
+  --orange-primary: #FF6B35;
+  --orange-light: #FF8C5A;
+  --orange-dark: #E05A2C;
 }
 
-.IWD-close-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 18px;
+/* Filter Modal Colored */
+.filter-modal-colored .modal-content {
   border: none;
-  background: none;
-  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e2e8f0;
 }
 
-.IWD-search-btn {
-  background-color: #ff5f6d;
-  background-image: linear-gradient(to right, #ff5f6d, #ff914d);
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  border-radius: 25px;
-  cursor: pointer;
-  width: 80%;
-  transition: 0.3s;
+.modal-header-content-colored {
+  padding: 1.5rem 0 1rem;
 }
 
-.IWD-search-btn:hover {
-  transform: scale(1.05);
-}
-
-/* Resize the icons inside the modal */
-.IWD-input-icon {
-  font-size: 1.2rem;
-  position: absolute; 
-  left: 320px; 
-  pointer-events: none; 
-}
-/* Adjust input box styles */
-.IWD-input-box {
+.modal-icon-circle-colored {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  border-radius: 8px;
-  padding: 5px 10px;
-  margin-bottom: 15px;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+}
+
+.modal-title-text-colored {
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.filter-label-colored {
+  display: flex;
+  align-items: center;
+  color: #475569;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.select-wrapper-colored {
   position: relative;
+}
+
+.form-select-colored {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  appearance: none;
+  background-color: white;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.form-select-colored:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.select-arrow-colored {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--orange-primary);
+  pointer-events: none;
+}
+
+.filter-apply-btn {
+  flex: 1;
+  background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+  border: none;
+  font-weight: 500;
+  padding: 0.75rem;
+  border-radius: 8px;
+}
+
+.filter-apply-btn:hover {
+  background: linear-gradient(135deg, var(--orange-light), var(--orange-primary));
+}
+
+.filter-clear-btn {
+  flex: 1;
+  border: 1px solid var(--orange-primary);
+  color: var(--orange-primary);
+  background: white;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.filter-clear-btn:hover {
+  background: rgba(255, 107, 53, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .dashboard-content {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .search-bar {
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+  .search-input {
+    width: 100%;
+    background: white;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .filter-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .dashboard {
+    padding-top: 70px;
+  }
+  
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section-title small {
+    margin-top: 0.25rem;
+    margin-left: 0;
+  }
 }

@@ -53,7 +53,7 @@ const ClientCompSignin = () => {
         ) {
           companyFound = true;
           console.log("Company signed in successfully:", companyName);
-          navigate("/CompanyDashboard"); // Redirect to the company dashboard upon successful sign-in
+          navigate("/clientcompDashboard"); // Redirect to the company dashboard upon successful sign-in
         }
       });
 

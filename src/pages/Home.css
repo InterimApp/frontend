@@ -72,10 +72,8 @@ p {
 }
 
 .image-section img {
-  max-width: 70%;
-  border-radius: 10px;
-  display: block; /* Ensures no unwanted margin from image display */
-  margin-top: 0; 
+  margin-top: -130px;
+  max-width: 80%;
 }
 
 .social-icons {
