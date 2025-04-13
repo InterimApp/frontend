@@ -17,7 +17,7 @@ const Contract = () => {
     showModal: false
   });
 
-  const userId = 8; // Replace with actual user ID from auth
+  const userId = 18; // Replace with actual user ID from auth
 
   useEffect(() => {
     const loadContracts = async () => {

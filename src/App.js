@@ -3,13 +3,23 @@ import Home from "./pages/Home";
 import IWPayment from "./pages/IWPayment";
 import IWNavBar from "./pages/IWNavBar";
 import Footer from "./pages/footer";  // Fixed case to match file name
-import Profile from './pages/Profile';
+import CCProfile from './pages/CCProfile';
 import Contract from './pages/Contract';
 import IWDoc from './pages/IWDoc';
 import IWNot from './pages/IWNot';  // Fixed import path
 import IWDashboard from './pages/IWDashboard';  // Fixed import path
 import React, { useState, useEffect } from 'react';
 import Signature from './pages/Signature';
+import CCNavBar from "./pages/CCNavBar";
+import CCDashboard from "./pages/CCDashboard";
+import CCMan from "./pages/CCMan";
+import CCJob from "./pages/CCJob";
+import CCDoc from "./pages/CCDoc";
+import CCNot from "./pages/CCNot";
+
+
+
+
 
 const ScrollToHash = () => {
   const location = useLocation();
@@ -46,7 +56,7 @@ const App = () => {
 
   return (
     <Router>
-      <IWNavBar />
+      <CCNavBar />
       <ScrollToHash />
       <div className="app-container" style={{
         maxWidth: '1280px', 
@@ -56,14 +66,13 @@ const App = () => {
       }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="iwdashboard" element={<IWDashboard />} />
-          <Route path="contract" element={<Contract />} />
-          <Route path="signature" element={<Signature />} />
+          <Route path="/clientcompDashboard" element={<CCDashboard />} />
+          <Route path="/clientcompDocuments" element={<CCDoc />} />
+          <Route path="/clientcompJobPostings" element={<CCJob/>} />
 
-          <Route path="iwdocument" element={<IWDoc />} />
-          <Route path="iwpayment" element={<IWPayment />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="iwnot" element={<IWNot />} />
+          <Route path="/clientcompManagement" element={<CCMan/>} />
+          <Route path="/ccdnotifications" element={<CCNot/>} />
+          <Route path="profile" element={<CCProfile />} />
         </Routes>
       </div>
       <Footer />

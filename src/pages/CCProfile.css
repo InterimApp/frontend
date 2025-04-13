@@ -1,0 +1,225 @@
+/* Main Container */
+.CCP-container {
+    margin-top: 120px;
+    padding: 30px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header */
+.CCP-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.CCP-main-title {
+    color: #262b31cc;
+    font-weight: 700;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+}
+
+/* Card Styling */
+.CCP-profile-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.CCP-section {
+    margin-bottom: 30px;
+}
+
+.CCP-section-title {
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* Detail Grid */
+.CCP-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.CCP-detail-item {
+    margin-bottom: 15px;
+}
+
+.CCP-detail-label {
+    font-weight: 600;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.CCP-detail-value {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Input Styling */
+.CCP-input {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.CCP-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.1);
+    background-color: #fff;
+}
+
+/* Button Styling */
+.CCP-edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ff5e00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #ffffff;
+}
+
+.CCP-edit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.CCP-save-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.CCP-save-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    background-color: #27ae60;
+    border: none;
+}
+
+.CCP-save-btn:hover {
+    background-color: #219653;
+}
+
+.CCP-cancel-btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* Badge Styling */
+.CCP-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+/* Alert Styling */
+.CCP-alert {
+    margin-bottom: 25px;
+    border-radius: 6px;
+}
+
+/* Loading State */
+.CCP-loading {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.CCP-spinner-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CCP-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.CCP-error {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .CCP-container {
+        padding: 20px;
+        margin-top: 100px;
+    }
+    
+    .CCP-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .CCP-detail-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .CCP-actions {
+        width: 100%;
+    }
+    
+    .CCP-edit-btn, .CCP-save-actions {
+        width: 100%;
+    }
+    
+    .CCP-save-actions {
+        flex-direction: column;
+    }
+}

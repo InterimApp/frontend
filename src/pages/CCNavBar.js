@@ -24,6 +24,7 @@ const CCNavBar = () => {
         <Link to="/clientcompJobPostings">Offres d'emploi</Link>
         <Link to="/clientcompManagement">Gestion</Link>
         <Link to="/clientcompDocuments">Documents</Link>
+        <Link to="/profile">profile</Link>
 
         <Link to="/ccdnotifications" className="CC-notification-link">
           <FaBell className="CC-notification-icon" /> 

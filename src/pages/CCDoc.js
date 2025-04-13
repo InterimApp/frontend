@@ -1,263 +1,243 @@
 import React, { useState } from "react";
-import "./CCDoc.css";
-import { FaEye, FaPlus, FaUpload } from "react-icons/fa";
-import { Modal, Button } from "react-bootstrap";
+import { FaEye, FaPlus, FaFileAlt } from "react-icons/fa";
+import { Modal, Button, Table, Badge } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CCNavBar from "./CCNavBar";
+import "./CCDoc.css";
 
 const CCDoc = () => {
-  const [activeTab, setActiveTab] = useState("conformite");
-  const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
-  const [isDocSubmitModalOpen, setIsDocSubmitModalOpen] = useState(false);
-
-  // Rapports de conformité prédéfinis
-  const [conformiteReports, setConformiteReports] = useState([
-    { id: "1001", date: "10 Jan, 2025", titre: "AZERTY", statut: "Soumis" },
-    { id: "2030", date: "02 Fév, 2025", titre: "LALAL", statut: "Examiné" },
-    { id: "1147", date: "12 Jan, 2025", titre: "AAAA", statut: "En cours d'examen" },
-  ]);
-
-  // Documents prédéfinis
-  const [documents, setDocuments] = useState([
-    { id: "5001", nom: "Alice Dupont", type: "Contrat", date: "01/03/2025" },
-    { id: "5002", nom: "Marc Lemoine", type: "Fiche de paie", date: "28/02/2025" },
-    {
-      id: "5003",
-      nom: "Sophia Bernard",
-      type: "Contrat",
-      date: "10/02/2025",
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [currentReport, setCurrentReport] = useState(null);
+  const [reports, setReports] = useState([
+    { 
+      id: "1001", 
+      date: "10/01/2025", 
+      title: "Problème de sécurité sur le chantier A", 
+      status: "Soumis", 
+      description: "Plusieurs équipements de sécurité manquants sur le site de construction." 
+    },
+    { 
+      id: "2030", 
+      date: "02/02/2025", 
+      title: "Retard de livraison matériel", 
+      status: "Examiné", 
+      description: "Le fournisseur n'a pas respecté les délais de livraison prévus." 
+    },
+    { 
+      id: "1147", 
+      date: "12/01/2025", 
+      title: "Conflit entre équipes", 
+      status: "En cours d'examen", 
+      description: "Tensions entre les équipes de jour et de nuit sur les priorités de travail." 
     },
   ]);
+  const [formData, setFormData] = useState({ title: "", description: "" });
 
-  const [nouveauRapport, setNouveauRapport] = useState({
-    titre: "",
-    localisation: "",
-    date: "",
-    description: "",
-  });
-
-  const [nouveauDoc, setNouveauDoc] = useState({
-    nom: "",
-    type: "",
-    date: "",
-    fichier: null,
-  });
-
-  const openSubmitModal = () => {
-    setIsSubmitModalOpen(true);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const closeSubmitModal = () => {
-    setIsSubmitModalOpen(false);
-  };
-
-  const openDocSubmitModal = () => {
-    setIsDocSubmitModalOpen(true);
-  };
-
-  const closeDocSubmitModal = () => {
-    setIsDocSubmitModalOpen(false);
-  };
-
-  const handleSubmitRapport = () => {
-    if (nouveauRapport.titre && nouveauRapport.date) {
+  const handleSubmitReport = (e) => {
+    e.preventDefault();
+    if (formData.title && formData.description) {
       const newId = (Math.random() * 10000).toFixed(0);
-      const newEntry = {
+      const newReport = {
         id: newId,
-        date: nouveauRapport.date,
-        titre: nouveauRapport.titre,
-        statut: "Soumis",
+        date: new Date().toLocaleDateString('fr-FR'),
+        title: formData.title,
+        status: "Soumis",
+        description: formData.description
       };
-      setConformiteReports([...conformiteReports, newEntry]);
-      setNouveauRapport({ titre: "", localisation: "", date: "", description: "" });
-      closeSubmitModal();
+      
+      setReports([...reports, newReport]);
+      setFormData({ title: "", description: "" });
+      setIsFormOpen(false);
+      alert("Rapport soumis avec succès!");
     }
   };
 
-  const handleSubmitDocument = () => {
-    if (nouveauDoc.nom && nouveauDoc.type && nouveauDoc.date && nouveauDoc.fichier) {
-      const newId = (Math.random() * 10000).toFixed(0);
-      const newDocument = {
-        id: newId,
-        nom: nouveauDoc.nom,
-        type: nouveauDoc.type,
-        date: nouveauDoc.date,
-      };
-      setDocuments([...documents, newDocument]);
-      setNouveauDoc({ nom: "", type: "", date: "", fichier: null });
-      closeDocSubmitModal();
+  const handleViewReport = (report) => {
+    setCurrentReport(report);
+    setIsModalOpen(true);
+  };
+
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "Soumis": return "#009fdb";
+      case "Examiné": return "#28a745";
+      case "En cours d'examen": return "#ff580a";
+      default: return "#333";
     }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <div className="CCDC-container">
+    <>
       <CCNavBar />
+      <div className="CCD-container">
+        {/* Header Section */}
+        <div className="CCD-header">
+          <h1 className="CCD-title"><FaFileAlt /> Suivi des rapports de conformité</h1>
+          <Button 
+            variant="primary" 
+            onClick={() => setIsFormOpen(true)}
+            className="CCD-submit-button"
+          >
+            <FaPlus /> Soumettre un rapport
+          </Button>
+        </div>
 
-      {/* Commutateur d'onglets */}
-      <div className="CCDC-tab-container">
-        <button
-          className={`CCDC-tab ${activeTab === "conformite" ? "active" : ""}`}
-          onClick={() => setActiveTab("conformite")}
-        >
-          Conformité
-        </button>
-        <button
-          className={`CCDC-tab ${activeTab === "documents" ? "active" : ""}`}
-          onClick={() => setActiveTab("documents")}
-        >
-          Documents
-        </button>
+        {/* Reports Table */}
+        <div className="CCD-table-container">
+          <Table striped bordered hover className="CCD-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date de création</th>
+                <th>Titre</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reports.map((report) => (
+                <tr key={report.id}>
+                  <td>{report.id}</td>
+                  <td>{report.date}</td>
+                  <td>{report.title}</td>
+                  <td>
+                    <Badge 
+                      className="CCD-status-badge"
+                      style={{ backgroundColor: getStatusColor(report.status) }}
+                    >
+                      {report.status}
+                    </Badge>
+                  </td>
+                  <td>
+                    <Button
+                      variant="outline-primary"
+                      size="sm"
+                      onClick={() => handleViewReport(report)}
+                      className="CCD-action-btn"
+                      title="Voir les détails"
+                    >
+                      <FaEye />
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+
+        {/* Report Details Modal */}
+        <Modal show={isModalOpen} onHide={handleCloseModal} centered>
+          <Modal.Header closeButton className="CCD-modal-header">
+            <Modal.Title>Détails du rapport</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {currentReport && (
+              <div className="CCD-details-container">
+                <table className="CCD-details-table">
+                  <tbody>
+                    <tr>
+                      <th>ID</th>
+                      <td>{currentReport.id}</td>
+                    </tr>
+                    <tr>
+                      <th>Date de création</th>
+                      <td>{currentReport.date}</td>
+                    </tr>
+                    <tr>
+                      <th>Titre</th>
+                      <td>{currentReport.title}</td>
+                    </tr>
+                    <tr>
+                      <th>Statut</th>
+                      <td>
+                        <Badge 
+                          className="CCD-status-badge"
+                          style={{ backgroundColor: getStatusColor(currentReport.status) }}
+                        >
+                          {currentReport.status}
+                        </Badge>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Description</th>
+                      <td>{currentReport.description}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Fermer
+            </Button>
+          </Modal.Footer>
+        </Modal>
+
+        {/* Submit Report Modal */}
+        <Modal show={isFormOpen} onHide={() => setIsFormOpen(false)} centered>
+          <Modal.Header closeButton className="CCD-modal-header">
+            <Modal.Title>Soumettre un nouveau rapport</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form onSubmit={handleSubmitReport} className="CCD-report-form">
+              <div className="CCD-form-group">
+                <label>Titre du rapport *</label>
+                <input
+                  type="text"
+                  name="title"
+                  placeholder="Titre du rapport"
+                  className="CCD-input"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
+              
+              <div className="CCD-form-group">
+                <label>Description détaillée *</label>
+                <textarea
+                  name="description"
+                  placeholder="Décrivez le problème ou la situation"
+                  className="CCD-textarea"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  rows="5"
+                  required
+                />
+              </div>
+              
+              <div className="CCD-form-actions">
+                <Button 
+                  variant="secondary" 
+                  onClick={() => setIsFormOpen(false)}
+                  className="CCD-cancel-btn"
+                >
+                  Annuler
+                </Button>
+                <Button 
+                  variant="primary" 
+                  type="submit"
+                  className="CCD-submit-form-btn"
+                >
+                  Envoyer le rapport
+                </Button>
+              </div>
+            </form>
+          </Modal.Body>
+        </Modal>
       </div>
-
-      {activeTab === "conformite" ? (
-        <div className="CCDC-table-card">
-          <div className="CCDC-report-header">
-            <h1 className="CCDC-title">Soumission du rapport de conformité</h1>
-            <button className="CCDC-submit-button" onClick={openSubmitModal}>
-              Soumettre <FaPlus />
-            </button>
-          </div>
-          <div className="CCDC-compliance-table-header">
-            <h6>ID</h6>
-            <h6>Date de l'incident</h6>
-            <h6>Titre</h6>
-            <h6>Statut</h6>
-          </div>
-          {conformiteReports.map((report) => (
-            <div key={report.id} className="CCDC-compliance-table-row">
-              <span>{report.id}</span>
-              <span>{report.date}</span>
-              <span>{report.titre}</span>
-              <span>{report.statut}</span>
-            </div>
-          ))}
-        </div>
-      ) : (
-        // Section Documents, mise à jour du bouton soumettre
-        <div className="CCDC-table-card">
-          <div className="CCDC-report-header">
-            <h1 className="CCDC-title">Documents</h1>
-            <button className="CCDC-submit-button" onClick={openDocSubmitModal}>
-              Soumettre <FaPlus />
-            </button>
-          </div>
-          <div className="CCDC-documents-table-header">
-            <h6>ID</h6>
-            <h6>Nom</h6>
-            <h6>Type</h6>
-            <h6>Date</h6>
-            <h6>Actions</h6>
-          </div>
-          {documents.map((doc) => (
-            <div key={doc.id} className="CCDC-documents-table-row">
-              <span>{doc.id}</span>
-              <span>{doc.nom}</span>
-              <span>{doc.type}</span>
-              <span>{doc.date}</span>
-              <span>
-                <FaEye className="CCDC-icon" />
-                <FaUpload className="CCDC-icon" />
-              </span>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Modal Soumission de conformité */}
-      <Modal show={isSubmitModalOpen} onHide={closeSubmitModal} centered>
-        <div className="CCDC-modal-container">
-          <button className="CCDC-close-btn" onClick={closeSubmitModal}>
-            ✖
-          </button>
-          <h2>Soumettre un rapport d'accident de travail</h2>
-          <input
-            type="text"
-            placeholder="Titre"
-            className="CCDC-input"
-            value={nouveauRapport.titre}
-            onChange={(e) =>
-              setNouveauRapport({ ...nouveauRapport, titre: e.target.value })
-            }
-          />
-          <div className="CCDC-input-group">
-            <input
-              type="text"
-              placeholder="Localisation"
-              className="CCDC-input"
-              value={nouveauRapport.localisation}
-              onChange={(e) =>
-                setNouveauRapport({ ...nouveauRapport, localisation: e.target.value })
-              }
-            />
-            <input
-              type="date"
-              className="CCDC-input"
-              value={nouveauRapport.date}
-              onChange={(e) =>
-                setNouveauRapport({ ...nouveauRapport, date: e.target.value })
-              }
-            />
-          </div>
-          <textarea
-            placeholder="Description"
-            className="CCDC-input-textarea"
-            value={nouveauRapport.description}
-            onChange={(e) =>
-              setNouveauRapport({ ...nouveauRapport, description: e.target.value })
-            }
-          ></textarea>
-          <button
-            className="CCDC-submit-modal-button"
-            onClick={handleSubmitRapport}
-          >
-            Soumettre
-          </button>
-        </div>
-      </Modal>
-
-      {/* Modal Soumission de Document */}
-      <Modal show={isDocSubmitModalOpen} onHide={closeDocSubmitModal} centered>
-        <div className="CCDC-doc-modal-container">
-          <button className="CCDC-close-btn" onClick={closeDocSubmitModal}>
-            ✖
-          </button>
-          <h2>Soumettre un Document</h2>
-          <input
-            type="text"
-            placeholder="Nom"
-            className="CCDC-input"
-            value={nouveauDoc.nom}
-            onChange={(e) => setNouveauDoc({ ...nouveauDoc, nom: e.target.value })}
-          />
-          <div className="CCDC-input-group">
-            <input
-              type="text"
-              placeholder="Type de Contrat"
-              className="CCDC-input"
-              value={nouveauDoc.type}
-              onChange={(e) => setNouveauDoc({ ...nouveauDoc, type: e.target.value })}
-            />
-            <input
-              type="date"
-              className="CCDC-input"
-              value={nouveauDoc.date}
-              onChange={(e) => setNouveauDoc({ ...nouveauDoc, date: e.target.value })}
-            />
-          </div>
-          <input
-            type="file"
-            className="CCDC-input"
-            onChange={(e) => setNouveauDoc({ ...nouveauDoc, fichier: e.target.files[0] })}
-          />
-          <button
-            className="CCDC-submit-modal-button"
-            onClick={handleSubmitDocument}
-          >
-            Soumettre Document
-          </button>
-        </div>
-      </Modal>
-    </div>
+    </>
   );
 };
 
