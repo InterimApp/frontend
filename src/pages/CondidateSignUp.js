@@ -11,11 +11,11 @@ import {
 } from "react-icons/fa";
 import analysis from "../assets/analysis.jpeg";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/Firebase";
-import { db } from "../config/Firebase";
+import { auth, db } from "../config/Firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import NavBar from "./NavBar";
 import axios from "axios";
+
 
 const CondidateSignUp = () => {
   const [formData, setFormData] = useState({
@@ -32,17 +32,17 @@ const CondidateSignUp = () => {
     cvUrl: "",
   });
 
-  const navigate = useNavigate();
-  //const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [emailError, setEmailError] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name: fieldName, value } = e.target; // Extract fieldName
-
+    const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
-      [fieldName]: fieldName === "age" ? parseInt(value, 10) || "" : value,
+      [name]: name === "age" ? parseInt(value, 10) || "" : value,
     }));
   };
 
@@ -51,26 +51,23 @@ const CondidateSignUp = () => {
     navigate("/signup1");
   };
 
-  //file upload
   const handleFileUpload = async (event) => {
     if (!event.target.files || event.target.files.length === 0) {
       console.error("No file selected!");
       return;
     }
 
-    const file = event.target.files[0]; // Get the selected file
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "interim"); // Replace with your Cloudinary preset
+    const file = event.target.files[0];
+    const uploadData = new FormData();
+    uploadData.append("file", file);
+    uploadData.append("upload_preset", "interim");
 
     try {
       const response = await axios.post(
-        "https://api.cloudinary.com/v1_1/dxpua2z4b/upload", // Replace 'your_cloud_name' with your Cloudinary cloud name
-        formData
+        "https://api.cloudinary.com/v1_1/dxpua2z4b/upload",
+        uploadData
       );
-
-      const downloadURL = response.data.secure_url; // Get the uploaded file URL from Cloudinary
-      console.log("CV uploaded successfully! URL:", downloadURL);
+      const downloadURL = response.data.secure_url;
       setFormData((prev) => ({ ...prev, cvUrl: downloadURL }));
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -78,40 +75,37 @@ const CondidateSignUp = () => {
   };
 
   const handleCondidateSignup = async (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault();
+    setEmailError("");
+
+    if (!formData.email.includes("@")) {
+      setEmailError("Adresse email invalide");
+      return;
+    }
 
     try {
-      // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
-      const user = userCredential.user;
-      const role = "condidate"; // Define user role
 
-      // Save user info in Firestore
+      const user = userCredential.user;
+      const role = "condidate";
+
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         role: role,
-        passwordHash: formData.password, // this is only for testing the passwords are securely stored and hashed in firestore
-        cvUrl: formData.cvUrl, // Store CV download URL in Firestore
-        createdAt: serverTimestamp(), // Store Firestore timestamp
+        passwordHash: formData.password,
+        cvUrl: formData.cvUrl,
+        createdAt: serverTimestamp(),
       });
 
-      console.log("User created successfully, CV uploaded at:", formData.cvUrl);
-
-      // Store cvUrl in a variable for MySQL later
-      const cvPathForMySQL = formData.cvUrl;
-
-      // Use the user.uid provided by Firebase
       const firestoreUserId = user.uid;
-      console.log("Firestore User ID:", firestoreUserId);
 
-      // Send data to  backend using Axios
       await axios.post("http://localhost:8080/api/user/createUsers", {
         headers: { "Content-Type": "application/json" },
-        firestoreUserId, // Ensure Firestore document ID is included
+        firestoreUserId,
         name: formData.firstName + " " + formData.lastName,
         email: formData.email,
         role: role,
@@ -121,11 +115,10 @@ const CondidateSignUp = () => {
         profession: formData.profession,
         academic_level: formData.academic_level,
         experience: formData.experience,
-        //cvUrl: formData.cvUrl,
       });
 
-      console.log("Data sent to backend successfully!");
-      navigate("/signup1");
+      setSuccess(true);
+      setTimeout(() => navigate("/signup1"), 2000);
     } catch (error) {
       console.error("Error:", error.message);
     }
@@ -142,7 +135,7 @@ const CondidateSignUp = () => {
           <div className="divider"></div>
 
           <form onSubmit={handleCondidateSignup}>
-            <label>Prénom</label>
+          <label>Prénom</label>
             <input
               type="text"
               name="firstName"
@@ -150,6 +143,7 @@ const CondidateSignUp = () => {
               value={formData.firstName}
               onChange={handleChange}
               required
+              data-testid="first-name-input" // Add data-testid
             />
 
             <label>Nom</label>
@@ -160,6 +154,7 @@ const CondidateSignUp = () => {
               value={formData.lastName}
               onChange={handleChange}
               required
+              data-testid="last-name-input" // Add data-testid
             />
 
             <div className="age-gender">
@@ -172,6 +167,7 @@ const CondidateSignUp = () => {
                   value={formData.age}
                   onChange={handleChange}
                   required
+                  data-testid="age-input" // Add data-testid
                 />
               </div>
               <div className="gender">
@@ -184,6 +180,7 @@ const CondidateSignUp = () => {
                     value={formData.gender}
                     onChange={handleChange}
                     required
+                    data-testid="gender-input" // Add data-testid
                   />
                   <FaVenusMars className="icon" />
                 </div>
@@ -199,6 +196,7 @@ const CondidateSignUp = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                data-testid="email-input" // Add data-testid
               />
               <FaEnvelope className="icon" />
             </div>
@@ -213,16 +211,19 @@ const CondidateSignUp = () => {
                   value={formData.password}
                   onChange={handleChange}
                   required
+                  data-testid="password-input" // Add data-testid
                 />
                 {showPassword ? (
                   <FaEyeSlash
                     className="icon"
                     onClick={() => setShowPassword(false)}
+                    data-testid="password-eye-slash" // Add data-testid
                   />
                 ) : (
                   <FaEye
                     className="icon"
                     onClick={() => setShowPassword(true)}
+                    data-testid="password-eye" // Add data-testid
                   />
                 )}
               </div>
@@ -236,6 +237,7 @@ const CondidateSignUp = () => {
                   required
                   onChange={handleFileUpload}
                   name="cv"
+                  data-testid="cv-upload" // Add data-testid
                 />
               </div>
 
@@ -244,8 +246,12 @@ const CondidateSignUp = () => {
                 <div className="input-icon">
                   <input
                     type="text"
+                    name="location"
                     placeholder="Entrez la localisation"
+                    value={formData.location}
+                    onChange={handleChange}
                     required
+                    data-testid="location-input" // Add data-testid
                   />
                   <FaMapMarkerAlt className="icon" />
                 </div>
@@ -258,6 +264,7 @@ const CondidateSignUp = () => {
               value={formData.profession}
               onChange={handleChange}
               required
+              data-testid="profession-select" // Add data-testid
             >
               <option value="">Sélectionner une profession</option>
               <option value="Ingénieur logiciel">Ingénieur logiciel</option>
@@ -274,6 +281,7 @@ const CondidateSignUp = () => {
               value={formData.academic_level}
               onChange={handleChange}
               required
+              data-testid="academic-level-select" // Add data-testid
             >
               <option value="">Sélectionner un niveau académique</option>
               <option value="Licence (Bac+3)">Licence (Bac+3)</option>
@@ -291,6 +299,7 @@ const CondidateSignUp = () => {
               value={formData.experience}
               onChange={handleChange}
               required
+              data-testid="experience-select" // Add data-testid
             >
               <option value="">Sélectionner une expérience</option>
               <option value="Moins d'un an">Moins d'un an</option>
@@ -299,11 +308,31 @@ const CondidateSignUp = () => {
               <option value="Plus de 5 ans">Plus de 5 ans</option>
             </select>
 
+            {emailError && (
+              <p style={{ color: "red" }} data-testid="email-error">
+                {emailError}
+              </p>
+            )}
+
+            {success && (
+              <p style={{ color: "green" }} data-testid="success-message">
+                Registration successful!
+              </p>
+            )}
+
             <div className="buttons-container">
-              <button className="back-btn" onClick={handleBackClick}>
+              <button
+                className="back-btn"
+                onClick={handleBackClick}
+                data-testid="back-btn"
+              >
                 Retour
               </button>
-              <button className="candidate-submit-btn" type="submit">
+              <button
+                className="candidate-submit-btn"
+                type="submit"
+                data-testid="submit-btn"
+              >
                 Sign Up
               </button>
             </div>
